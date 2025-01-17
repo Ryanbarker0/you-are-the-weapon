@@ -1,15 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://ce2x2iwrnea4c"]
+[gd_scene load_steps=5 format=3 uid="uid://ce2x2iwrnea4c"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_nq7jy"]
-[ext_resource type="Texture2D" uid="uid://di36yncqbm515" path="res://icon.svg" id="1_u4suh"]
+[ext_resource type="Texture2D" uid="uid://da0iyuws0qu5y" path="res://scenes/player/assets/Premade_Character_48x48_18.png" id="2_jqy6k"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_epo7i"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lx6d4"]
+atlas = ExtResource("2_jqy6k")
+region = Rect2(1260, 769, 72, 87)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8050h"]
+size = Vector2(51, 30)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_nq7jy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_u4suh")
+texture = SubResource("AtlasTexture_lx6d4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_epo7i")
+position = Vector2(4.5, 25)
+shape = SubResource("RectangleShape2D_8050h")
