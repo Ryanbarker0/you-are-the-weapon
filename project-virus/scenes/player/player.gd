@@ -1,9 +1,7 @@
 extends CharacterBody2D
-
 class_name Player
 
-
-const SPEED = 300.0
+@export var SPEED: float = 300.0
 
 func _physics_process(delta):
     # Get the input direction and handle the movement.
