@@ -8,8 +8,9 @@
 [ext_resource type="Script" path="res://scenes/npcs/scripts/states/NpcIdle.gd" id="5_s4y23"]
 [ext_resource type="Script" path="res://scenes/npcs/scripts/states/NpcInfected.gd" id="7_8x3w8"]
 [ext_resource type="Script" path="res://scenes/npcs/scripts/states/NpcFlee.gd" id="8_63nh1"]
-[ext_resource type="Script" path="res://hurtboxComponent.gd" id="9_610wu"]
+[ext_resource type="Script" path="res://components/hurtbox_component.gd" id="9_610wu"]
 [ext_resource type="AudioStream" uid="uid://cvkxdtqfctpv1" path="res://scenes/npcs/sounds/wheezy-coughing-83635.mp3" id="9_4wky1"]
+
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yy2qw"]
 shader = ExtResource("2_6wxnm")

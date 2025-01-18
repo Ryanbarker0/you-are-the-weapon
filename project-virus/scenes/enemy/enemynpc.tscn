@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/enemy/scripts/enemy.gd" id="1_76442"]
 [ext_resource type="Texture2D" uid="uid://bthduxpmrycjy" path="res://scenes/npcs/assets/Premade_Character_48x48_12_edit.png" id="3_7vchh"]
-[ext_resource type="Script" path="res://hitboxComponent.gd" id="4_o6kv4"]
+[ext_resource type="Script" path="res://components/hitbox_component.gd" id="4_o6kv4"]
 [ext_resource type="Texture2D" uid="uid://sr02oujf4h8" path="res://scenes/npcs/assets/spore.png" id="4_x4487"]
 [ext_resource type="Script" path="res://scenes/enemy/scripts/states/EnemyIdle.gd" id="5_jk251"]
 [ext_resource type="Script" path="res://scenes/StateMachine.gd" id="5_v7ngr"]

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-@export var SPEED: float = 300.0
+@export var stats_component: StatsComponent
 
 func _physics_process(_delta):
 	# Get the input direction and handle the movement.
@@ -10,6 +10,6 @@ func _physics_process(_delta):
 		Input.get_axis("move_up", "move_down")
 	).normalized()
 
-	velocity = direction * SPEED
+	velocity = direction * stats_component.move_speed
 
 	move_and_slide()
