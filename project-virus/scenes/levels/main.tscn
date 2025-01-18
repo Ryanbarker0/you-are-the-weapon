@@ -17,10 +17,7 @@ color = Color(0.373873, 0.305976, 0.351752, 1)
 y_sort_enabled = true
 
 [node name="Player" parent="ySort" instance=ExtResource("1_jsecc")]
-position = Vector2(654, 429)
+position = Vector2(335, 404)
 
 [node name="NPC" parent="ySort" instance=ExtResource("2_55umx")]
 position = Vector2(915, 404)
-
-[node name="NPC2" parent="ySort" instance=ExtResource("2_55umx")]
-position = Vector2(359, 344)
