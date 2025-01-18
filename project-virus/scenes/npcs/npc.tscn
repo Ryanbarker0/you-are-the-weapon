@@ -1,11 +1,12 @@
-[gd_scene load_steps=31 format=3 uid="uid://mvb3pdkma0m5"]
+[gd_scene load_steps=32 format=3 uid="uid://mvb3pdkma0m5"]
 
 [ext_resource type="Script" path="res://scenes/npcs/scripts/npc.gd" id="1_yr8np"]
 [ext_resource type="Shader" path="res://scenes/npcs/shaders/infected.gdshader" id="2_6wxnm"]
 [ext_resource type="Texture2D" uid="uid://bthduxpmrycjy" path="res://scenes/npcs/assets/Premade_Character_48x48_12_edit.png" id="3_2pyam"]
 [ext_resource type="Texture2D" uid="uid://sr02oujf4h8" path="res://scenes/npcs/assets/spore.png" id="4_avoes"]
-[ext_resource type="Script" path="res://StateMachine.gd" id="4_gqbhl"]
-[ext_resource type="Script" path="res://NpcIdle.gd" id="5_s4y23"]
+[ext_resource type="Script" path="res://scenes/StateMachine.gd" id="4_gqbhl"]
+[ext_resource type="Script" path="res://scenes/npcs/scripts/states/NpcIdle.gd" id="5_s4y23"]
+[ext_resource type="Script" path="res://scenes/npcs/scripts/states/NpcInfected.gd" id="7_8x3w8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yy2qw"]
 shader = ExtResource("2_6wxnm")
@@ -238,4 +239,9 @@ script = ExtResource("5_s4y23")
 npc = NodePath("../..")
 move_speed = 50.0
 
-[connection signal="body_entered" from="InfectionArea" to="." method="_on_infection_area_body_entered"]
+[node name="NpcInfected" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc_sprite", "npc")]
+script = ExtResource("7_8x3w8")
+npc_sprite = NodePath("../../AnimatedSprite2D")
+npc = NodePath("../..")
+
+[connection signal="body_entered" from="InfectionArea" to="StateMachine/NpcIdle" method="_on_infection_area_body_entered"]

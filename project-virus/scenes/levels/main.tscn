@@ -21,3 +21,6 @@ position = Vector2(654, 429)
 
 [node name="NPC" parent="ySort" instance=ExtResource("2_55umx")]
 position = Vector2(915, 404)
+
+[node name="NPC2" parent="ySort" instance=ExtResource("2_55umx")]
+position = Vector2(359, 344)
