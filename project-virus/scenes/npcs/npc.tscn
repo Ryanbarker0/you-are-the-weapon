@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scenes/npcs/scripts/states/NpcIdle.gd" id="5_s4y23"]
 [ext_resource type="Script" path="res://scenes/npcs/scripts/states/NpcInfected.gd" id="7_8x3w8"]
 [ext_resource type="Script" path="res://scenes/npcs/scripts/states/NpcFlee.gd" id="8_63nh1"]
+[ext_resource type="Script" path="res://hurtboxComponent.gd" id="9_610wu"]
 [ext_resource type="AudioStream" uid="uid://cvkxdtqfctpv1" path="res://scenes/npcs/sounds/wheezy-coughing-83635.mp3" id="9_4wky1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yy2qw"]
@@ -180,17 +181,19 @@ animations = [{
 offsets = PackedFloat32Array(0, 0.475219, 0.790087, 1)
 colors = PackedColorArray(0, 0.200369, 4.81308e-08, 1, 0, 0.484114, 0, 1, 0, 0.858824, 0, 0.784314, 0, 0.858824, 0, 0)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_r4w0q"]
-radius = 14.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onduq"]
+radius = 11.0
+height = 34.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6bf45"]
-radius = 20.0
-height = 100.0
+radius = 23.0
+height = 84.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8des0"]
 radius = 354.203
 
 [node name="NPC" type="CharacterBody2D"]
+collision_layer = 16
 script = ExtResource("1_1o1c0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -214,18 +217,22 @@ scale_amount_max = 0.02
 color_ramp = SubResource("Gradient_jem2y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, -11)
-shape = SubResource("CircleShape2D_r4w0q")
+position = Vector2(0, -9)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_onduq")
 
 [node name="InfectionArea" type="Area2D" parent="."]
-visible = false
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("9_610wu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InfectionArea"]
-position = Vector2(0, -24)
+position = Vector2(0, -35)
 shape = SubResource("CapsuleShape2D_6bf45")
 
 [node name="ProximityArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ProximityArea"]
 position = Vector2(0, -35)
@@ -241,10 +248,9 @@ npc_sprite = NodePath("../../AnimatedSprite2D")
 npc = NodePath("../..")
 audio_stream = NodePath("../../AudioStreamPlayer")
 
-[node name="NpcIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc", "infection_area", "proximity_area")]
+[node name="NpcIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc", "proximity_area")]
 script = ExtResource("5_s4y23")
 npc = NodePath("../..")
-infection_area = NodePath("../../InfectionArea")
 proximity_area = NodePath("../../ProximityArea")
 
 [node name="NpcFlee" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc", "infection_area", "proximity_area")]
