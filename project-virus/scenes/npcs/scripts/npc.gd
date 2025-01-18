@@ -6,6 +6,15 @@ extends CharacterBody2D
 func _physics_process(_delta):
 	move_and_slide()
 
+	if velocity.x > 0:
+		animated_sprite_2d.play("run_right")
+	elif velocity.x < 0:
+		animated_sprite_2d.play("run_left")
+
+	if velocity.x == 0 && velocity.y == 0:
+		animated_sprite_2d.play("idle")
+
+
 func _on_infection_area_body_entered(body:Node2D):
 	if body is Player:
 		var material:ShaderMaterial = animated_sprite_2d.material
