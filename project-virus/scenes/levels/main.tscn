@@ -13,8 +13,11 @@ offset_right = 1280.0
 offset_bottom = 721.0
 color = Color(0.373873, 0.305976, 0.351752, 1)
 
-[node name="Player" parent="." instance=ExtResource("1_jsecc")]
-position = Vector2(640, 360)
+[node name="ySort" type="Node2D" parent="."]
+y_sort_enabled = true
 
-[node name="NPC" parent="." instance=ExtResource("2_55umx")]
+[node name="Player" parent="ySort" instance=ExtResource("1_jsecc")]
+position = Vector2(654, 429)
+
+[node name="NPC" parent="ySort" instance=ExtResource("2_55umx")]
 position = Vector2(915, 404)
