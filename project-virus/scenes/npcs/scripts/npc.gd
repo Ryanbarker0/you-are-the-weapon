@@ -2,17 +2,14 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func _physics_process(_delta):
+	move_and_slide()
 
+	if velocity.x > 0:
+		animated_sprite_2d.play("run_right")
+	elif velocity.x < 0:
+		animated_sprite_2d.play("run_left")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+	if velocity.x == 0 && velocity.y == 0:
+		animated_sprite_2d.play("idle_down")
 
-
-func _on_infection_area_body_entered(body:Node2D):
-	if body is Player:
-		var material:ShaderMaterial = animated_sprite_2d.material
-		material.set_shader_parameter("shader_enabled", true)
