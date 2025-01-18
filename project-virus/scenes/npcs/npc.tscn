@@ -1,7 +1,7 @@
 [gd_scene load_steps=31 format=3 uid="uid://mvb3pdkma0m5"]
 
 [ext_resource type="Script" path="res://scenes/npcs/scripts/npc.gd" id="1_yr8np"]
-[ext_resource type="Shader" path="res://scenes/npcs/infected.gdshader" id="2_6wxnm"]
+[ext_resource type="Shader" path="res://scenes/npcs/shaders/infected.gdshader" id="2_6wxnm"]
 [ext_resource type="Texture2D" uid="uid://bthduxpmrycjy" path="res://scenes/npcs/assets/Premade_Character_48x48_12_edit.png" id="3_2pyam"]
 [ext_resource type="Texture2D" uid="uid://sr02oujf4h8" path="res://scenes/npcs/assets/spore.png" id="4_avoes"]
 [ext_resource type="Script" path="res://StateMachine.gd" id="4_gqbhl"]

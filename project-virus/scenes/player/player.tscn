@@ -1,21 +1,24 @@
 [gd_scene load_steps=5 format=3 uid="uid://ce2x2iwrnea4c"]
 
-[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_nq7jy"]
+[ext_resource type="Script" path="res://scenes/player/scripts/player.gd" id="1_nq7jy"]
 [ext_resource type="Texture2D" uid="uid://da0iyuws0qu5y" path="res://scenes/player/assets/Premade_Character_48x48_18.png" id="2_jqy6k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lx6d4"]
 atlas = ExtResource("2_jqy6k")
 region = Rect2(1260, 769, 72, 87)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8050h"]
-size = Vector2(51, 30)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a3if7"]
+radius = 13.0
+height = 54.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_nq7jy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -44)
 texture = SubResource("AtlasTexture_lx6d4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4.5, 25)
-shape = SubResource("RectangleShape2D_8050h")
+position = Vector2(4, -17)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_a3if7")

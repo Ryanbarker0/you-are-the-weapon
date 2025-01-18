@@ -12,7 +12,7 @@ func _physics_process(_delta):
 		animated_sprite_2d.play("run_left")
 
 	if velocity.x == 0 && velocity.y == 0:
-		animated_sprite_2d.play("idle")
+		animated_sprite_2d.play("idle_down")
 
 
 func _on_infection_area_body_entered(body:Node2D):
