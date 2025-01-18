@@ -33,7 +33,6 @@ func randomize_wonder():
 # Signals
 func on_proximity_area_body_entered(body:Node2D):
 	if body is Player:
-		print("Transitioning to flee state")
 		Transitioned.emit(self, "NpcFlee")
 		proximity_area.body_entered.disconnect(on_proximity_area_body_entered)
 		# The NPC is fleeing, so we no longer need to listen to the proximity area signal

@@ -40,7 +40,6 @@ func Physics_Update(_delta: float):
 # Signals
 func on_infection_area_body_entered(body:Node2D):
 	if body is Player:
-		print("Transitioning to infected state")
 		Transitioned.emit(self, "NpcInfected")
 		# The NPC is infected, so we no longer need to listen to the infection or proximity area signal
 		infection_area.body_entered.disconnect(on_infection_area_body_entered)
@@ -48,7 +47,6 @@ func on_infection_area_body_entered(body:Node2D):
 
 func on_proximity_area_body_exited(body:Node2D):
 	if body is Player:
-		print("Transitioning to idle state")
 		Transitioned.emit(self, "NpcIdle")
 		# The NPC is no longer fleeing, so we no longer need to listen to the proximity area signal
 		infection_area.body_entered.disconnect(on_infection_area_body_entered)
