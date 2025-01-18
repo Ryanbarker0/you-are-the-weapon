@@ -4,13 +4,20 @@ class_name NpcInfected
 @export var npc_sprite: AnimatedSprite2D
 @export var npc: CharacterBody2D
 @export var move_speed: float = 10.0
+@export var audio_stream: AudioStreamPlayer
 
 var move_direction: Vector2
 var wonder_time: float
+var audio_interval: float
 
 func randomize_wonder():
 	move_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
 	wonder_time = randf_range(1, 3)
+	
+func randomize_audio_interval():
+	audio_interval = randf_range(5, 10)
+	## ENABLED WHEN DONE TESTING
+	##audio_stream.play()
 
 func Enter():
 	# Duplicate the shader material for unique instance
@@ -28,8 +35,12 @@ func Update(delta: float) -> void:
 		wonder_time -= delta
 	else:
 		randomize_wonder()
-	pass
+	if audio_interval > 0:
+		audio_interval -= delta
+	else:
+		randomize_audio_interval()
 
 func Physics_Update(_delta: float):
 	if npc:
 		npc.velocity = move_direction * move_speed
+		

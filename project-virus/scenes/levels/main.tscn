@@ -7,7 +7,8 @@
 [node name="main" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(640, 360)
+position = Vector2(335, 404)
+position_smoothing_enabled = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1280.0
@@ -19,6 +20,9 @@ y_sort_enabled = true
 
 [node name="Player" parent="ySort" instance=ExtResource("1_jsecc")]
 position = Vector2(335, 404)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="ySort/Player"]
+remote_path = NodePath("../../../Camera2D")
 
 [node name="NPC" parent="ySort" instance=ExtResource("2_55umx")]
 position = Vector2(915, 404)
