@@ -1,8 +1,9 @@
-[gd_scene load_steps=33 format=3 uid="uid://mvb3pdkma0m5"]
+[gd_scene load_steps=35 format=3 uid="uid://mvb3pdkma0m5"]
 
 [ext_resource type="Texture2D" uid="uid://cqbmj5mkvckrm" path="res://scenes/npcs/assets/Premade_Character_48x48_12.png" id="1_1uo8r"]
 [ext_resource type="Script" path="res://scenes/npcs/scripts/npc.gd" id="1_yr8np"]
-[ext_resource type="Shader" path="res://scenes/npcs/npc.gdshader" id="2_6wxnm"]
+[ext_resource type="Shader" path="res://scenes/npcs/infected.gdshader" id="2_6wxnm"]
+[ext_resource type="Texture2D" uid="uid://sr02oujf4h8" path="res://scenes/npcs/assets/spore.png" id="4_avoes"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yy2qw"]
 shader = ExtResource("2_6wxnm")
@@ -202,6 +203,10 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_jem2y"]
+offsets = PackedFloat32Array(0, 0.475219, 0.790087, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0.484114, 0, 1, 0, 0.858824, 0, 0.784314, 0, 0.858824, 0, 0)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_r4w0q"]
 radius = 14.0
 
@@ -223,11 +228,25 @@ animation = &"idle_down"
 autoplay = "idle_down"
 frame_progress = 0.598864
 
+[node name="SporeParticles2D" type="CPUParticles2D" parent="AnimatedSprite2D"]
+visible = false
+amount = 3
+texture = ExtResource("4_avoes")
+emission_shape = 3
+emission_rect_extents = Vector2(24, 24)
+spread = 60.0
+gravity = Vector2(0, -50)
+scale_amount_min = 0.01
+scale_amount_max = 0.02
+color_ramp = SubResource("Gradient_jem2y")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -11)
 shape = SubResource("CircleShape2D_r4w0q")
 
 [node name="InfectionArea" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InfectionArea"]
 position = Vector2(0, -24)
