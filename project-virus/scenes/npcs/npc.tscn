@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://mvb3pdkma0m5"]
+[gd_scene load_steps=35 format=3 uid="uid://mvb3pdkma0m5"]
 
 [ext_resource type="Script" path="res://scenes/enemy/scripts/enemy.gd" id="1_1o1c0"]
 [ext_resource type="Shader" path="res://scenes/npcs/shaders/infected.gdshader" id="2_6wxnm"]
@@ -8,9 +8,8 @@
 [ext_resource type="Script" path="res://scenes/npcs/scripts/states/NpcIdle.gd" id="5_s4y23"]
 [ext_resource type="Script" path="res://scenes/npcs/scripts/states/NpcInfected.gd" id="7_8x3w8"]
 [ext_resource type="Script" path="res://scenes/npcs/scripts/states/NpcFlee.gd" id="8_63nh1"]
-[ext_resource type="Script" path="res://components/hurtbox_component.gd" id="9_610wu"]
 [ext_resource type="AudioStream" uid="uid://cvkxdtqfctpv1" path="res://scenes/npcs/sounds/wheezy-coughing-83635.mp3" id="9_4wky1"]
-
+[ext_resource type="Script" path="res://components/hurtbox_component.gd" id="9_610wu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yy2qw"]
 shader = ExtResource("2_6wxnm")
