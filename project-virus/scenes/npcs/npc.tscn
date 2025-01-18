@@ -1,7 +1,15 @@
-[gd_scene load_steps=30 format=3 uid="uid://mvb3pdkma0m5"]
+[gd_scene load_steps=33 format=3 uid="uid://mvb3pdkma0m5"]
 
 [ext_resource type="Texture2D" uid="uid://cqbmj5mkvckrm" path="res://scenes/npcs/assets/Premade_Character_48x48_12.png" id="1_1uo8r"]
 [ext_resource type="Script" path="res://scenes/npcs/scripts/npc.gd" id="1_yr8np"]
+[ext_resource type="Shader" path="res://scenes/npcs/npc.gdshader" id="2_6wxnm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yy2qw"]
+shader = ExtResource("2_6wxnm")
+shader_parameter/pulsation_speed = 3.0
+shader_parameter/pulsation_intensity = 0.0
+shader_parameter/sickly_green_color = Color(0.2, 0.8, 0.3, 1)
+shader_parameter/shader_enabled = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ud4fx"]
 atlas = ExtResource("1_1uo8r")
@@ -199,12 +207,16 @@ radius = 14.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6bf45"]
 radius = 20.0
-height = 70.0
+height = 100.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8des0"]
+radius = 354.203
 
 [node name="NPC" type="CharacterBody2D"]
 script = ExtResource("1_yr8np")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_yy2qw")
 position = Vector2(0, -47)
 sprite_frames = SubResource("SpriteFrames_4uv16")
 animation = &"idle_down"
@@ -215,10 +227,17 @@ frame_progress = 0.598864
 position = Vector2(0, -11)
 shape = SubResource("CircleShape2D_r4w0q")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="InfectionArea" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -36)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InfectionArea"]
+position = Vector2(0, -24)
 shape = SubResource("CapsuleShape2D_6bf45")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="ProximityArea" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProximityArea"]
+position = Vector2(0, -35)
+shape = SubResource("CircleShape2D_8des0")
+
+[connection signal="body_entered" from="InfectionArea" to="." method="_on_infection_area_body_entered"]
