@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://mvb3pdkma0m5"]
+[gd_scene load_steps=33 format=3 uid="uid://mvb3pdkma0m5"]
 
 [ext_resource type="Script" path="res://scenes/npcs/scripts/npc.gd" id="1_yr8np"]
 [ext_resource type="Shader" path="res://scenes/npcs/shaders/infected.gdshader" id="2_6wxnm"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scenes/StateMachine.gd" id="4_gqbhl"]
 [ext_resource type="Script" path="res://scenes/npcs/scripts/states/NpcIdle.gd" id="5_s4y23"]
 [ext_resource type="Script" path="res://scenes/npcs/scripts/states/NpcInfected.gd" id="7_8x3w8"]
+[ext_resource type="Script" path="res://scenes/npcs/scripts/states/NpcFlee.gd" id="8_63nh1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yy2qw"]
 shader = ExtResource("2_6wxnm")
@@ -224,7 +225,6 @@ position = Vector2(0, -24)
 shape = SubResource("CapsuleShape2D_6bf45")
 
 [node name="ProximityArea" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ProximityArea"]
 position = Vector2(0, -35)
@@ -234,14 +234,19 @@ shape = SubResource("CircleShape2D_8des0")
 script = ExtResource("4_gqbhl")
 initial_state = NodePath("NpcIdle")
 
-[node name="NpcIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc")]
+[node name="NpcIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc", "infection_area", "proximity_area")]
 script = ExtResource("5_s4y23")
 npc = NodePath("../..")
-move_speed = 50.0
+infection_area = NodePath("../../InfectionArea")
+proximity_area = NodePath("../../ProximityArea")
 
 [node name="NpcInfected" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc_sprite", "npc")]
 script = ExtResource("7_8x3w8")
 npc_sprite = NodePath("../../AnimatedSprite2D")
 npc = NodePath("../..")
 
-[connection signal="body_entered" from="InfectionArea" to="StateMachine/NpcIdle" method="_on_infection_area_body_entered"]
+[node name="NpcFlee" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc", "infection_area", "proximity_area")]
+script = ExtResource("8_63nh1")
+npc = NodePath("../..")
+infection_area = NodePath("../../InfectionArea")
+proximity_area = NodePath("../../ProximityArea")
