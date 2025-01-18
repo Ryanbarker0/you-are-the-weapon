@@ -13,7 +13,12 @@ func spawn(global_spawn_position: Vector2 = global_position, parent: Node = get_
 	assert(scene is PackedScene, "Error: The scene export was never set on this spawner component.")
 	# Instance the scene
 	var instance = scene.instantiate()
-	# Add it as a child of the parent
+	# Attempt to add it as child of the ySort node
+	var children = parent.get_children()
+	for child in children:
+		if child.name == "ySort":
+			parent = child
+			break
 	parent.add_child(instance)
 	# Update the global position of the instance.
 	# (This must be done after adding it as a child)
