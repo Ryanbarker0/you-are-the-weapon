@@ -1,8 +1,10 @@
-[gd_scene load_steps=33 format=3 uid="uid://mvb3pdkma0m5"]
+[gd_scene load_steps=35 format=3 uid="uid://mvb3pdkma0m5"]
 
 [ext_resource type="Texture2D" uid="uid://cqbmj5mkvckrm" path="res://scenes/npcs/assets/Premade_Character_48x48_12.png" id="1_1uo8r"]
 [ext_resource type="Script" path="res://scenes/npcs/scripts/npc.gd" id="1_yr8np"]
 [ext_resource type="Shader" path="res://scenes/npcs/npc.gdshader" id="2_6wxnm"]
+[ext_resource type="Script" path="res://StateMachine.gd" id="4_gqbhl"]
+[ext_resource type="Script" path="res://NpcIdle.gd" id="5_s4y23"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yy2qw"]
 shader = ExtResource("2_6wxnm")
@@ -239,5 +241,14 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ProximityArea"]
 position = Vector2(0, -35)
 shape = SubResource("CircleShape2D_8des0")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_gqbhl")
+initial_state = NodePath("NpcIdle")
+
+[node name="NpcIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc")]
+script = ExtResource("5_s4y23")
+npc = NodePath("../..")
+move_speed = 50.0
 
 [connection signal="body_entered" from="InfectionArea" to="." method="_on_infection_area_body_entered"]
