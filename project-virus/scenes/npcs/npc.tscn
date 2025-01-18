@@ -205,7 +205,7 @@ animations = [{
 
 [sub_resource type="Gradient" id="Gradient_jem2y"]
 offsets = PackedFloat32Array(0, 0.475219, 0.790087, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0.484114, 0, 1, 0, 0.858824, 0, 0.784314, 0, 0.858824, 0, 0)
+colors = PackedColorArray(0, 0.200369, 4.81308e-08, 1, 0, 0.484114, 0, 1, 0, 0.858824, 0, 0.784314, 0, 0.858824, 0, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r4w0q"]
 radius = 14.0
@@ -229,7 +229,6 @@ autoplay = "idle_down"
 frame_progress = 0.598864
 
 [node name="SporeParticles2D" type="CPUParticles2D" parent="AnimatedSprite2D"]
-visible = false
 amount = 3
 texture = ExtResource("4_avoes")
 emission_shape = 3
