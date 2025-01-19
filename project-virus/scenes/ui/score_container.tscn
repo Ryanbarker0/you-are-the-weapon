@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://cj8lfgcvkqall"]
+
+[ext_resource type="FontFile" uid="uid://cyw4rphwc8a7k" path="res://scenes/ui/assets/fonts/Pixeled.ttf" id="1_qab4u"]
+[ext_resource type="Texture2D" uid="uid://c6im35mtgcebo" path="res://scenes/ui/assets/bio_hazard-transparent.png" id="2_i36vq"]
+
+[sub_resource type="Theme" id="Theme_4fch7"]
+Label/fonts/font = ExtResource("1_qab4u")
+
+[sub_resource type="LabelSettings" id="LabelSettings_gfwrq"]
+line_spacing = 1.0
+font_size = 30
+font_color = Color(0.117647, 0.392157, 0.105882, 1)
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 0.701961)
+
+[node name="ScoreContainer" type="HBoxContainer"]
+offset_right = 1280.0
+offset_bottom = 67.0
+alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 2
+theme = SubResource("Theme_4fch7")
+text = "0"
+label_settings = SubResource("LabelSettings_gfwrq")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_top = 16
+
+[node name="BioIcon" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_i36vq")
+expand_mode = 2
+stretch_mode = 4

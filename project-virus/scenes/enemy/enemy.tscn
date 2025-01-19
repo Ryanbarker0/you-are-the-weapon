@@ -176,12 +176,12 @@ radius = 14.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6bf45"]
 radius = 20.0
-height = 100.0
+height = 70.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8des0"]
 radius = 354.203
 
-[node name="EnemyNPC" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D"]
 collision_layer = 16
 script = ExtResource("1_76442")
 
@@ -215,8 +215,7 @@ collision_mask = 2
 script = ExtResource("4_o6kv4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-visible = false
-position = Vector2(0, -24)
+position = Vector2(0, -35)
 shape = SubResource("CapsuleShape2D_6bf45")
 
 [node name="ProximityArea" type="Area2D" parent="."]

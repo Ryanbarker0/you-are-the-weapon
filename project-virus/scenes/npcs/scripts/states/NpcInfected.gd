@@ -6,6 +6,8 @@ class_name NpcInfected
 @export var move_speed: float = 10.0
 @export var audio_stream: AudioStreamPlayer
 
+@export var score_component: ScoreComponent
+
 var move_direction: Vector2
 var wonder_time: float
 var audio_interval: float
@@ -20,6 +22,7 @@ func randomize_audio_interval():
 	##audio_stream.play()
 
 func Enter():
+	score_component.adjust_score(1)
 	# Duplicate the shader material for unique instance
 	var original_material : ShaderMaterial = npc_sprite.material
 	var new_material : ShaderMaterial = original_material.duplicate()
