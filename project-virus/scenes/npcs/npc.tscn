@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/enemy/scripts/enemy.gd" id="1_1o1c0"]
 [ext_resource type="Shader" path="res://scenes/npcs/shaders/infected.gdshader" id="2_6wxnm"]
-[ext_resource type="Texture2D" uid="uid://bv5c4f4s56380" path="res://scenes/npcs/assets/yellow_exclamation_mark.png" id="2_k5oxs"]
+[ext_resource type="Texture2D" uid="uid://df5g2ut4eg21p" path="res://scenes/npcs/assets/yellow_exclamation_mark.png" id="2_k5oxs"]
 [ext_resource type="Texture2D" uid="uid://bthduxpmrycjy" path="res://scenes/npcs/assets/Premade_Character_48x48_12_edit.png" id="3_2pyam"]
 [ext_resource type="Texture2D" uid="uid://sr02oujf4h8" path="res://scenes/npcs/assets/spore.png" id="4_avoes"]
 [ext_resource type="Script" path="res://components/StateMachine.gd" id="4_gqbhl"]
