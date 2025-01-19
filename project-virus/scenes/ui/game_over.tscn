@@ -1,16 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://dd1y1xuwpp3c6"]
+[gd_scene load_steps=11 format=3 uid="uid://dd1y1xuwpp3c6"]
 
-[ext_resource type="FontFile" uid="uid://cyw4rphwc8a7k" path="res://scenes/ui/assets/fonts/Pixeled.ttf" id="1_clp7c"]
+[ext_resource type="FontFile" uid="uid://vkq51wdwvf0w" path="res://scenes/ui/assets/fonts/Pixeled.ttf" id="1_clp7c"]
+[ext_resource type="LabelSettings" uid="uid://hg1q8h4sy3mg" path="res://scenes/ui/Gametext.tres" id="1_goggq"]
 [ext_resource type="Script" path="res://scenes/ui/scripts/final_score.gd" id="2_hoqkp"]
 [ext_resource type="Resource" uid="uid://be0l7uoexqolr" path="res://scenes/levels/resources/game_stats.tres" id="3_0dt2u"]
 [ext_resource type="Theme" uid="uid://bc8n00ertwfok" path="res://scenes/ui/themes/button.tres" id="4_0bcll"]
 [ext_resource type="Script" path="res://scenes/ui/play_again.gd" id="5_ty7pr"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_4uu0r"]
-font = ExtResource("1_clp7c")
-font_size = 48
-shadow_size = 3
-shadow_color = Color(0, 0, 0, 0.760784)
+[ext_resource type="Script" path="res://scenes/ui/quit.gd" id="7_t0awp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_684i0"]
 font = ExtResource("1_clp7c")
@@ -50,7 +46,7 @@ offset_right = 211.0
 offset_bottom = 223.0
 grow_horizontal = 2
 text = "Game Over"
-label_settings = SubResource("LabelSettings_4uu0r")
+label_settings = ExtResource("1_goggq")
 
 [node name="SubMessage" type="Label" parent="."]
 layout_mode = 1
@@ -129,6 +125,7 @@ transition_color = NodePath("../../TransitionColor")
 layout_mode = 2
 theme = ExtResource("4_0bcll")
 text = "Quit"
+script = ExtResource("7_t0awp")
 
 [node name="TransitionColor" type="ColorRect" parent="."]
 visible = false
@@ -142,3 +139,4 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [connection signal="pressed" from="VBoxContainer/PlayAgain" to="VBoxContainer/PlayAgain" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="VBoxContainer/Quit" method="_on_pressed"]
