@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://bcl5wgju2kwb7"]
+[gd_scene load_steps=20 format=4 uid="uid://bcl5wgju2kwb7"]
 
 [ext_resource type="Shader" path="res://scenes/levels/shaders/vingette.gdshader" id="1_6xpq1"]
 [ext_resource type="Texture2D" uid="uid://dhvnogiljn413" path="res://scenes/levels/assets/sidewalk.png" id="1_gkgo8"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bew6rb6ixfule" path="res://scenes/enemy/enemy.tscn" id="3_q0qlg"]
 [ext_resource type="PackedScene" uid="uid://cj8lfgcvkqall" path="res://scenes/ui/score_container.tscn" id="3_tgki3"]
 [ext_resource type="PackedScene" uid="uid://b3kjkrkfvx1pk" path="res://scenes/levels/npc_spawner.tscn" id="4_7urdm"]
+[ext_resource type="PackedScene" uid="uid://b2xyun4fv4tn4" path="res://scenes/ui/scene_transition.tscn" id="13_cesll"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0miqm"]
 shader = ExtResource("1_6xpq1")
@@ -959,6 +960,8 @@ visible = false
 [node name="ScoreContainer" parent="HUD" instance=ExtResource("3_tgki3")]
 
 [node name="ScreenEffects" type="CanvasLayer" parent="."]
+
+[node name="SceneTransitionAnimation" parent="ScreenEffects" instance=ExtResource("13_cesll")]
 
 [node name="Vingette" type="ColorRect" parent="ScreenEffects"]
 material = SubResource("ShaderMaterial_0miqm")

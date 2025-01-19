@@ -3,6 +3,8 @@ extends Node2D
 @export var game_stats: GameStats
 @export var player: Player
 
+@onready var camera: Camera2D = $Camera2D
+
 # HUD elements
 @onready var score_container: HBoxContainer = $HUD/ScoreContainer
 @onready var score_label: RichTextLabel = $HUD/ScoreContainer/ScoreLabel
@@ -11,8 +13,14 @@ extends Node2D
 # Menu elements
 @onready var game_over_screen: Control = $Menus/GameOver
 
+# Screen Effects
+@onready var scene_transition: AnimationPlayer = $ScreenEffects/SceneTransitionAnimation/AnimationPlayer
+@onready var scene_transition_color: ColorRect = $ScreenEffects/SceneTransitionAnimation/ColorRect
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	scene_transition_color.color.a = 255
+	scene_transition.play("fade_out")
 	# Initialize the game stats
 	game_stats.score = 0
 	update_score_label(game_stats.score)
