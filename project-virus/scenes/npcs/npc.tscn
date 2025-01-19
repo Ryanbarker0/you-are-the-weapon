@@ -4,7 +4,7 @@
 [ext_resource type="Shader" path="res://scenes/npcs/shaders/infected.gdshader" id="2_6wxnm"]
 [ext_resource type="Texture2D" uid="uid://bthduxpmrycjy" path="res://scenes/npcs/assets/Premade_Character_48x48_12_edit.png" id="3_2pyam"]
 [ext_resource type="Texture2D" uid="uid://sr02oujf4h8" path="res://scenes/npcs/assets/spore.png" id="4_avoes"]
-[ext_resource type="Script" path="res://scenes/StateMachine.gd" id="4_gqbhl"]
+[ext_resource type="Script" path="res://components/StateMachine.gd" id="4_gqbhl"]
 [ext_resource type="Script" path="res://scenes/npcs/scripts/states/NpcIdle.gd" id="5_s4y23"]
 [ext_resource type="Script" path="res://scenes/npcs/scripts/states/NpcInfected.gd" id="7_8x3w8"]
 [ext_resource type="Script" path="res://scenes/npcs/scripts/states/NpcFlee.gd" id="8_63nh1"]
@@ -14,6 +14,7 @@
 [ext_resource type="Resource" uid="uid://be0l7uoexqolr" path="res://scenes/levels/resources/game_stats.tres" id="12_xlx3r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yy2qw"]
+resource_local_to_scene = true
 shader = ExtResource("2_6wxnm")
 shader_parameter/pulsation_speed = 3.0
 shader_parameter/pulsation_intensity = 0.0

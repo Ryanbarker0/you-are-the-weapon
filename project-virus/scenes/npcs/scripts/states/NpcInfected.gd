@@ -18,18 +18,15 @@ func randomize_wonder():
 	
 func randomize_audio_interval():
 	audio_interval = randf_range(5, 10)
-	## ENABLED WHEN DONE TESTING
+	## TODO: Enable when done testing
 	##audio_stream.play()
 
 func Enter():
 	score_component.adjust_score(1)
-	# Duplicate the shader material for unique instance
-	var original_material : ShaderMaterial = npc_sprite.material
-	var new_material : ShaderMaterial = original_material.duplicate()
-	npc_sprite.material = new_material
+	var material : ShaderMaterial = npc_sprite.material
 	
 	# Enabling shader and particles for infected visuals
-	new_material.set_shader_parameter("shader_enabled", true)
+	material.set_shader_parameter("shader_enabled", true)
 	var spore_particles: CPUParticles2D = npc_sprite.get_children()[0]
 	spore_particles.visible = true
 

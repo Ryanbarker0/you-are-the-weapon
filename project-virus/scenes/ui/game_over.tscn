@@ -1,0 +1,144 @@
+[gd_scene load_steps=10 format=3 uid="uid://dd1y1xuwpp3c6"]
+
+[ext_resource type="FontFile" uid="uid://cyw4rphwc8a7k" path="res://scenes/ui/assets/fonts/Pixeled.ttf" id="1_clp7c"]
+[ext_resource type="Script" path="res://scenes/ui/scripts/final_score.gd" id="2_hoqkp"]
+[ext_resource type="Resource" uid="uid://be0l7uoexqolr" path="res://scenes/levels/resources/game_stats.tres" id="3_0dt2u"]
+[ext_resource type="Theme" uid="uid://bc8n00ertwfok" path="res://scenes/ui/themes/button.tres" id="4_0bcll"]
+[ext_resource type="Script" path="res://scenes/ui/play_again.gd" id="5_ty7pr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4uu0r"]
+font = ExtResource("1_clp7c")
+font_size = 48
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 0.760784)
+
+[sub_resource type="LabelSettings" id="LabelSettings_684i0"]
+font = ExtResource("1_clp7c")
+font_size = 20
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 0.760784)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j5n7s"]
+font = ExtResource("1_clp7c")
+font_size = 20
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 0.760784)
+
+[sub_resource type="LabelSettings" id="LabelSettings_u6u5l"]
+font = ExtResource("1_clp7c")
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 0.760784)
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="GameOverMessage" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -211.0
+offset_top = 88.0
+offset_right = 211.0
+offset_bottom = 223.0
+grow_horizontal = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_4uu0r")
+
+[node name="SubMessage" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = -136.0
+offset_right = 132.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You Were Cured"
+label_settings = SubResource("LabelSettings_684i0")
+
+[node name="FinalScore" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -64.0
+offset_right = 20.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_j5n7s")
+horizontal_alignment = 1
+script = ExtResource("2_hoqkp")
+game_stats = ExtResource("3_0dt2u")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.5
+offset_top = -16.0
+offset_right = 59.5
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Infected"
+label_settings = SubResource("LabelSettings_u6u5l")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = 64.0
+offset_right = -40.0
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+
+[node name="PlayAgain" type="Button" parent="VBoxContainer" node_paths=PackedStringArray("transition_color")]
+layout_mode = 2
+theme = ExtResource("4_0bcll")
+text = "Play Again"
+script = ExtResource("5_ty7pr")
+transition_color = NodePath("../../TransitionColor")
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_0bcll")
+text = "Quit"
+
+[node name="TransitionColor" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="VBoxContainer/PlayAgain" to="VBoxContainer/PlayAgain" method="_on_pressed"]

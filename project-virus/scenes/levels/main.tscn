@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bcl5wgju2kwb7"]
+[gd_scene load_steps=19 format=4 uid="uid://bcl5wgju2kwb7"]
 
 [ext_resource type="Shader" path="res://scenes/levels/shaders/vingette.gdshader" id="1_6xpq1"]
 [ext_resource type="Texture2D" uid="uid://dhvnogiljn413" path="res://scenes/levels/assets/sidewalk.png" id="1_gkgo8"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://be0l7uoexqolr" path="res://scenes/levels/resources/game_stats.tres" id="2_ism7h"]
 [ext_resource type="Texture2D" uid="uid://10qkbb3iayij" path="res://scenes/levels/assets/Road.png" id="2_yp54v"]
 [ext_resource type="Texture2D" uid="uid://poua0jd3d2jv" path="res://scenes/levels/assets/buildings/ME_Singles_Generic_Building_48x48_Condo_5_3.png" id="3_0muls"]
+[ext_resource type="PackedScene" uid="uid://dd1y1xuwpp3c6" path="res://scenes/ui/game_over.tscn" id="3_gbfek"]
 [ext_resource type="PackedScene" uid="uid://bew6rb6ixfule" path="res://scenes/enemy/enemy.tscn" id="3_q0qlg"]
 [ext_resource type="PackedScene" uid="uid://cj8lfgcvkqall" path="res://scenes/ui/score_container.tscn" id="3_tgki3"]
 [ext_resource type="PackedScene" uid="uid://b3kjkrkfvx1pk" path="res://scenes/levels/npc_spawner.tscn" id="4_7urdm"]
@@ -943,9 +944,15 @@ texture = ExtResource("3_0muls")
 physics_layer_0/collision_layer = 1
 sources/6 = SubResource("TileSetAtlasSource_cuub6")
 
-[node name="main" type="Node2D"]
+[node name="main" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_iqtew")
 game_stats = ExtResource("2_ism7h")
+player = NodePath("ySort/Player")
+
+[node name="Menus" type="CanvasLayer" parent="."]
+
+[node name="GameOver" parent="Menus" instance=ExtResource("3_gbfek")]
+visible = false
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -960,6 +967,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(1, 1, 1, 0)
 metadata/_edit_lock_ = true
 
