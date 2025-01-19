@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcl5wgju2kwb7"]
+[gd_scene load_steps=5 format=3 uid="uid://bcl5wgju2kwb7"]
 
 [ext_resource type="PackedScene" uid="uid://ce2x2iwrnea4c" path="res://scenes/player/player.tscn" id="1_jsecc"]
 [ext_resource type="PackedScene" uid="uid://mvb3pdkma0m5" path="res://scenes/npcs/npc.tscn" id="2_55umx"]
 [ext_resource type="PackedScene" uid="uid://bew6rb6ixfule" path="res://scenes/enemy/enemynpc.tscn" id="3_q0qlg"]
+[ext_resource type="PackedScene" uid="uid://b3kjkrkfvx1pk" path="res://NpcSpawner.tscn" id="4_7urdm"]
 
 [node name="main" type="Node2D"]
 
@@ -29,3 +30,5 @@ position = Vector2(915, 404)
 
 [node name="EnemyNPC" parent="ySort" instance=ExtResource("3_q0qlg")]
 position = Vector2(917, 256)
+
+[node name="NpcSpawner" parent="ySort" instance=ExtResource("4_7urdm")]
