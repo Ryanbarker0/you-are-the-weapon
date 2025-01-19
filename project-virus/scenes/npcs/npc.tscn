@@ -1,17 +1,20 @@
-[gd_scene load_steps=35 format=3 uid="uid://mvb3pdkma0m5"]
+[gd_scene load_steps=37 format=3 uid="uid://mvb3pdkma0m5"]
 
 [ext_resource type="Script" path="res://scenes/enemy/scripts/enemy.gd" id="1_1o1c0"]
 [ext_resource type="Shader" path="res://scenes/npcs/shaders/infected.gdshader" id="2_6wxnm"]
 [ext_resource type="Texture2D" uid="uid://bthduxpmrycjy" path="res://scenes/npcs/assets/Premade_Character_48x48_12_edit.png" id="3_2pyam"]
 [ext_resource type="Texture2D" uid="uid://sr02oujf4h8" path="res://scenes/npcs/assets/spore.png" id="4_avoes"]
-[ext_resource type="Script" path="res://scenes/StateMachine.gd" id="4_gqbhl"]
+[ext_resource type="Script" path="res://components/StateMachine.gd" id="4_gqbhl"]
 [ext_resource type="Script" path="res://scenes/npcs/scripts/states/NpcIdle.gd" id="5_s4y23"]
 [ext_resource type="Script" path="res://scenes/npcs/scripts/states/NpcInfected.gd" id="7_8x3w8"]
 [ext_resource type="Script" path="res://scenes/npcs/scripts/states/NpcFlee.gd" id="8_63nh1"]
 [ext_resource type="AudioStream" uid="uid://cvkxdtqfctpv1" path="res://scenes/npcs/sounds/wheezy-coughing-83635.mp3" id="9_4wky1"]
 [ext_resource type="Script" path="res://components/hurtbox_component.gd" id="9_610wu"]
+[ext_resource type="Script" path="res://components/score_component.gd" id="11_4iprm"]
+[ext_resource type="Resource" uid="uid://be0l7uoexqolr" path="res://scenes/levels/resources/game_stats.tres" id="12_xlx3r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yy2qw"]
+resource_local_to_scene = true
 shader = ExtResource("2_6wxnm")
 shader_parameter/pulsation_speed = 3.0
 shader_parameter/pulsation_intensity = 0.0
@@ -242,11 +245,12 @@ shape = SubResource("CircleShape2D_8des0")
 script = ExtResource("4_gqbhl")
 initial_state = NodePath("NpcIdle")
 
-[node name="NpcInfected" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc_sprite", "npc", "audio_stream")]
+[node name="NpcInfected" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc_sprite", "npc", "audio_stream", "score_component")]
 script = ExtResource("7_8x3w8")
 npc_sprite = NodePath("../../AnimatedSprite2D")
 npc = NodePath("../..")
 audio_stream = NodePath("../../AudioStreamPlayer")
+score_component = NodePath("../../ScoreComponent")
 
 [node name="NpcIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc", "proximity_area")]
 script = ExtResource("5_s4y23")
@@ -262,3 +266,8 @@ proximity_area = NodePath("../../ProximityArea")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_4wky1")
 bus = &"SFX"
+
+[node name="ScoreComponent" type="Node" parent="."]
+script = ExtResource("11_4iprm")
+game_stats = ExtResource("12_xlx3r")
+adjust_amount = 1

@@ -6,6 +6,8 @@ class_name NpcInfected
 @export var move_speed: float = 10.0
 @export var audio_stream: AudioStreamPlayer
 
+@export var score_component: ScoreComponent
+
 var move_direction: Vector2
 var wonder_time: float
 var audio_interval: float
@@ -16,17 +18,15 @@ func randomize_wonder():
 	
 func randomize_audio_interval():
 	audio_interval = randf_range(5, 10)
-	## ENABLED WHEN DONE TESTING
+	## TODO: Enable when done testing
 	##audio_stream.play()
 
 func Enter():
-	# Duplicate the shader material for unique instance
-	var original_material : ShaderMaterial = npc_sprite.material
-	var new_material : ShaderMaterial = original_material.duplicate()
-	npc_sprite.material = new_material
+	score_component.adjust_score(1)
+	var material : ShaderMaterial = npc_sprite.material
 	
 	# Enabling shader and particles for infected visuals
-	new_material.set_shader_parameter("shader_enabled", true)
+	material.set_shader_parameter("shader_enabled", true)
 	var spore_particles: CPUParticles2D = npc_sprite.get_children()[0]
 	spore_particles.visible = true
 

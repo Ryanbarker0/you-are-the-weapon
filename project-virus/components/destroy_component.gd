@@ -19,3 +19,6 @@ func destroy() -> void:
 	# create an effect (from the spawner component) and free the actor
 	# destroy_effect_spawner_component.spawn(actor.global_position)
 	actor.queue_free()
+	destroyed.emit(actor)
+
+signal destroyed(actor: Node2D)

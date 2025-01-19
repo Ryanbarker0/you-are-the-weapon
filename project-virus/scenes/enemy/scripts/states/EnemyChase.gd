@@ -4,6 +4,7 @@ class_name EnemyChase
 @export var enemy: CharacterBody2D
 @export var move_speed: float = 80.0
 @export var proximity_area: Area2D
+@export var alert_spirte: AnimatedSprite2D
 
 var move_direction: Vector2
 var wonder_time: float
@@ -12,6 +13,7 @@ var player: CharacterBody2D
 
 
 func Enter():
+	alert_spirte.visible = true
 	proximity_area.body_exited.connect(on_proximity_area_body_exited)
 	# use the proximity area to get the player's position
 	var bodies_in_proximity = proximity_area.get_overlapping_bodies()
@@ -39,6 +41,7 @@ func Physics_Update(_delta: float):
 
 func on_proximity_area_body_exited(body:Node2D):
 	if body is Player:
+		alert_spirte.visible = false
 		Transitioned.emit(self, "EnemyIdle")
 		# The NPC is no longer fleeing, so we no longer need to listen to the proximity area signal
 		proximity_area.body_exited.disconnect(on_proximity_area_body_exited)
