@@ -5,7 +5,7 @@ class_name NpcInfected
 @export var npc: CharacterBody2D
 @export var move_speed: float = 10.0
 @export var audio_stream: AudioStreamPlayer
-
+@export var deathtime: Timer
 @export var score_component: ScoreComponent
 
 var move_direction: Vector2
@@ -29,6 +29,11 @@ func Enter():
 	material.set_shader_parameter("shader_enabled", true)
 	var spore_particles: CPUParticles2D = npc_sprite.get_children()[0]
 	spore_particles.visible = true
+	
+	#Start DeadTime
+	var dead_time: Timer = deathtime
+	dead_time.start()
+	##print("timerstarted")
 
 func Update(delta: float) -> void:
 	if wonder_time > 0:
@@ -44,3 +49,8 @@ func Physics_Update(_delta: float):
 	if npc:
 		npc.velocity = move_direction * move_speed
 		
+
+#Dead time signal emitted when timeout
+func _on_dead_time_timeout() -> void:
+	##print("Timesup!")
+	Transitioned.emit(self, "NpcDead")
