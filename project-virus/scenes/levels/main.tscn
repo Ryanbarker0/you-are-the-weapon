@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bcl5wgju2kwb7"]
+[gd_scene load_steps=22 format=4 uid="uid://bcl5wgju2kwb7"]
 
 [ext_resource type="Texture2D" uid="uid://dhvnogiljn413" path="res://scenes/levels/assets/sidewalk.png" id="1_gkgo8"]
 [ext_resource type="Script" path="res://scenes/levels/scripts/main.gd" id="1_iqtew"]
@@ -11,6 +11,15 @@
 [ext_resource type="PackedScene" uid="uid://bew6rb6ixfule" path="res://scenes/enemy/enemy.tscn" id="3_q0qlg"]
 [ext_resource type="PackedScene" uid="uid://cj8lfgcvkqall" path="res://scenes/ui/score_container.tscn" id="3_tgki3"]
 [ext_resource type="PackedScene" uid="uid://b3kjkrkfvx1pk" path="res://scenes/levels/npc_spawner.tscn" id="4_7urdm"]
+[ext_resource type="PackedScene" uid="uid://b2xyun4fv4tn4" path="res://scenes/ui/scene_transition.tscn" id="13_cesll"]
+[ext_resource type="AudioStream" uid="uid://wgv8sa55c0ea" path="res://scenes/Sounds/Soundtrack/Cookedmusic.wav" id="14_t2koo"]
+[ext_resource type="AudioStream" uid="uid://dwt03uhy7hsur" path="res://scenes/Sounds/Soundtrack/Gameover.wav" id="15_6lbbo"]
+
+; [sub_resource type="ShaderMaterial" id="ShaderMaterial_0miqm"]
+; shader = ExtResource("1_6xpq1")
+; shader_parameter/alpha = 1.0
+; shader_parameter/inner_radius = 0.0
+; shader_parameter/outer_radius = 1.5
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fd7fb"]
 texture = ExtResource("1_gkgo8")
@@ -981,3 +990,10 @@ position = Vector2(915, 404)
 position = Vector2(917, 256)
 
 [node name="NpcSpawner" parent="ySort" instance=ExtResource("4_7urdm")]
+
+[node name="LevelMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_t2koo")
+autoplay = true
+
+[node name="GameOver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_6lbbo")
