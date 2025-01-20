@@ -1,9 +1,9 @@
 [gd_scene load_steps=36 format=3 uid="uid://bew6rb6ixfule"]
 
 [ext_resource type="Script" path="res://scenes/enemy/scripts/enemy.gd" id="1_76442"]
-[ext_resource type="Texture2D" uid="uid://drb81ddgdbvjh" path="res://scenes/enemy/assets/ui/exclamation_mark.png" id="2_6fwkk"]
-[ext_resource type="Texture2D" uid="uid://bhv4y6udf8qwk" path="res://scenes/enemy/assets/doctor/doctor-1-idle.png" id="2_vq12d"]
-[ext_resource type="Texture2D" uid="uid://8eebt5y3tluh" path="res://scenes/enemy/assets/doctor/doctor-1-run.png" id="3_j7wke"]
+[ext_resource type="Texture2D" uid="uid://bnc55qtdekjwt" path="res://scenes/enemy/assets/ui/exclamation_mark.png" id="2_6fwkk"]
+[ext_resource type="Texture2D" uid="uid://b6gh6h3xpx43e" path="res://scenes/enemy/assets/doctor/doctor-1-idle.png" id="2_vq12d"]
+[ext_resource type="Texture2D" uid="uid://dx4gkgxlrjqh5" path="res://scenes/enemy/assets/doctor/doctor-1-run.png" id="3_j7wke"]
 [ext_resource type="Script" path="res://components/hitbox_component.gd" id="4_o6kv4"]
 [ext_resource type="Texture2D" uid="uid://sr02oujf4h8" path="res://scenes/npcs/assets/spore.png" id="4_x4487"]
 [ext_resource type="Script" path="res://scenes/enemy/scripts/states/EnemyIdle.gd" id="5_jk251"]
