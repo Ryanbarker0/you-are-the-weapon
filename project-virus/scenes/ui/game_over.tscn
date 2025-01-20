@@ -1,12 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dd1y1xuwpp3c6"]
+[gd_scene load_steps=10 format=3 uid="uid://dd1y1xuwpp3c6"]
 
-[ext_resource type="FontFile" uid="uid://vkq51wdwvf0w" path="res://scenes/ui/assets/fonts/Pixeled.ttf" id="1_clp7c"]
-[ext_resource type="LabelSettings" uid="uid://hg1q8h4sy3mg" path="res://scenes/ui/Gametext.tres" id="1_goggq"]
+[ext_resource type="FontFile" uid="uid://cyw4rphwc8a7k" path="res://scenes/ui/assets/fonts/Pixeled.ttf" id="1_clp7c"]
+[ext_resource type="LabelSettings" uid="uid://hg1q8h4sy3mg" path="res://scenes/ui/themes/Gametext.tres" id="1_goggq"]
+[ext_resource type="Script" path="res://scenes/ui/game_over.gd" id="1_xybqr"]
 [ext_resource type="Script" path="res://scenes/ui/scripts/final_score.gd" id="2_hoqkp"]
 [ext_resource type="Resource" uid="uid://be0l7uoexqolr" path="res://scenes/levels/resources/game_stats.tres" id="3_0dt2u"]
 [ext_resource type="Theme" uid="uid://bc8n00ertwfok" path="res://scenes/ui/themes/button.tres" id="4_0bcll"]
-[ext_resource type="Script" path="res://scenes/ui/play_again.gd" id="5_ty7pr"]
-[ext_resource type="Script" path="res://scenes/ui/quit.gd" id="7_t0awp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_684i0"]
 font = ExtResource("1_clp7c")
@@ -34,6 +33,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+script = ExtResource("1_xybqr")
 
 [node name="GameOverMessage" type="Label" parent="."]
 layout_mode = 1
@@ -114,18 +114,15 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
 
-[node name="PlayAgain" type="Button" parent="VBoxContainer" node_paths=PackedStringArray("transition_color")]
+[node name="PlayAgain" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("4_0bcll")
 text = "Play Again"
-script = ExtResource("5_ty7pr")
-transition_color = NodePath("../../TransitionColor")
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("4_0bcll")
 text = "Quit"
-script = ExtResource("7_t0awp")
 
 [node name="TransitionColor" type="ColorRect" parent="."]
 visible = false
@@ -138,5 +135,5 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[connection signal="pressed" from="VBoxContainer/PlayAgain" to="VBoxContainer/PlayAgain" method="_on_pressed"]
-[connection signal="pressed" from="VBoxContainer/Quit" to="VBoxContainer/Quit" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

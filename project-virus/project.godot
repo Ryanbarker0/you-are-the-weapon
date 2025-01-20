@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="project-virus"
-run/main_scene="res://scenes/levels/menumain.tscn"
+run/main_scene="res://scenes/levels/menu_main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+ScreenEffects="*res://scenes/ui/screen_effects.tscn"
 
 [display]
 
