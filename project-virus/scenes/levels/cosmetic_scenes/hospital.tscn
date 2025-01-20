@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2qsr4anwy4bv"]
+
+[ext_resource type="PackedScene" uid="uid://d00pf8rimd4u3" path="res://scenes/levels/scenary.tscn" id="1_vjp6g"]
+[ext_resource type="Texture2D" uid="uid://dae6xt2i3m8j6" path="res://scenes/levels/assets/individual_objects/buildings/hospital.png" id="2_w5hyq"]
+
+[node name="Hospital" instance=ExtResource("1_vjp6g")]
+position = Vector2(1, 0)
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(6.30005, -49.5)
+texture = ExtResource("2_w5hyq")
+
+[node name="Area2D" parent="." index="1"]
+position = Vector2(6.30005, 430.5)
+
+[node name="CollisionPolygon2D" parent="Area2D" index="0"]
+polygon = PackedVector2Array(-600.3, -506.5, -602.3, -952.5, -505.3, -952.5, -507.3, -995.5, -250.3, -993.5, -250.3, -946.5, 648.7, -944.5, 648.7, -497.5)
+
+[node name="CollisionPolygon2D" parent="." index="2"]
+position = Vector2(6.30005, 430.5)
+polygon = PackedVector2Array(-2, 33, -186, 27, -236, -113, -310, -113, -332, 30, -521, 33, -558, -108, -620, -113, -618, -486, 671, -476, 669, -62, 204, -63, 196, 33)
