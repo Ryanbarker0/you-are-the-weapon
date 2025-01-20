@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bcl5wgju2kwb7"]
+[gd_scene load_steps=15 format=3 uid="uid://bcl5wgju2kwb7"]
 
 [ext_resource type="Script" path="res://scenes/levels/scripts/main.gd" id="1_iqtew"]
 [ext_resource type="PackedScene" uid="uid://ce2x2iwrnea4c" path="res://scenes/player/player.tscn" id="1_jsecc"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cj8lfgcvkqall" path="res://scenes/ui/score_container.tscn" id="3_tgki3"]
 [ext_resource type="PackedScene" uid="uid://b3kjkrkfvx1pk" path="res://scenes/levels/npc_spawner.tscn" id="4_7urdm"]
 [ext_resource type="PackedScene" uid="uid://d2qsr4anwy4bv" path="res://scenes/levels/cosmetic_scenes/hospital.tscn" id="4_vussl"]
+[ext_resource type="PackedScene" uid="uid://bd26g7ujilatd" path="res://scenes/ui/HealthBar.tscn" id="5_wu0to"]
 [ext_resource type="PackedScene" uid="uid://xa300pmubomh" path="res://scenes/levels/cosmetic_scenes/hotel.tscn" id="6_75crw"]
 [ext_resource type="PackedScene" uid="uid://c52k2o0ijaidp" path="res://scenes/levels/cosmetic_scenes/hardware_store.tscn" id="7_56xv6"]
 [ext_resource type="AudioStream" uid="uid://c1e34atrof286" path="res://scenes/Sounds/Soundtrack/Cookedmusic.wav" id="14_t2koo"]
@@ -27,6 +28,13 @@ visible = false
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="ScoreContainer" parent="HUD" instance=ExtResource("3_tgki3")]
+
+[node name="HealthBar" parent="HUD" node_paths=PackedStringArray("player") instance=ExtResource("5_wu0to")]
+offset_left = 1.0
+offset_top = 251.0
+offset_right = 1.0
+offset_bottom = 251.0
+player = NodePath("../../ySort/Player")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(335, 404)
