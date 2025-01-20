@@ -5,6 +5,10 @@ extends Node2D
 
 @onready var camera: Camera2D = $Camera2D
 
+# Music element
+@onready var game_over_music: AudioStreamPlayer = $GameOver
+@onready var game_music: AudioStreamPlayer = $LevelMusic
+
 # HUD elements
 @onready var score_container: HBoxContainer = $HUD/ScoreContainer
 @onready var score_label: RichTextLabel = $HUD/ScoreContainer/ScoreLabel
@@ -64,6 +68,9 @@ func animate_score_components(new_score: int) -> void:
 func on_player_destroyed(_actor: Node2D) -> void:
 	score_container.hide()
 	game_over_screen.visible = true
+	# Music Change
+	game_music.stop()
+	game_over_music.play()
 	# TODO: Could move this to the node itself to remove separation of concerns
 	game_over_screen.modulate = Color(1, 1, 1, 0)  # Start fully transparent
 
