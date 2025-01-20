@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dd1y1xuwpp3c6"]
 
-[ext_resource type="FontFile" uid="uid://cyw4rphwc8a7k" path="res://scenes/ui/assets/fonts/Pixeled.ttf" id="1_clp7c"]
+[ext_resource type="FontFile" uid="uid://vkq51wdwvf0w" path="res://scenes/ui/assets/fonts/Pixeled.ttf" id="1_clp7c"]
 [ext_resource type="LabelSettings" uid="uid://hg1q8h4sy3mg" path="res://scenes/ui/themes/Gametext.tres" id="1_goggq"]
 [ext_resource type="Script" path="res://scenes/ui/game_over.gd" id="1_xybqr"]
 [ext_resource type="Script" path="res://scenes/ui/scripts/final_score.gd" id="2_hoqkp"]
