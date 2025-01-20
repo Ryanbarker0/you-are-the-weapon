@@ -13,8 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://c52k2o0ijaidp" path="res://scenes/levels/cosmetic_scenes/hardware_store.tscn" id="7_56xv6"]
 [ext_resource type="AudioStream" uid="uid://c2lha4q03pf3i" path="res://scenes/Sounds/Soundtrack/Cookedmusic.wav" id="14_t2koo"]
 [ext_resource type="AudioStream" uid="uid://rsvbgqikl0l6" path="res://scenes/Sounds/Soundtrack/Gameover.wav" id="15_6lbbo"]
-[ext_resource type="AudioStream" uid="uid://wgv8sa55c0ea" path="res://scenes/Sounds/Soundtrack/Cookedmusic.wav" id="14_t2koo"]
-[ext_resource type="AudioStream" uid="uid://dwt03uhy7hsur" path="res://scenes/Sounds/Soundtrack/Gameover.wav" id="15_6lbbo"]
 
 [node name="main" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_iqtew")

@@ -33,7 +33,6 @@ func Enter():
 	#Start DeadTime
 	var dead_time: Timer = deathtime
 	dead_time.start()
-	##print("timerstarted")
 
 func Update(delta: float) -> void:
 	if wonder_time > 0:
@@ -52,5 +51,4 @@ func Physics_Update(_delta: float):
 
 #Dead time signal emitted when timeout
 func _on_dead_time_timeout() -> void:
-	##print("Timesup!")
 	Transitioned.emit(self, "NpcDead")

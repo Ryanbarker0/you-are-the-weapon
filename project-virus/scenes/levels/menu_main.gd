@@ -12,7 +12,7 @@ var progress: Array[float]
 @onready var progress_bar : ProgressBar = $CanvasLayer/ProgressBar
 
 func _ready():
-	# animation_player.play("fade_out")
+	animation_player.play("fade_out")
 	# Preload main scene in background
 	ResourceLoader.load_threaded_request(MAIN_SCENE_PATH)
 
