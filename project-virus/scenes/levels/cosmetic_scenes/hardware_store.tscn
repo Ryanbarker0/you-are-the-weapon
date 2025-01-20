@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c52k2o0ijaidp"]
+
+[ext_resource type="PackedScene" uid="uid://d00pf8rimd4u3" path="res://scenes/levels/scenary.tscn" id="1_0v1yb"]
+[ext_resource type="Texture2D" uid="uid://c51ryisvxoui1" path="res://scenes/levels/assets/individual_objects/buildings/hardware_store.png" id="2_cnapd"]
+
+[node name="Scenery" instance=ExtResource("1_0v1yb")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_cnapd")
+
+[node name="CollisionPolygon2D" parent="Area2D" index="0"]
+polygon = PackedVector2Array(-180, -197, -178, -133, 179, -126, 176, -199)
+
+[node name="CollisionPolygon2D" parent="." index="2"]
+polygon = PackedVector2Array(-186, 208, -145, 212, -146, 192, 86, 194, 90, 209, 189, 213, 188, -116, -189, -119)

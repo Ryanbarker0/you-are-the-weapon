@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://xa300pmubomh"]
+
+[ext_resource type="PackedScene" uid="uid://d00pf8rimd4u3" path="res://scenes/levels/scenary.tscn" id="1_a1n36"]
+[ext_resource type="Texture2D" uid="uid://dkh7v1h6gh6fh" path="res://scenes/levels/assets/individual_objects/buildings/hotel.png" id="2_fdapx"]
+
+[node name="Scenery" instance=ExtResource("1_a1n36")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -155)
+texture = ExtResource("2_fdapx")
+
+[node name="Area2D" parent="." index="1"]
+position = Vector2(0, -155)
+
+[node name="CollisionPolygon2D" parent="Area2D" index="0"]
+polygon = PackedVector2Array(-404, 110, 400, 118, 398, -546, 74, -543, 76, -507, -77, -502, -74, -551, -404, -546)
+
+[node name="CollisionPolygon2D" parent="." index="2"]
+position = Vector2(0, -155)
+polygon = PackedVector2Array(-402, 544, -83, 542, -79, 495, 67, 500, 76, 541, 404, 541, 404, 130, -404, 123)

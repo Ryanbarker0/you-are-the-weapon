@@ -1,0 +1,6 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bmmbtn5cv02qy"]
+
+[ext_resource type="FontFile" uid="uid://cyw4rphwc8a7k" path="res://scenes/ui/assets/fonts/Pixeled.ttf" id="1_ge7vd"]
+
+[resource]
+font = ExtResource("1_ge7vd")

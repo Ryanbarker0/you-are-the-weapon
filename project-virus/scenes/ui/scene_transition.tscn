@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2xyun4fv4tn4"]
+[gd_scene load_steps=7 format=3 uid="uid://b2xyun4fv4tn4"]
+
+[ext_resource type="LabelSettings" uid="uid://bmmbtn5cv02qy" path="res://scenes/ui/themes/lore_text.tres" id="1_jdgge"]
 
 [sub_resource type="Animation" id="Animation_xuke3"]
 length = 0.001
@@ -13,6 +15,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Label2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_m0v0i"]
@@ -47,11 +73,52 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 0.988235), Color(0, 0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_rwpgx"]
+resource_name = "lore"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6, 7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1.53333, 4.5, 5.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Label2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.5, 3.5, 4.5, 5.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_raeux"]
 _data = {
 "RESET": SubResource("Animation_xuke3"),
 "fade_in": SubResource("Animation_m0v0i"),
-"fade_out": SubResource("Animation_i400p")
+"fade_out": SubResource("Animation_i400p"),
+"lore": SubResource("Animation_rwpgx")
 }
 
 [node name="SceneTransition" type="Node2D"]
@@ -67,3 +134,23 @@ root_node = NodePath("../ColorRect")
 libraries = {
 "": SubResource("AnimationLibrary_raeux")
 }
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 520.0
+offset_top = 264.0
+offset_right = 761.0
+offset_bottom = 310.0
+text = "You are the virus"
+label_settings = ExtResource("1_jdgge")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 528.0
+offset_top = 368.0
+offset_right = 756.0
+offset_bottom = 414.0
+text = "You must spread"
+label_settings = ExtResource("1_jdgge")
