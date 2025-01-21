@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bcl5wgju2kwb7"]
+[gd_scene load_steps=16 format=3 uid="uid://bcl5wgju2kwb7"]
 
 [ext_resource type="Script" path="res://scenes/levels/scripts/main.gd" id="1_iqtew"]
 [ext_resource type="PackedScene" uid="uid://ce2x2iwrnea4c" path="res://scenes/player/player.tscn" id="1_jsecc"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c52k2o0ijaidp" path="res://scenes/levels/cosmetic_scenes/hardware_store.tscn" id="7_56xv6"]
 [ext_resource type="AudioStream" uid="uid://c1e34atrof286" path="res://scenes/Sounds/Soundtrack/Cookedmusic.wav" id="14_t2koo"]
 [ext_resource type="AudioStream" uid="uid://baw5g27jf838m" path="res://scenes/Sounds/Soundtrack/Gameover.wav" id="15_6lbbo"]
+[ext_resource type="PackedScene" uid="uid://cx4wifhuc5akl" path="res://scenes/levels/assets/items/items.tscn" id="15_866qc"]
 
 [node name="main" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_iqtew")
@@ -76,3 +77,19 @@ autoplay = true
 
 [node name="GameOver" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_6lbbo")
+
+[node name="Items" parent="." instance=ExtResource("15_866qc")]
+position = Vector2(-54, 293)
+needs_update = true
+
+[node name="Items2" parent="." instance=ExtResource("15_866qc")]
+position = Vector2(-202, 369)
+needs_update = true
+
+[node name="Items3" parent="." instance=ExtResource("15_866qc")]
+position = Vector2(-74, 499)
+needs_update = true
+
+[node name="Items4" parent="." instance=ExtResource("15_866qc")]
+position = Vector2(-200, 575)
+needs_update = true

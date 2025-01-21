@@ -1,7 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://cx4wifhuc5akl"]
+[gd_scene load_steps=11 format=3 uid="uid://cx4wifhuc5akl"]
 
 [ext_resource type="Script" path="res://scenes/levels/assets/items/items.gd" id="1_f71v2"]
 [ext_resource type="Texture2D" uid="uid://d4gav2emk71vn" path="res://scenes/levels/assets/items/animated_sprout_48x48.png" id="1_knwl8"]
+[ext_resource type="Script" path="res://speed_player_upgrade.gd" id="2_wcgrh"]
+
+[sub_resource type="Resource" id="Resource_4o0j6"]
+script = ExtResource("2_wcgrh")
+speed_increase = 100.0
+texture = ExtResource("1_knwl8")
+upgrade_text = "Speed"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x2oku"]
 atlas = ExtResource("1_knwl8")
@@ -43,9 +50,11 @@ animations = [{
 radius = 19.0
 height = 62.0
 
-[node name="Items" type="Area2D"]
+[node name="Items" type="Area2D" node_paths=PackedStringArray("sprite")]
 collision_mask = 8
 script = ExtResource("1_f71v2")
+sprite = NodePath("AnimatedSprite2D")
+player_upgrade = SubResource("Resource_4o0j6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tc6oj")
