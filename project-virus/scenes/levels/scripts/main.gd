@@ -17,6 +17,8 @@ extends Node2D
 @onready var score_container: HBoxContainer = $HUD/ScoreContainer
 @onready var score_label: RichTextLabel = $HUD/ScoreContainer/ScoreLabel
 @onready var bio_icon: TextureRect = $HUD/ScoreContainer/MarginContainer/BioIcon
+@onready var healthpath: Control = $HUD/HealthBar
+@onready var health_bar: ProgressBar = $HUD/HealthBar/ProgressBar
 
 # Menu elements
 @onready var game_over_screen: Control = $Menus/GameOver
@@ -75,3 +77,5 @@ func on_player_destroyed(_actor: Node2D) -> void:
 	# Create a tween for the fade-in effect
 	var tween = get_tree().create_tween()
 	tween.tween_property(game_over_screen, "modulate", Color(1, 1, 1, 1), 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+	

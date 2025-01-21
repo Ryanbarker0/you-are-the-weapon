@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cj8lfgcvkqall"]
 
-[ext_resource type="FontFile" uid="uid://cyw4rphwc8a7k" path="res://scenes/ui/assets/fonts/Pixeled.ttf" id="1_qab4u"]
-[ext_resource type="Texture2D" uid="uid://c6im35mtgcebo" path="res://scenes/ui/assets/bio_hazard-transparent.png" id="2_i36vq"]
+[ext_resource type="FontFile" uid="uid://vkq51wdwvf0w" path="res://scenes/ui/assets/fonts/Pixeled.ttf" id="1_qab4u"]
+[ext_resource type="Texture2D" uid="uid://b4jky7ut6w7s2" path="res://scenes/ui/assets/bio_hazard-transparent.png" id="2_i36vq"]
 
 [sub_resource type="Theme" id="Theme_4fch7"]
 Label/fonts/font = ExtResource("1_qab4u")

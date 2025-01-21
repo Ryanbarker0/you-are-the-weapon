@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd26g7ujilatd"]
+
+[ext_resource type="LabelSettings" uid="uid://hg1q8h4sy3mg" path="res://scenes/ui/themes/Gametext.tres" id="1_ax6tt"]
+[ext_resource type="Script" path="res://scenes/ui/health_bar.gd" id="1_rehmd"]
+
+[node name="HealthBar" type="Control"]
+modulate = Color(0.396078, 0.501961, 0.101961, 1)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_rehmd")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -5.0
+offset_right = 326.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.478315, 0.43301)
+text = "VIRAL LOAD
+"
+label_settings = ExtResource("1_ax6tt")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 91.0
+offset_top = 44.0
+offset_right = 95.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.56988
+scale = Vector2(5.05862, 7.1516)
+max_value = 5.0
+value = 5.0
+rounded = true
+fill_mode = 3
+show_percentage = false
