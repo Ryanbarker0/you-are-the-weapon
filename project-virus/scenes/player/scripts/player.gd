@@ -18,5 +18,4 @@ func _physics_process(_delta):
 	if upgrades.size() != current_upgrade_amount:
 		current_upgrade_amount = upgrades.size()
 		upgrades[upgrades.size() - 1].apply_upgrade(self)
-	print ("movespeed ", stats_component.move_speed)
 	move_and_slide()
