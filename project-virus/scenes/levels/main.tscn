@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bcl5wgju2kwb7"]
+[gd_scene load_steps=15 format=3 uid="uid://bcl5wgju2kwb7"]
 
 [ext_resource type="Script" path="res://scenes/levels/scripts/main.gd" id="1_iqtew"]
 [ext_resource type="PackedScene" uid="uid://ce2x2iwrnea4c" path="res://scenes/player/player.tscn" id="1_jsecc"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d2qsr4anwy4bv" path="res://scenes/levels/cosmetic_scenes/hospital.tscn" id="4_vussl"]
 [ext_resource type="PackedScene" uid="uid://xa300pmubomh" path="res://scenes/levels/cosmetic_scenes/hotel.tscn" id="6_75crw"]
 [ext_resource type="PackedScene" uid="uid://c52k2o0ijaidp" path="res://scenes/levels/cosmetic_scenes/hardware_store.tscn" id="7_56xv6"]
+[ext_resource type="PackedScene" uid="uid://cky1mbbc2kk0q" path="res://scenes/npcs/healer.tscn" id="12_hx3f1"]
 [ext_resource type="AudioStream" uid="uid://c2lha4q03pf3i" path="res://scenes/Sounds/Soundtrack/Cookedmusic.wav" id="14_t2koo"]
 [ext_resource type="AudioStream" uid="uid://rsvbgqikl0l6" path="res://scenes/Sounds/Soundtrack/Gameover.wav" id="15_6lbbo"]
 
@@ -61,6 +62,21 @@ position = Vector2(915, 404)
 position = Vector2(917, 256)
 
 [node name="NpcSpawner" parent="ySort" instance=ExtResource("4_7urdm")]
+
+[node name="Healer" parent="ySort" instance=ExtResource("12_hx3f1")]
+position = Vector2(662, 347)
+
+[node name="Healer2" parent="ySort" instance=ExtResource("12_hx3f1")]
+position = Vector2(-223, 743)
+
+[node name="Healer3" parent="ySort" instance=ExtResource("12_hx3f1")]
+position = Vector2(1434, 857)
+
+[node name="Healer4" parent="ySort" instance=ExtResource("12_hx3f1")]
+position = Vector2(-213, -99)
+
+[node name="Healer5" parent="ySort" instance=ExtResource("12_hx3f1")]
+position = Vector2(1980, 121)
 
 [node name="LevelMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_t2koo")

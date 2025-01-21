@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Enemy
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 

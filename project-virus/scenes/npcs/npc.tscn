@@ -1,8 +1,8 @@
-[gd_scene load_steps=42 format=3 uid="uid://mvb3pdkma0m5"]
+[gd_scene load_steps=43 format=3 uid="uid://mvb3pdkma0m5"]
 
-[ext_resource type="Script" path="res://scenes/enemy/scripts/enemy.gd" id="1_1o1c0"]
+[ext_resource type="Script" path="res://scenes/npcs/scripts/npc.gd" id="1_ssqjl"]
 [ext_resource type="Shader" path="res://scenes/npcs/shaders/infected.gdshader" id="2_6wxnm"]
-[ext_resource type="Texture2D" uid="uid://df5g2ut4eg21p" path="res://scenes/npcs/assets/yellow_exclamation_mark.png" id="2_k5oxs"]
+[ext_resource type="Texture2D" uid="uid://bv5c4f4s56380" path="res://scenes/npcs/assets/yellow_exclamation_mark.png" id="2_k5oxs"]
 [ext_resource type="Texture2D" uid="uid://bthduxpmrycjy" path="res://scenes/npcs/assets/Premade_Character_48x48_12_edit.png" id="3_2pyam"]
 [ext_resource type="Texture2D" uid="uid://sr02oujf4h8" path="res://scenes/npcs/assets/spore.png" id="4_avoes"]
 [ext_resource type="Script" path="res://components/StateMachine.gd" id="4_gqbhl"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://components/score_component.gd" id="11_4iprm"]
 [ext_resource type="Script" path="res://scenes/npcs/scripts/states/NpcDead.gd" id="11_cevjs"]
 [ext_resource type="Resource" uid="uid://be0l7uoexqolr" path="res://scenes/levels/resources/game_stats.tres" id="12_xlx3r"]
+[ext_resource type="Script" path="res://components/scan_component.gd" id="15_4qp0u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0u2cs"]
 atlas = ExtResource("2_k5oxs")
@@ -229,7 +230,7 @@ radius = 354.203
 
 [node name="NPC" type="CharacterBody2D"]
 collision_layer = 16
-script = ExtResource("1_1o1c0")
+script = ExtResource("1_ssqjl")
 
 [node name="StressedAnimation" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -276,7 +277,7 @@ shape = SubResource("CapsuleShape2D_6bf45")
 [node name="ProximityArea" type="Area2D" parent="."]
 visible = false
 collision_layer = 0
-collision_mask = 8
+collision_mask = 24
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ProximityArea"]
 position = Vector2(0, -35)
@@ -286,13 +287,15 @@ shape = SubResource("CircleShape2D_8des0")
 script = ExtResource("4_gqbhl")
 initial_state = NodePath("NpcIdle")
 
-[node name="NpcInfected" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc_sprite", "npc", "audio_stream", "deathtime", "score_component")]
+[node name="NpcInfected" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc", "npc_sprite", "audio_stream", "proximity_area", "death_timer", "score_component", "scan_component")]
 script = ExtResource("7_8x3w8")
-npc_sprite = NodePath("../../AnimatedSprite2D")
 npc = NodePath("../..")
+npc_sprite = NodePath("../../AnimatedSprite2D")
 audio_stream = NodePath("../../AudioStreamPlayer")
-deathtime = NodePath("../../DeadTime")
+proximity_area = NodePath("../../ProximityArea")
+death_timer = NodePath("../../DeathTimer")
 score_component = NodePath("../../ScoreComponent")
+scan_component = NodePath("../../ScanComponent")
 
 [node name="NpcIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc", "proximity_area")]
 script = ExtResource("5_s4y23")
@@ -321,8 +324,13 @@ script = ExtResource("11_4iprm")
 game_stats = ExtResource("12_xlx3r")
 adjust_amount = 1
 
-[node name="DeadTime" type="Timer" parent="."]
+[node name="DeathTimer" type="Timer" parent="."]
 wait_time = 6.0
 one_shot = true
 
-[connection signal="timeout" from="DeadTime" to="StateMachine/NpcInfected" method="_on_dead_time_timeout"]
+[node name="ScanComponent" type="Node" parent="." node_paths=PackedStringArray("area_to_scan")]
+script = ExtResource("15_4qp0u")
+area_to_scan = NodePath("../ProximityArea")
+body_to_scan_for = "Healer"
+
+[connection signal="timeout" from="DeathTimer" to="StateMachine/NpcInfected" method="_on_dead_time_timeout"]
