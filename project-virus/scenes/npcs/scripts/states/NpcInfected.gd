@@ -29,9 +29,7 @@ func Enter():
 	hurtbox_component.queue_free()
 	flash_component.free()
 	score_component.adjust_score(1)
-	print("NPC Sprite material ", npc_sprite.material.resource_name)
 	npc_sprite.material = INFECTED_MATERIAL.duplicate()
-	print("NPC Sprite material ", npc_sprite.material.resource_name)
 	
 	# Enabling shader and particles for infected visuals
 	npc_sprite.material.set_shader_parameter("shader_enabled", true)
