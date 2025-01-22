@@ -7,6 +7,10 @@ class_name NpcInfected
 @export var audio_stream: AudioStreamPlayer
 @export var deathtime: Timer
 @export var score_component: ScoreComponent
+@export var hurtbox_component: HurtboxComponent
+@export var flash_component: FlashComponent
+
+const INFECTED_MATERIAL = preload("res://scenes/npcs/shaders/infected_material.tres")
 
 var move_direction: Vector2
 var wonder_time: float
@@ -22,11 +26,15 @@ func randomize_audio_interval():
 	##audio_stream.play()
 
 func Enter():
+	hurtbox_component.queue_free()
+	flash_component.free()
 	score_component.adjust_score(1)
-	var material : ShaderMaterial = npc_sprite.material
+	print("NPC Sprite material ", npc_sprite.material.resource_name)
+	npc_sprite.material = INFECTED_MATERIAL.duplicate()
+	print("NPC Sprite material ", npc_sprite.material.resource_name)
 	
 	# Enabling shader and particles for infected visuals
-	material.set_shader_parameter("shader_enabled", true)
+	npc_sprite.material.set_shader_parameter("shader_enabled", true)
 	var spore_particles: CPUParticles2D = npc_sprite.get_children()[0]
 	spore_particles.visible = true
 	
