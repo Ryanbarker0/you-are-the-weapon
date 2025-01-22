@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://bd26g7ujilatd"]
 
 [ext_resource type="LabelSettings" uid="uid://hg1q8h4sy3mg" path="res://scenes/ui/themes/Gametext.tres" id="1_ax6tt"]
-[ext_resource type="Script" path="res://scenes/ui/health_bar.gd" id="1_rehmd"]
+[ext_resource type="Script" path="res://scenes/ui/scripts/health_bar.gd" id="1_rehmd"]
+
 
 [node name="HealthBar" type="Control"]
 modulate = Color(0.396078, 0.501961, 0.101961, 1)

@@ -1,0 +1,5 @@
+class_name BasePersistentProjectileUpgrade
+extends Resource
+
+func apply_upgrade(persistent_projectile: PersistentProjectile):
+	pass

@@ -7,7 +7,6 @@ extends Resource
 
 
 func apply_upgrade(player: Player):
-	
 	pass
 
 func get_player_stats(player: Player) -> StatsComponent:

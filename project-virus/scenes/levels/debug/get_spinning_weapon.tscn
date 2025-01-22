@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://byum7y2wtuap4"]
+
+[ext_resource type="Script" path="res://scenes/levels/debug/get_spinning_weapon.gd" id="1_y8soy"]
+
+[node name="GetSpinningWeapon" type="Button"]
+offset_right = 110.0
+offset_bottom = 31.0
+text = "Give Weapon"
+script = ExtResource("1_y8soy")
+
+[connection signal="pressed" from="." to="." method="on_button_pressed"]

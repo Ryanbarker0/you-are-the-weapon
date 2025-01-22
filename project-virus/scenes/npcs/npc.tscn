@@ -1,9 +1,9 @@
-[gd_scene load_steps=42 format=3 uid="uid://mvb3pdkma0m5"]
+[gd_scene load_steps=45 format=3 uid="uid://mvb3pdkma0m5"]
 
 [ext_resource type="Script" path="res://scenes/enemy/scripts/enemy.gd" id="1_1o1c0"]
-[ext_resource type="Shader" path="res://scenes/npcs/shaders/infected.gdshader" id="2_6wxnm"]
-[ext_resource type="Texture2D" uid="uid://db4vhjmpgo84u" path="res://scenes/npcs/assets/yellow_exclamation_mark.png" id="2_k5oxs"]
+[ext_resource type="Texture2D" uid="uid://bv5c4f4s56380" path="res://scenes/npcs/assets/yellow_exclamation_mark.png" id="2_k5oxs"]
 [ext_resource type="Texture2D" uid="uid://bthduxpmrycjy" path="res://scenes/npcs/assets/Premade_Character_48x48_12_edit.png" id="3_2pyam"]
+[ext_resource type="Material" uid="uid://dyxpcowt55c5w" path="res://scenes/npcs/shaders/infected_material.tres" id="3_huddf"]
 [ext_resource type="Texture2D" uid="uid://sr02oujf4h8" path="res://scenes/npcs/assets/spore.png" id="4_avoes"]
 [ext_resource type="Script" path="res://components/StateMachine.gd" id="4_gqbhl"]
 [ext_resource type="Script" path="res://scenes/npcs/scripts/states/NpcIdle.gd" id="5_s4y23"]
@@ -14,6 +14,9 @@
 [ext_resource type="Script" path="res://components/score_component.gd" id="11_4iprm"]
 [ext_resource type="Script" path="res://scenes/npcs/scripts/states/NpcDead.gd" id="11_cevjs"]
 [ext_resource type="Resource" uid="uid://be0l7uoexqolr" path="res://scenes/levels/resources/game_stats.tres" id="12_xlx3r"]
+[ext_resource type="Script" path="res://components/hurt_component.gd" id="15_qcq21"]
+[ext_resource type="Script" path="res://components/stats_component.gd" id="16_stpxt"]
+[ext_resource type="Script" path="res://components/flash_component.gd" id="17_i18vk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0u2cs"]
 atlas = ExtResource("2_k5oxs")
@@ -36,14 +39,6 @@ animations = [{
 "name": &"default",
 "speed": 7.0
 }]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yy2qw"]
-resource_local_to_scene = true
-shader = ExtResource("2_6wxnm")
-shader_parameter/pulsation_speed = 3.0
-shader_parameter/pulsation_intensity = 0.0
-shader_parameter/sickly_green_color = Color(0.2, 0.8, 0.3, 1)
-shader_parameter/shader_enabled = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wf4se"]
 atlas = ExtResource("3_2pyam")
@@ -227,6 +222,10 @@ height = 84.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_8des0"]
 radius = 354.203
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_887bq"]
+radius = 23.0
+height = 78.0
+
 [node name="NPC" type="CharacterBody2D"]
 collision_layer = 16
 script = ExtResource("1_1o1c0")
@@ -239,7 +238,7 @@ autoplay = "default"
 frame_progress = 0.234006
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_yy2qw")
+material = ExtResource("3_huddf")
 position = Vector2(0, -48)
 sprite_frames = SubResource("SpriteFrames_4uv16")
 animation = &"Death"
@@ -286,22 +285,26 @@ shape = SubResource("CircleShape2D_8des0")
 script = ExtResource("4_gqbhl")
 initial_state = NodePath("NpcIdle")
 
-[node name="NpcInfected" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc_sprite", "npc", "audio_stream", "deathtime", "score_component")]
+[node name="NpcInfected" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc_sprite", "npc", "audio_stream", "deathtime", "score_component", "hurtbox_component", "flash_component")]
 script = ExtResource("7_8x3w8")
 npc_sprite = NodePath("../../AnimatedSprite2D")
 npc = NodePath("../..")
 audio_stream = NodePath("../../AudioStreamPlayer")
 deathtime = NodePath("../../DeadTime")
 score_component = NodePath("../../ScoreComponent")
+hurtbox_component = NodePath("../../HurtboxComponent")
+flash_component = NodePath("../../FlashComponent")
 
-[node name="NpcIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc", "proximity_area")]
+[node name="NpcIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc", "stats_component", "proximity_area")]
 script = ExtResource("5_s4y23")
 npc = NodePath("../..")
+stats_component = NodePath("../../StatsComponent")
 proximity_area = NodePath("../../ProximityArea")
 
-[node name="NpcFlee" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc", "infection_area", "proximity_area", "stressed_animation", "character_animation")]
+[node name="NpcFlee" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc", "stats_component", "infection_area", "proximity_area", "stressed_animation", "character_animation")]
 script = ExtResource("8_63nh1")
 npc = NodePath("../..")
+stats_component = NodePath("../../StatsComponent")
 infection_area = NodePath("../../InfectionArea")
 proximity_area = NodePath("../../ProximityArea")
 stressed_animation = NodePath("../../StressedAnimation")
@@ -324,5 +327,29 @@ adjust_amount = 1
 [node name="DeadTime" type="Timer" parent="."]
 wait_time = 6.0
 one_shot = true
+
+[node name="HurtboxComponent" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("9_610wu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, -35)
+shape = SubResource("CapsuleShape2D_887bq")
+
+[node name="HurtComponent" type="Node" parent="." node_paths=PackedStringArray("stats_component", "hurtbox_component")]
+script = ExtResource("15_qcq21")
+stats_component = NodePath("../StatsComponent")
+hurtbox_component = NodePath("../HurtboxComponent")
+
+[node name="StatsComponent" type="Node" parent="."]
+script = ExtResource("16_stpxt")
+health = 3
+move_speed = 30.0
+
+[node name="FlashComponent" type="Node" parent="." node_paths=PackedStringArray("sprite", "hurtbox_component")]
+script = ExtResource("17_i18vk")
+sprite = NodePath("../AnimatedSprite2D")
+hurtbox_component = NodePath("../HurtboxComponent")
 
 [connection signal="timeout" from="DeadTime" to="StateMachine/NpcInfected" method="_on_dead_time_timeout"]

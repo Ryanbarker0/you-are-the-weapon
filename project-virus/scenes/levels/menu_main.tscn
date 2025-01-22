@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://dffn37m8q1qe5"]
 
-[ext_resource type="Script" path="res://scenes/levels/menu_main.gd" id="1_itnti"]
+[ext_resource type="Script" path="res://scenes/levels/scripts/menu_main.gd" id="1_itnti"]
 [ext_resource type="LabelSettings" uid="uid://hg1q8h4sy3mg" path="res://scenes/ui/themes/Gametext.tres" id="1_p5l1i"]
 [ext_resource type="Theme" uid="uid://bc8n00ertwfok" path="res://scenes/ui/themes/button.tres" id="2_hppku"]
-[ext_resource type="AudioStream" uid="uid://b5xqoj5goyu4o" path="res://scenes/Sounds/Soundtrack/Placeholder Title.wav" id="4_6r0o5"]
+[ext_resource type="AudioStream" uid="uid://b5xqoj5goyu4o" path="res://scenes/sounds/soundtrack/Placeholder Title.wav" id="4_6r0o5"]
 [ext_resource type="LabelSettings" uid="uid://bmmbtn5cv02qy" path="res://scenes/ui/themes/lore_text.tres" id="5_angst"]
 
 [node name="MenuMain" type="Control"]
