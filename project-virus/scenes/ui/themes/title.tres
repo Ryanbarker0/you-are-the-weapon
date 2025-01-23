@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cn0lhbmm7apve"]
+
+[ext_resource type="Shader" path="res://scenes/ui/shaders/title.gdshader" id="1_t1jn5"]
+
+[resource]
+shader = ExtResource("1_t1jn5")
+shader_parameter/time = null
+shader_parameter/drip_amplitude = 0.05
+shader_parameter/drip_speed = 3.0
+shader_parameter/drip_frequency = 15.0
