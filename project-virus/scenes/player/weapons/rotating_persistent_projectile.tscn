@@ -6,6 +6,8 @@
 [sub_resource type="Resource" id="Resource_j5me8"]
 resource_local_to_scene = true
 script = ExtResource("2_4nvu3")
+orbit_speed = 5.0
+orbit_radius = 100.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ur5f3"]
 
