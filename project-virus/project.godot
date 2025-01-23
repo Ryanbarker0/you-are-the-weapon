@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="project-virus"
-run/main_scene="res://scenes/levels/menu_main.tscn"
+run/main_scene="res://scenes/ui/menu_main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -22,6 +22,7 @@ ScreenEffects="*res://scenes/ui/screen_effects.tscn"
 [debug]
 
 gdscript/warnings/unused_parameter=0
+gdscript/warnings/unused_signal=0
 
 [display]
 
