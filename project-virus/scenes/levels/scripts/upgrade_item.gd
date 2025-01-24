@@ -4,7 +4,6 @@ extends Area2D
 @onready var upgrade_panel: Control = get_parent().get_node("Menus").get_node("UpgradePanel")
 
 func _on_body_entered(body: Node2D):
-	print(upgrade_panel)
 	if body is Player:
 		hud.hide()
 		upgrade_panel.show()

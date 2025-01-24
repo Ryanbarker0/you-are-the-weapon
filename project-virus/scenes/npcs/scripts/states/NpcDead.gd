@@ -22,5 +22,5 @@ func _on_animation_finished(_name):
 	## add upgrade item to parent scene
 	var upgrade_item_instance = upgrade_item.instantiate()
 	upgrade_item_instance.global_position = npc.global_position
-	npc.get_parent().add_child(upgrade_item_instance)
+	npc.get_parent().get_parent().add_child(upgrade_item_instance)
 	npc.queue_free()

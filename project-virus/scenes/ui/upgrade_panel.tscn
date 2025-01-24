@@ -75,15 +75,14 @@ grow_vertical = 2
 script = ExtResource("1_e3evd")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+layout_mode = 2
+offset_right = 1280.0
+offset_bottom = 720.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.898039)
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainerRoot" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -95,119 +94,129 @@ theme_override_constants/margin_top = 100
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 100
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainerRoot"]
+layout_mode = 2
+theme_override_constants/margin_left = 125
+theme_override_constants/margin_top = 125
+theme_override_constants/margin_right = 125
+theme_override_constants/margin_bottom = 125
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainerRoot/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 13
 alignment = 1
 
-[node name="UpgradeOne" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+[node name="UpgradeOne" type="PanelContainer" parent="MarginContainerRoot/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_vrfdf")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/UpgradeOne"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeOne"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/UpgradeOne/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeOne/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 15
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/UpgradeOne/MarginContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeOne/MarginContainer/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("1_u22qe")
 expand_mode = 5
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/UpgradeOne/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeOne/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Contagion's Orbit"
 label_settings = SubResource("LabelSettings_7032t")
 horizontal_alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/UpgradeOne/MarginContainer/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeOne/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_snex6")
 theme_override_font_sizes/normal_font_size = 12
 text = "- 256 to 261 damage"
 fit_content = true
 
-[node name="Selection" type="Button" parent="MarginContainer/HBoxContainer/UpgradeOne"]
+[node name="Selection" type="Button" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeOne"]
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxFlat_jf5kq")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_tjjq3")
 
-[node name="UpgradeTwo" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+[node name="UpgradeTwo" type="PanelContainer" parent="MarginContainerRoot/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_vrfdf")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/UpgradeTwo"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeTwo"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/UpgradeTwo/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeTwo/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 15
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/UpgradeTwo/MarginContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeTwo/MarginContainer/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("1_u22qe")
 expand_mode = 5
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/UpgradeTwo/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeTwo/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Viral Discharge"
 label_settings = SubResource("LabelSettings_f4dhd")
 horizontal_alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/UpgradeTwo/MarginContainer/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeTwo/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_snex6")
 theme_override_font_sizes/normal_font_size = 12
 text = "- 256 to 261 damage"
 fit_content = true
 
-[node name="Selection" type="Button" parent="MarginContainer/HBoxContainer/UpgradeTwo"]
+[node name="Selection" type="Button" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeTwo"]
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxFlat_jf5kq")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_tjjq3")
 
-[node name="UpgradeThree" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+[node name="UpgradeThree" type="PanelContainer" parent="MarginContainerRoot/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_vrfdf")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/UpgradeThree"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeThree"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/UpgradeThree/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeThree/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 15
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/UpgradeThree/MarginContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeThree/MarginContainer/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("1_u22qe")
 expand_mode = 5
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/UpgradeThree/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeThree/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Noxious Spread"
 label_settings = SubResource("LabelSettings_vhc65")
 horizontal_alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/UpgradeThree/MarginContainer/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeThree/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_snex6")
 theme_override_font_sizes/normal_font_size = 12
 text = "- 256 to 261 damage"
 fit_content = true
 
-[node name="Selection" type="Button" parent="MarginContainer/HBoxContainer/UpgradeThree"]
+[node name="Selection" type="Button" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeThree"]
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxFlat_jf5kq")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_tjjq3")
@@ -217,10 +226,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -215.5
-offset_top = 10.0
-offset_right = 215.5
-offset_bottom = 94.0
+offset_left = -225.5
+offset_top = 50.0
+offset_right = 225.5
+offset_bottom = 150.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_5bqqw")
 

@@ -19,4 +19,4 @@ func _on_quit_pressed():
 
 func load_main_menu_scene(_arg):
 	animation_player.animation_finished.disconnect(load_main_menu_scene)
-	get_tree().change_scene_to_file("res://scenes/levels/menu_main.tscn")
+	get_tree().change_scene_to_file("res://scenes/ui/menu_main.tscn")

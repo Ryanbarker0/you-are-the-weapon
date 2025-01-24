@@ -6,29 +6,29 @@ const WEAPON_DATA_PATH = "res://scenes/items/weapon_data.json"
 @onready var player: CharacterBody2D = get_parent().get_parent().get_node("ySort/Player")
 
 # Main containers
-@onready var upgrade_1: PanelContainer = $MarginContainer/HBoxContainer/UpgradeOne
-@onready var upgrade_2: PanelContainer = $MarginContainer/HBoxContainer/UpgradeTwo
-@onready var upgrade_3: PanelContainer = $MarginContainer/HBoxContainer/UpgradeThree
+@onready var upgrade_1: PanelContainer = $MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeOne
+@onready var upgrade_2: PanelContainer = $MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeTwo
+@onready var upgrade_3: PanelContainer = $MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeThree
 
 # Textures
-@onready var upgrade_1_texture: TextureRect = $MarginContainer/HBoxContainer/UpgradeOne/MarginContainer/VBoxContainer/TextureRect
-@onready var upgrade_2_texture: TextureRect = $MarginContainer/HBoxContainer/UpgradeTwo/MarginContainer/VBoxContainer/TextureRect
-@onready var upgrade_3_texture: TextureRect = $MarginContainer/HBoxContainer/UpgradeThree/MarginContainer/VBoxContainer/TextureRect
+@onready var upgrade_1_texture: TextureRect = $MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeOne/MarginContainer/VBoxContainer/TextureRect
+@onready var upgrade_2_texture: TextureRect = $MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeTwo/MarginContainer/VBoxContainer/TextureRect
+@onready var upgrade_3_texture: TextureRect = $MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeThree/MarginContainer/VBoxContainer/TextureRect
 
 # Names
-@onready var upgrade_1_label: Label = $MarginContainer/HBoxContainer/UpgradeOne/MarginContainer/VBoxContainer/Label
-@onready var upgrade_2_label: Label = $MarginContainer/HBoxContainer/UpgradeTwo/MarginContainer/VBoxContainer/Label
-@onready var upgrade_3_label: Label = $MarginContainer/HBoxContainer/UpgradeThree/MarginContainer/VBoxContainer/Label
+@onready var upgrade_1_label: Label = $MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeOne/MarginContainer/VBoxContainer/Label
+@onready var upgrade_2_label: Label = $MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeTwo/MarginContainer/VBoxContainer/Label
+@onready var upgrade_3_label: Label = $MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeThree/MarginContainer/VBoxContainer/Label
 
 # Descriptions
-@onready var upgrade_1_rich_text_label: RichTextLabel = $MarginContainer/HBoxContainer/UpgradeOne/MarginContainer/VBoxContainer/RichTextLabel
-@onready var upgrade_2_rich_text_label: RichTextLabel = $MarginContainer/HBoxContainer/UpgradeTwo/MarginContainer/VBoxContainer/RichTextLabel
-@onready var upgrade_3_rich_text_label: RichTextLabel = $MarginContainer/HBoxContainer/UpgradeThree/MarginContainer/VBoxContainer/RichTextLabel
+@onready var upgrade_1_rich_text_label: RichTextLabel = $MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeOne/MarginContainer/VBoxContainer/RichTextLabel
+@onready var upgrade_2_rich_text_label: RichTextLabel = $MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeTwo/MarginContainer/VBoxContainer/RichTextLabel
+@onready var upgrade_3_rich_text_label: RichTextLabel = $MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeThree/MarginContainer/VBoxContainer/RichTextLabel
 
 # Selection buttons
-@onready var upgrade_1_button: Button = $MarginContainer/HBoxContainer/UpgradeOne/Selection
-@onready var upgrade_2_button: Button = $MarginContainer/HBoxContainer/UpgradeTwo/Selection
-@onready var upgrade_3_button: Button = $MarginContainer/HBoxContainer/UpgradeThree/Selection
+@onready var upgrade_1_button: Button = $MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeOne/Selection
+@onready var upgrade_2_button: Button = $MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeTwo/Selection
+@onready var upgrade_3_button: Button = $MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeThree/Selection
 
 var parsed_json: Array
 
@@ -77,15 +77,13 @@ func get_item_scene_path(item_name: String):
 
 # Signals
 func overlay_shown():
-	print("Overlay shown ", parsed_json)
 	_populate_upgrade_panels()
 	pass
 
 func on_selection_one_pressed():
-	print("You have selected... ", upgrade_1_label.text)
-	print("Time to add this to the player... ", upgrade_1_scene)
 	var instance = upgrade_1_scene.instantiate()
 	player.add_child(instance)
+	# TODO: Show HUD
 	hide()
 	pass
 
@@ -96,7 +94,6 @@ func on_selection_two_pressed():
 func on_selection_three_pressed():
 	print("Selection 3 been selected")
 	pass
-
 
 func read_json_file(file: String):
 	var json_as_text = FileAccess.get_file_as_string(file)
