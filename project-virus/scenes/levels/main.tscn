@@ -17,7 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://rsvbgqikl0l6" path="res://scenes/sounds/soundtrack/Gameover.wav" id="14_2yjua"]
 [ext_resource type="PackedScene" uid="uid://cx4wifhuc5akl" path="res://scenes/levels/stat_items.tscn" id="15_866qc"]
 [ext_resource type="PackedScene" uid="uid://byum7y2wtuap4" path="res://scenes/levels/debug/get_spinning_weapon.tscn" id="16_4bwd4"]
-[ext_resource type="PackedScene" uid="uid://385gy14wby1l" path="res://scenes/levels/upgrade_item.tscn" id="18_2g2yu"]
+[ext_resource type="PackedScene" uid="uid://385gy14wby1l" path="res://scenes/items/upgrade_item.tscn" id="18_2g2yu"]
 
 [node name="main" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_iqtew")
@@ -30,7 +30,7 @@ player = NodePath("ySort/Player")
 visible = false
 
 [node name="UpgradePanel" parent="Menus" instance=ExtResource("4_vgifo")]
-process_mode = 3
+process_mode = 2
 visible = false
 
 [node name="HUD" type="CanvasLayer" parent="."]

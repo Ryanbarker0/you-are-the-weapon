@@ -7,5 +7,5 @@ func _on_body_entered(body: Node2D):
 	if body is Player:
 		hud.hide()
 		upgrade_panel.show()
-		# Load upgrade panel 
+		get_tree().paused = true
 		queue_free()

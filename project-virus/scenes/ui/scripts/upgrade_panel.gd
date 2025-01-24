@@ -5,6 +5,8 @@ const WEAPON_DATA_PATH = "res://scenes/items/weapon_data.json"
 # Player
 @onready var player: CharacterBody2D = get_parent().get_parent().get_node("ySort/Player")
 
+@onready var hud: CanvasLayer = get_parent().get_parent().get_node("HUD")
+
 # Main containers
 @onready var upgrade_1: PanelContainer = $MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeOne
 @onready var upgrade_2: PanelContainer = $MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeTwo
@@ -38,7 +40,6 @@ var upgrade_3_scene: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("Player ready... ", player)
 	await read_json_file(WEAPON_DATA_PATH)
 	self.draw.connect(overlay_shown)
 	upgrade_1_button.pressed.connect(on_selection_one_pressed)
@@ -75,6 +76,11 @@ func get_item_sprite_path(item_name: String):
 func get_item_scene_path(item_name: String):
 	return "res://scenes/items/weapons/" + item_name + "/" + item_name + ".tscn"
 
+func complete_upgrade():
+	hide()
+	get_tree().paused = false
+	hud.show()
+
 # Signals
 func overlay_shown():
 	_populate_upgrade_panels()
@@ -83,9 +89,7 @@ func overlay_shown():
 func on_selection_one_pressed():
 	var instance = upgrade_1_scene.instantiate()
 	player.add_child(instance)
-	# TODO: Show HUD
-	hide()
-	pass
+	complete_upgrade()
 
 func on_selection_two_pressed():
 	print("Selection 2 been selected")
