@@ -1,5 +1,5 @@
 extends BasePersistentProjectileBehaviour
-class_name RotatingPersistentProjectileBehaviour
+class_name ContagionsOrbit
 
 var orbit_angle: float = 0.0
 
@@ -42,5 +42,5 @@ func _recalculate_projectile_positions(projectiles: Array[PersistentProjectile])
 
 		# Update the orbit_angle for each projectile
 		var behaviour = projectile.behaviour_controller
-		if behaviour is RotatingPersistentProjectileBehaviour:
+		if behaviour is ContagionsOrbit:
 			behaviour.orbit_angle = angle

@@ -13,6 +13,7 @@ func reload_game_scene(_arg):
 	get_tree().reload_current_scene()
 
 func _on_quit_pressed():
+	print("Loading main scene...")
 	animation_player.animation_finished.connect(load_main_menu_scene)
 	animation_player.play("fade_in")
 

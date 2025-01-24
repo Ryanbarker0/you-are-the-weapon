@@ -1,0 +1,26 @@
+[
+	{
+		"name": "Contagion's Orbit",
+		"damage_min": 50,
+		"damage_max": 60,
+		"scene_ref": "contagions_orbit",
+		"texture_ref": "contagions_orbit_sprite.png",
+		"type": "persistent"
+	},
+	{
+		"name": "Viral Discharge",
+		"damage_min": 50,
+		"damage_max": 60,
+		"scene_ref": "",
+		"texture_ref": "",
+		"type": "persistent"
+	},
+	{
+		"name": "Noxious Eruption",
+		"damage_min": 50,
+		"damage_max": 60,
+		"scene_ref": "",
+		"texture_ref": "",
+		"type": "persistent"
+	}
+]
