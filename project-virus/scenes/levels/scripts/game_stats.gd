@@ -8,4 +8,6 @@ class_name GameStats
 
 @export var highscore: int = 0
 
+@export var final_score: int = 0
+
 signal score_changed(new_score)
