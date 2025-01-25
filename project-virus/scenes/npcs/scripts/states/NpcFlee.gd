@@ -3,7 +3,6 @@ class_name NpcFlee
 
 @export var npc: CharacterBody2D
 @export var stats_component: StatsComponent
-@export var infection_area: Area2D
 @export var proximity_area: Area2D
 @export var stressed_animation: AnimatedSprite2D
 @export var character_animation: AnimatedSprite2D

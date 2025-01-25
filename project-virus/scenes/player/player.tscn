@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ce2x2iwrnea4c"]
+[gd_scene load_steps=13 format=3 uid="uid://ce2x2iwrnea4c"]
 
 [ext_resource type="Script" path="res://scenes/player/scripts/player.gd" id="1_nq7jy"]
 [ext_resource type="Texture2D" uid="uid://sr02oujf4h8" path="res://scenes/npcs/assets/spore.png" id="3_5j1y1"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://components/stats_component.gd" id="5_22ljq"]
 [ext_resource type="Script" path="res://components/hurt_component.gd" id="6_t5jnu"]
 [ext_resource type="Script" path="res://components/destroy_component.gd" id="7_vn2i5"]
+[ext_resource type="Script" path="res://scenes/items/projectile.gd" id="8_2hnhe"]
 
 [sub_resource type="Gradient" id="Gradient_p2coy"]
 offsets = PackedFloat32Array(0.0169014, 0.524781, 0.944606)
@@ -80,3 +81,11 @@ hurtbox_component = NodePath("../HurtboxComponent")
 script = ExtResource("7_vn2i5")
 actor = NodePath("..")
 stats_component = NodePath("../StatsComponent")
+
+[node name="ProjectileSpawner" type="Node2D" parent="."]
+script = ExtResource("8_2hnhe")
+
+[node name="FireTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 5.0
+autostart = true

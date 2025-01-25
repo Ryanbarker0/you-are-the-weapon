@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://mvb3pdkma0m5"]
+[gd_scene load_steps=48 format=3 uid="uid://mvb3pdkma0m5"]
 
 [ext_resource type="Script" path="res://scenes/enemy/scripts/enemy.gd" id="1_1o1c0"]
 [ext_resource type="Texture2D" uid="uid://bv5c4f4s56380" path="res://scenes/npcs/assets/yellow_exclamation_mark.png" id="2_k5oxs"]
@@ -300,10 +300,6 @@ _data = {
 radius = 11.0
 height = 34.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6bf45"]
-radius = 23.0
-height = 84.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_8des0"]
 radius = 354.203
 
@@ -356,16 +352,6 @@ position = Vector2(0, -9)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_onduq")
 
-[node name="InfectionArea" type="Area2D" parent="."]
-visible = false
-collision_layer = 4
-collision_mask = 0
-script = ExtResource("9_610wu")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InfectionArea"]
-position = Vector2(0, -35)
-shape = SubResource("CapsuleShape2D_6bf45")
-
 [node name="ProximityArea" type="Area2D" parent="."]
 visible = false
 collision_layer = 0
@@ -395,11 +381,10 @@ npc = NodePath("../..")
 stats_component = NodePath("../../StatsComponent")
 proximity_area = NodePath("../../ProximityArea")
 
-[node name="NpcFlee" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc", "stats_component", "infection_area", "proximity_area", "stressed_animation", "character_animation")]
+[node name="NpcFlee" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc", "stats_component", "proximity_area", "stressed_animation", "character_animation")]
 script = ExtResource("8_63nh1")
 npc = NodePath("../..")
 stats_component = NodePath("../../StatsComponent")
-infection_area = NodePath("../../InfectionArea")
 proximity_area = NodePath("../../ProximityArea")
 stressed_animation = NodePath("../../StressedAnimation")
 character_animation = NodePath("../../AnimatedSprite2D")

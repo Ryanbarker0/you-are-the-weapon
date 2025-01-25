@@ -10,7 +10,8 @@ class_name StatsComponent
 		health_changed.emit()
 		
 		# Signal out when health is at 0
-		if health == 0: 
+		if health == 0 || health < 0: 
+			print("NPC Dead")
 			no_health.emit()
 
 # Create our signals for health
