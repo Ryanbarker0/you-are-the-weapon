@@ -102,7 +102,6 @@ func complete_upgrade():
 # Signals
 func overlay_shown():
 	_populate_upgrade_panels()
-	pass
 
 func on_selection_one_pressed():
 	var instance = upgrade_1_scene.instantiate()
@@ -118,7 +117,6 @@ func on_selection_two_pressed():
 	complete_upgrade()
 
 func on_selection_three_pressed():
-	print("Selection 3 been selected")
 	var projectile_spawner = load("res://scenes/items/projectile_spawner.gd")
 	var noxious_spread_behaviour = load("res://scenes/items/weapons/noxious_spread/noxious_spread.gd")
 	var instance: ProjectileSpawner = projectile_spawner.new()

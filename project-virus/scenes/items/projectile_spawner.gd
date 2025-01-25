@@ -23,7 +23,6 @@ func _ready():
 func _physics_process(delta):
 	if !is_bullet_fired:
 		var projectile_instance: Area2D = projectile.instantiate()
-		print("Starting behaviour in projectile...")
 		behaviour_controller.apply_behaviour(self, projectile_instance, delta)
 
 		# if upgrades.size() != current_upgrade_amount:
@@ -33,5 +32,4 @@ func _physics_process(delta):
 		is_bullet_fired = true
 
 func on_timer_timeout():
-	print("timer timeout...")
 	is_bullet_fired = false
