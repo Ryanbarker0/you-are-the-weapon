@@ -1,5 +1,5 @@
 class_name BaseProjectileSpawnerUpgrade
 extends Resource
 
-func apply_upgrade(persistent_projectile: PersistentSpawner):
+func apply_upgrade(projectile: Projectile):
 	pass

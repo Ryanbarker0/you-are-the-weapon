@@ -1,6 +1,4 @@
-extends Area2D
-
-var speed = 1000 # Speed of the movement in pixels per second
+extends Projectile
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

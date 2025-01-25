@@ -69,6 +69,15 @@ func _populate_upgrade_panels():
 	upgrade_1_label.text = weapon_1["name"]
 	upgrade_1_rich_text_label.text = "Damage: " + str(weapon_1["damage_min"]) + " - " + str(weapon_1["damage_max"])
 
+	var weapon_2 = weapon_data[1]
+	var weapon_2_texture_path = get_item_sprite_path(weapon_2["scene_ref"])
+	var weapon_2_scene_path = get_item_scene_path(weapon_2["scene_ref"])
+
+	upgrade_2_scene = load(weapon_2_scene_path)
+	upgrade_2_texture.texture = load(weapon_2_texture_path)
+	upgrade_2_label.text = weapon_2["name"]
+	upgrade_2_rich_text_label.text = "Damage: " + str(weapon_2["damage_min"]) + " - " + str(weapon_2["damage_max"])
+
 # Helpers
 func get_item_sprite_path(item_name: String):
 	return "res://scenes/items/weapons/" + item_name + "/" + item_name + "_sprite.png"
@@ -93,7 +102,12 @@ func on_selection_one_pressed():
 
 func on_selection_two_pressed():
 	print("Selection 2 been selected")
-	pass
+	var projectile_spawner = load("res://scenes/items/projectile_spawner.gd")
+	var viral_discharge_behaviour = load("res://scenes/items/weapons/viral_discharge/viral_discharge.gd")
+	var instance: ProjectileSpawner = projectile_spawner.new()
+	instance.behaviour_controller = viral_discharge_behaviour.new()
+	player.add_child(instance)
+	complete_upgrade()
 
 func on_selection_three_pressed():
 	print("Selection 3 been selected")
