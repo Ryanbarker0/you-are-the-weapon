@@ -395,6 +395,7 @@ hitbox_component = NodePath("../../HitboxComponent")
 hurtbox_component = NodePath("../../HurtboxComponent")
 death_animation = NodePath("../../DeathAnimationPlayer")
 health_bar = NodePath("../../HealthBar")
+drop_rate_percent = 40
 score_component = NodePath("../../ScoreComponent")
 
 [node name="StatsComponent" type="Node" parent="."]
