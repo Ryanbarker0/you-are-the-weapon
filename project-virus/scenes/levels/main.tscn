@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bew6rb6ixfule" path="res://scenes/enemy/enemy.tscn" id="3_q0qlg"]
 [ext_resource type="PackedScene" uid="uid://cj8lfgcvkqall" path="res://scenes/ui/score_container.tscn" id="3_tgki3"]
 [ext_resource type="PackedScene" uid="uid://b3kjkrkfvx1pk" path="res://scenes/levels/npc_spawner.tscn" id="4_7urdm"]
-[ext_resource type="PackedScene" uid="uid://y0x78wnou8oe" path="res://scenes/ui/upgrade_panel.tscn" id="4_vgifo"]
+[ext_resource type="PackedScene" path="res://scenes/ui/upgrade_panel.tscn" id="4_vgifo"]
 [ext_resource type="PackedScene" uid="uid://d2qsr4anwy4bv" path="res://scenes/levels/cosmetic_scenes/hospital.tscn" id="4_vussl"]
 [ext_resource type="PackedScene" uid="uid://bd26g7ujilatd" path="res://scenes/ui/HealthBar.tscn" id="5_wu0to"]
 [ext_resource type="PackedScene" uid="uid://xa300pmubomh" path="res://scenes/levels/cosmetic_scenes/hotel.tscn" id="6_75crw"]
