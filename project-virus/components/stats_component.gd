@@ -1,6 +1,9 @@
 extends Node
 class_name StatsComponent
 
+@export var damage_min: int = 15
+@export var damage_max: int = 20
+
 # Create the health variable and connect a setter
 @export var health: int = 5:
 	set(value):

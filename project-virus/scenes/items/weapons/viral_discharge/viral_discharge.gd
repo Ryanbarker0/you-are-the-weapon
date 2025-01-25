@@ -14,6 +14,7 @@ func apply_behaviour(projectile_spawner: ProjectileSpawner, projectile: Area2D, 
 	# Determine the direction based on player's velocity
 	var direction = player.velocity.normalized()
 	projectile.rotation = direction.angle()
+	projectile.projectile_lifetime = 5.0
 	
 
 	## This will handle multiple projectiles being spawned and cause them to spread

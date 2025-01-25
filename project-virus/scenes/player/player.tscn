@@ -58,11 +58,12 @@ script = ExtResource("3_44qx8")
 position = Vector2(0, -32)
 shape = SubResource("CircleShape2D_60e78")
 
-[node name="HurtboxComponent" type="Area2D" parent="."]
+[node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("damage_number_origin")]
 position = Vector2(0, 32)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("4_55g0b")
+damage_number_origin = NodePath("../DamageNumberOrigin")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 position = Vector2(0, -32)
@@ -70,6 +71,8 @@ shape = SubResource("CircleShape2D_aaupo")
 
 [node name="StatsComponent" type="Node" parent="."]
 script = ExtResource("5_22ljq")
+damage_min = 20
+damage_max = 30
 
 [node name="HurtComponent" type="Node" parent="." node_paths=PackedStringArray("stats_component", "hurtbox_component")]
 script = ExtResource("6_t5jnu")
@@ -80,3 +83,6 @@ hurtbox_component = NodePath("../HurtboxComponent")
 script = ExtResource("7_vn2i5")
 actor = NodePath("..")
 stats_component = NodePath("../StatsComponent")
+
+[node name="DamageNumberOrigin" type="Node2D" parent="."]
+position = Vector2(0, -32)

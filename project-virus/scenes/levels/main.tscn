@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://mvb3pdkma0m5" path="res://scenes/npcs/npc.tscn" id="2_55umx"]
 [ext_resource type="Resource" uid="uid://be0l7uoexqolr" path="res://scenes/levels/resources/game_stats.tres" id="2_ism7h"]
 [ext_resource type="PackedScene" uid="uid://dd1y1xuwpp3c6" path="res://scenes/ui/game_over.tscn" id="3_gbfek"]
-[ext_resource type="PackedScene" path="res://scenes/levels/Background.tscn" id="3_n3ory"]
+[ext_resource type="PackedScene" uid="uid://ciw63q6733ryo" path="res://scenes/levels/Background.tscn" id="3_n3ory"]
 [ext_resource type="PackedScene" uid="uid://bew6rb6ixfule" path="res://scenes/enemy/enemy.tscn" id="3_q0qlg"]
 [ext_resource type="PackedScene" uid="uid://cj8lfgcvkqall" path="res://scenes/ui/score_container.tscn" id="3_tgki3"]
 [ext_resource type="PackedScene" uid="uid://b3kjkrkfvx1pk" path="res://scenes/levels/npc_spawner.tscn" id="4_7urdm"]
