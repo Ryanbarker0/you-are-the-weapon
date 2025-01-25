@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2qsr4anwy4bv"]
 
-[ext_resource type="PackedScene" uid="uid://d00pf8rimd4u3" path="res://scenes/levels/scenary.tscn" id="1_vjp6g"]
-[ext_resource type="Texture2D" uid="uid://dae6xt2i3m8j6" path="res://scenes/levels/assets/individual_objects/buildings/hospital.png" id="2_w5hyq"]
+[ext_resource type="PackedScene" uid="uid://d00pf8rimd4u3" path="res://scenes/levels/Scenery.tscn" id="1_vjp6g"]
+[ext_resource type="Texture2D" uid="uid://cr6ywidqfrrxb" path="res://scenes/levels/assets/individual_objects/buildings/hospital.png" id="2_w5hyq"]
 
 [node name="Hospital" instance=ExtResource("1_vjp6g")]
 position = Vector2(1, 0)
