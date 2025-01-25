@@ -41,7 +41,7 @@ func on_no_health():
 	stressed_animation.hide()
 	stats_component.no_health.disconnect(on_no_health)
 	proximity_area.body_exited.disconnect(on_proximity_area_body_exited)
-	Transitioned.emit(self, "NpcInfected")
+	Transitioned.emit(self, "NpcDead")
 
 func on_proximity_area_body_exited(body:Node2D):
 	if body is Player:
