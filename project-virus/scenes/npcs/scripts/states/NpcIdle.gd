@@ -34,7 +34,7 @@ func randomize_wonder():
 func on_no_health():
 	stats_component.no_health.disconnect(on_no_health)
 	proximity_area.body_entered.disconnect(on_proximity_area_entered)
-	Transitioned.emit(self, "NpcInfected")
+	Transitioned.emit(self, "NpcDead")
 
 func on_proximity_area_entered(body:Node2D):
 	if body is Player:
