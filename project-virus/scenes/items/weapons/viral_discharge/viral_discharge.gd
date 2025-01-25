@@ -7,9 +7,6 @@ func initialise_behaviour(projectile_spawner: ProjectileSpawner, timer: Timer) -
 	return viral_discharge_scene
 
 func apply_behaviour(projectile_spawner: ProjectileSpawner, projectile: Area2D, delta: float):
-	print("Running applied behaviour")
-	# we need to spawn the project and give it movement based on the player's direction
-	# we can reference projectile_spawner.player to get the player's direction
 	var player: Player = projectile_spawner.get_parent()
 	player.get_tree().root.add_child(projectile)
 		
@@ -18,3 +15,26 @@ func apply_behaviour(projectile_spawner: ProjectileSpawner, projectile: Area2D, 
 	var direction = player.velocity.normalized()
 	projectile.rotation = direction.angle()
 	
+
+	## This will handle multiple projectiles being spawned and cause them to spread
+	
+	# var player: Player = projectile_spawner.get_parent()
+	
+	# # Determine the direction based on the player's velocity
+	# var base_direction = player.velocity.normalized()
+	# var base_angle = base_direction.angle()
+	
+	# # Define the spread angle (in radians)
+	# var spread_angle = deg_to_rad(15)  # 15 degrees between projectiles
+
+	# # Spawn three projectiles
+	# for i in range(-1, 2):  # -1, 0, 1 for left, center, right projectiles
+	# 	var new_projectile = projectile.duplicate() as Area2D
+	# 	player.get_tree().root.add_child(new_projectile)
+		
+	# 	new_projectile.global_position = player.global_position
+		
+	# 	# Adjust the angle for each projectile
+	# 	var angle_offset = i * spread_angle
+	# 	var final_angle = base_angle + angle_offset
+	# 	new_projectile.rotation = final_angle

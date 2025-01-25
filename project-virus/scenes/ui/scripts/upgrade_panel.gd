@@ -78,6 +78,15 @@ func _populate_upgrade_panels():
 	upgrade_2_label.text = weapon_2["name"]
 	upgrade_2_rich_text_label.text = "Damage: " + str(weapon_2["damage_min"]) + " - " + str(weapon_2["damage_max"])
 
+	var weapon_3 = weapon_data[2]
+	var weapon_3_texture_path = get_item_sprite_path(weapon_3["scene_ref"])
+	var weapon_3_scene_path = get_item_scene_path(weapon_3["scene_ref"])
+
+	upgrade_3_scene = load(weapon_3_scene_path)
+	upgrade_3_texture.texture = load(weapon_3_texture_path)
+	upgrade_3_label.text = weapon_3["name"]
+	upgrade_3_rich_text_label.text = "Damage: " + str(weapon_3["damage_min"]) + " - " + str(weapon_3["damage_max"])
+
 # Helpers
 func get_item_sprite_path(item_name: String):
 	return "res://scenes/items/weapons/" + item_name + "/" + item_name + "_sprite.png"
@@ -101,7 +110,6 @@ func on_selection_one_pressed():
 	complete_upgrade()
 
 func on_selection_two_pressed():
-	print("Selection 2 been selected")
 	var projectile_spawner = load("res://scenes/items/projectile_spawner.gd")
 	var viral_discharge_behaviour = load("res://scenes/items/weapons/viral_discharge/viral_discharge.gd")
 	var instance: ProjectileSpawner = projectile_spawner.new()
@@ -111,7 +119,12 @@ func on_selection_two_pressed():
 
 func on_selection_three_pressed():
 	print("Selection 3 been selected")
-	pass
+	var projectile_spawner = load("res://scenes/items/projectile_spawner.gd")
+	var noxious_spread_behaviour = load("res://scenes/items/weapons/noxious_spread/noxious_spread.gd")
+	var instance: ProjectileSpawner = projectile_spawner.new()
+	instance.behaviour_controller = noxious_spread_behaviour.new()
+	player.add_child(instance)
+	complete_upgrade()
 
 func read_json_file(file: String):
 	var json_as_text = FileAccess.get_file_as_string(file)

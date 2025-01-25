@@ -18,11 +18,12 @@
 		"type": "projectile"
 	},
 	{
-		"name": "Noxious Eruption",
-		"damage_min": 50,
-		"damage_max": 60,
-		"scene_ref": "",
-		"texture_ref": "",
-		"type": "persistent"
+		"name": "Noxious Spread",
+		"description": "A projectile that bursts from the virus and spreads out in all directions, dealing damage to enemies that it hits.",
+		"damage_min": 35,
+		"damage_max": 55,
+		"scene_ref": "noxious_spread",
+		"texture_ref": "noxious_spread_sprite.png",
+		"type": "projectile"
 	}
 ]
