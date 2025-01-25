@@ -1,14 +1,20 @@
-[gd_scene load_steps=36 format=3 uid="uid://bew6rb6ixfule"]
+[gd_scene load_steps=47 format=3 uid="uid://bew6rb6ixfule"]
 
 [ext_resource type="Script" path="res://scenes/enemy/scripts/enemy.gd" id="1_76442"]
-[ext_resource type="Texture2D" uid="uid://bnc55qtdekjwt" path="res://scenes/enemy/assets/ui/exclamation_mark.png" id="2_6fwkk"]
-[ext_resource type="Texture2D" uid="uid://b6gh6h3xpx43e" path="res://scenes/enemy/assets/doctor/doctor-1-idle.png" id="2_vq12d"]
-[ext_resource type="Texture2D" uid="uid://dx4gkgxlrjqh5" path="res://scenes/enemy/assets/doctor/doctor-1-run.png" id="3_j7wke"]
+[ext_resource type="Texture2D" uid="uid://drb81ddgdbvjh" path="res://scenes/enemy/assets/ui/exclamation_mark.png" id="2_6fwkk"]
+[ext_resource type="Texture2D" uid="uid://bhv4y6udf8qwk" path="res://scenes/enemy/assets/doctor/doctor-1-idle.png" id="2_vq12d"]
+[ext_resource type="Texture2D" uid="uid://8eebt5y3tluh" path="res://scenes/enemy/assets/doctor/doctor-1-run.png" id="3_j7wke"]
 [ext_resource type="Script" path="res://components/hitbox_component.gd" id="4_o6kv4"]
 [ext_resource type="Texture2D" uid="uid://sr02oujf4h8" path="res://scenes/npcs/assets/spore.png" id="4_x4487"]
 [ext_resource type="Script" path="res://scenes/enemy/scripts/states/EnemyIdle.gd" id="5_jk251"]
 [ext_resource type="Script" path="res://components/StateMachine.gd" id="5_v7ngr"]
 [ext_resource type="Script" path="res://scenes/enemy/scripts/states/EnemyChase.gd" id="6_kk1x5"]
+[ext_resource type="Script" path="res://components/hurtbox_component.gd" id="10_r4fin"]
+[ext_resource type="Script" path="res://components/stats_component.gd" id="11_qr216"]
+[ext_resource type="Script" path="res://scenes/enemy/scripts/states/EnemyDied.gd" id="11_y3pmf"]
+[ext_resource type="Script" path="res://components/hurt_component.gd" id="12_t815d"]
+[ext_resource type="Script" path="res://components/flash_component.gd" id="13_qy6xi"]
+[ext_resource type="PackedScene" uid="uid://c5wyv2newkk3j" path="res://components/health_bar.tscn" id="15_lqnvb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8mfgt"]
 atlas = ExtResource("2_6fwkk")
@@ -202,8 +208,101 @@ radius = 14.0
 radius = 20.0
 height = 70.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wcu26"]
+radius = 24.0
+height = 70.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_8des0"]
 radius = 354.203
+
+[sub_resource type="Curve" id="Curve_8755n"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_6j1d1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_oemnf"]
+resource_name = "rotate_and_explode"
+length = 1.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.22173]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.766667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.733333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_escfe"]
+_data = {
+"RESET": SubResource("Animation_6j1d1"),
+"rotate_and_explode": SubResource("Animation_oemnf")
+}
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 16
@@ -250,6 +349,16 @@ script = ExtResource("4_o6kv4")
 position = Vector2(0, -35)
 shape = SubResource("CapsuleShape2D_6bf45")
 
+[node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("damage_number_origin")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("10_r4fin")
+damage_number_origin = NodePath("../DamageNumberOrigin")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, -40)
+shape = SubResource("CapsuleShape2D_wcu26")
+
 [node name="ProximityArea" type="Area2D" parent="."]
 visible = false
 collision_layer = 0
@@ -263,15 +372,73 @@ shape = SubResource("CircleShape2D_8des0")
 script = ExtResource("5_v7ngr")
 initial_state = NodePath("EnemyIdle")
 
-[node name="EnemyIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "proximity_area")]
+[node name="EnemyIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "proximity_area", "stats_component")]
 script = ExtResource("5_jk251")
 enemy = NodePath("../..")
 move_speed = 80.0
 proximity_area = NodePath("../../ProximityArea")
+stats_component = NodePath("../../StatsComponent")
 
-[node name="EnemyChase" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "proximity_area", "alert_spirte")]
+[node name="EnemyChase" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "proximity_area", "alert_spirte", "stats_component")]
 script = ExtResource("6_kk1x5")
 enemy = NodePath("../..")
-move_speed = 100.0
+move_speed = 150.0
 proximity_area = NodePath("../../ProximityArea")
 alert_spirte = NodePath("../../AlertSprite")
+stats_component = NodePath("../../StatsComponent")
+
+[node name="EnemyDied" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "hitbox_component", "hurtbox_component", "death_animation")]
+script = ExtResource("11_y3pmf")
+enemy = NodePath("../..")
+hitbox_component = NodePath("../../HitboxComponent")
+hurtbox_component = NodePath("../../HurtboxComponent")
+death_animation = NodePath("../../DeathAnimationPlayer")
+
+[node name="StatsComponent" type="Node" parent="."]
+script = ExtResource("11_qr216")
+health = 1000
+
+[node name="HurtComponent" type="Node" parent="." node_paths=PackedStringArray("stats_component", "hurtbox_component")]
+script = ExtResource("12_t815d")
+stats_component = NodePath("../StatsComponent")
+hurtbox_component = NodePath("../HurtboxComponent")
+
+[node name="FlashComponent" type="Node" parent="." node_paths=PackedStringArray("sprite", "hurtbox_component")]
+script = ExtResource("13_qy6xi")
+sprite = NodePath("../AnimatedSprite2D")
+hurtbox_component = NodePath("../HurtboxComponent")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, -30)
+emitting = false
+amount = 100
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("4_x4487")
+emission_shape = 1
+emission_sphere_radius = 10.0
+direction = Vector2(2, 2)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 150.0
+initial_velocity_max = 170.0
+scale_amount_min = 0.03
+scale_amount_max = 0.03
+scale_amount_curve = SubResource("Curve_8755n")
+
+[node name="DeathAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_escfe")
+}
+
+[node name="DamageNumberOrigin" type="Node2D" parent="."]
+position = Vector2(0, -71)
+
+[node name="HealthBar" parent="." node_paths=PackedStringArray("stats_component") instance=ExtResource("15_lqnvb")]
+offset_left = -20.0
+offset_top = -79.0
+offset_right = 20.0
+offset_bottom = -39.0
+scale = Vector2(1, 0.1)
+stats_component = NodePath("../StatsComponent")

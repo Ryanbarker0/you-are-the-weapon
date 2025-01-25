@@ -4,12 +4,14 @@ class_name EnemyIdle
 @export var enemy: CharacterBody2D
 @export var move_speed: float = 50.0
 @export var proximity_area: Area2D
+@export var stats_component: StatsComponent
 
 var move_direction: Vector2
 var wonder_time: float
 
 func Enter():
 	# Subscribe to infection area signal
+	stats_component.no_health.connect(on_no_health)
 	proximity_area.body_entered.connect(on_proximity_area_body_entered)
 	randomize_wonder()
 
@@ -31,6 +33,12 @@ func randomize_wonder():
 # Signals
 func on_proximity_area_body_entered(body:Node2D):
 	if body is Player:
-		Transitioned.emit(self, "EnemyChase")
+		stats_component.no_health.disconnect(on_no_health)
 		proximity_area.body_entered.disconnect(on_proximity_area_body_entered)
-		# The NPC is fleeing, so we no longer need to listen to the proximity area signal
+		Transitioned.emit(self, "EnemyChase")
+		
+
+func on_no_health():
+	# stats_component.no_health.disconnect(on_no_health)
+	# proximity_area.body_entered.disconnect(on_proximity_area_body_entered)
+	Transitioned.emit(self, "EnemyDied")

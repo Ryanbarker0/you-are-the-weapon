@@ -31,7 +31,7 @@ anim_speed_min = 1.0
 anim_speed_max = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2g2tw"]
-radius = 15.0
+radius = 20.025
 
 [node name="UpgradeItem" type="Area2D"]
 collision_layer = 0
@@ -53,7 +53,6 @@ texture = ExtResource("1_x24h1")
 script = ExtResource("4_3s6hm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_2g2tw")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

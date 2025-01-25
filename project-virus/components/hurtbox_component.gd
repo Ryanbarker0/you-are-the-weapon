@@ -1,6 +1,8 @@
 extends Area2D
 class_name HurtboxComponent
 
+@export var damage_number_origin: Node2D
+
 # Create the is_invincible boolean
 var is_invincible = false :
 	# Here we create an inline setter so we can disable and enable collision shapes on
@@ -17,3 +19,10 @@ var is_invincible = false :
 
 # Create a signal for when this hurtbox is hit by a hitbox
 signal hurt(hitbox)
+
+func _ready():
+	hurt.connect(display_damage_numbers)
+
+func display_damage_numbers(hitbox: HitboxComponent):
+	print("Hurt! Damage: ", hitbox.damage)
+	DamageNumbers.display_number(hitbox.damage, damage_number_origin.global_position)

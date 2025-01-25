@@ -6,7 +6,11 @@ class_name Player
 var upgrades: Array[BasePlayerUpgrade] = []
 var total_rotating_projectiles: Array[PersistentProjectile]	= []
 @onready var current_upgrade_amount: int = 0
+@onready var hitbox_component: HitboxComponent = $HitboxComponent
 
+func _process(_delta):
+	var damage = randi_range(stats_component.damage_min, stats_component.damage_max)
+	hitbox_component.damage = damage
 
 func _physics_process(_delta):
 	# Get the input direction and handle the movement.

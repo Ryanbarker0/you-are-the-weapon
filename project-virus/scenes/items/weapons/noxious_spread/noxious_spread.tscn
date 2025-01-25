@@ -38,6 +38,8 @@ color_ramp = SubResource("GradientTexture1D_yll8c")
 radius = 17.0294
 
 [node name="NoxiousSpread" instance=ExtResource("1_sm2ja")]
+damage_min = 35
+damage_max = 55
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." index="0"]
 amount = 100

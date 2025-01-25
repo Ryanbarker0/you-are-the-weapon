@@ -9,6 +9,7 @@ class_name NpcInfected
 @export var score_component: ScoreComponent
 @export var hurtbox_component: HurtboxComponent
 @export var flash_component: FlashComponent
+@export var health_bar: TextureProgressBar
 
 const INFECTED_MATERIAL = preload("res://scenes/npcs/shaders/infected_material.tres")
 
@@ -26,6 +27,7 @@ func randomize_audio_interval():
 	##audio_stream.play()
 
 func Enter():
+	health_bar.hide()
 	hurtbox_component.queue_free()
 	flash_component.free()
 	score_component.adjust_score(1)

@@ -4,6 +4,7 @@ class_name NpcDead
 @export var npc: CharacterBody2D
 @export var move_speed: float = 0.0
 @export var death_animation: AnimationPlayer
+@export var drop_rate_percent: int = 25
 
 var upgrade_item: PackedScene = preload("res://scenes/items/upgrade_item.tscn")
 
@@ -19,8 +20,9 @@ func Physics_Update(_delta: float):
 		npc.velocity = move_direction * move_speed
 
 func _on_animation_finished(_name):
-	## add upgrade item to parent scene
-	var upgrade_item_instance = upgrade_item.instantiate()
-	upgrade_item_instance.global_position = npc.global_position
-	npc.get_parent().get_parent().add_child(upgrade_item_instance)
+	## spawn items based on drop rate
+	if randi() % 100 < drop_rate_percent:
+		var upgrade_item_instance = upgrade_item.instantiate()
+		upgrade_item_instance.global_position = npc.global_position
+		npc.get_parent().get_parent().add_child(upgrade_item_instance)
 	npc.queue_free()
