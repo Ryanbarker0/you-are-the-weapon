@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://mvb3pdkma0m5"]
+[gd_scene load_steps=49 format=3 uid="uid://mvb3pdkma0m5"]
 
 [ext_resource type="Script" path="res://scenes/enemy/scripts/enemy.gd" id="1_1o1c0"]
 [ext_resource type="Texture2D" uid="uid://bv5c4f4s56380" path="res://scenes/npcs/assets/yellow_exclamation_mark.png" id="2_k5oxs"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://components/hurt_component.gd" id="15_qcq21"]
 [ext_resource type="Script" path="res://components/stats_component.gd" id="16_stpxt"]
 [ext_resource type="Script" path="res://components/flash_component.gd" id="17_i18vk"]
+[ext_resource type="PackedScene" uid="uid://c5wyv2newkk3j" path="res://components/health_bar.tscn" id="18_4nmkq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0u2cs"]
 atlas = ExtResource("2_k5oxs")
@@ -300,12 +301,12 @@ _data = {
 radius = 11.0
 height = 34.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8des0"]
-radius = 354.203
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_887bq"]
 radius = 23.0
 height = 78.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8des0"]
+radius = 354.203
 
 [sub_resource type="Curve" id="Curve_wkthv"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -352,6 +353,16 @@ position = Vector2(0, -9)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_onduq")
 
+[node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("damage_number_origin")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("9_610wu")
+damage_number_origin = NodePath("../DamageNumberOrigin")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, -35)
+shape = SubResource("CapsuleShape2D_887bq")
+
 [node name="ProximityArea" type="Area2D" parent="."]
 visible = false
 collision_layer = 0
@@ -365,7 +376,7 @@ shape = SubResource("CircleShape2D_8des0")
 script = ExtResource("4_gqbhl")
 initial_state = NodePath("NpcIdle")
 
-[node name="NpcInfected" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc_sprite", "npc", "audio_stream", "deathtime", "score_component", "hurtbox_component", "flash_component")]
+[node name="NpcInfected" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc_sprite", "npc", "audio_stream", "deathtime", "score_component", "hurtbox_component", "flash_component", "health_bar")]
 script = ExtResource("7_8x3w8")
 npc_sprite = NodePath("../../AnimatedSprite2D")
 npc = NodePath("../..")
@@ -374,6 +385,7 @@ deathtime = NodePath("../../DeadTime")
 score_component = NodePath("../../ScoreComponent")
 hurtbox_component = NodePath("../../HurtboxComponent")
 flash_component = NodePath("../../FlashComponent")
+health_bar = NodePath("../../HealthBar")
 
 [node name="NpcIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc", "stats_component", "proximity_area")]
 script = ExtResource("5_s4y23")
@@ -406,16 +418,6 @@ adjust_amount = 1
 [node name="DeadTime" type="Timer" parent="."]
 wait_time = 6.0
 one_shot = true
-
-[node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("damage_number_origin")]
-collision_layer = 4
-collision_mask = 0
-script = ExtResource("9_610wu")
-damage_number_origin = NodePath("../DamageNumberOrigin")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
-position = Vector2(0, -35)
-shape = SubResource("CapsuleShape2D_887bq")
 
 [node name="HurtComponent" type="Node" parent="." node_paths=PackedStringArray("stats_component", "hurtbox_component")]
 script = ExtResource("15_qcq21")
@@ -453,5 +455,13 @@ scale_amount_curve = SubResource("Curve_wkthv")
 
 [node name="DamageNumberOrigin" type="Node2D" parent="."]
 position = Vector2(0, -71)
+
+[node name="HealthBar" parent="." node_paths=PackedStringArray("stats_component") instance=ExtResource("18_4nmkq")]
+offset_left = -20.0
+offset_top = -79.0
+offset_right = 20.0
+offset_bottom = -39.0
+scale = Vector2(1, 0.1)
+stats_component = NodePath("../StatsComponent")
 
 [connection signal="timeout" from="DeadTime" to="StateMachine/NpcInfected" method="_on_dead_time_timeout"]
