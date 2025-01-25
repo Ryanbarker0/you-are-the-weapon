@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 ScreenEffects="*res://scenes/ui/screen_effects.tscn"
 Globals="*res://globals.gd"
 DamageNumbers="*res://components/damage_numbers.gd"
+Options="*res://scenes/ui/scripts/options.gd"
 
 [debug]
 

@@ -71,8 +71,8 @@ shape = SubResource("CircleShape2D_aaupo")
 
 [node name="StatsComponent" type="Node" parent="."]
 script = ExtResource("5_22ljq")
-damage_min = 20
-damage_max = 30
+damage_min = 80
+damage_max = 100
 
 [node name="HurtComponent" type="Node" parent="." node_paths=PackedStringArray("stats_component", "hurtbox_component")]
 script = ExtResource("6_t5jnu")

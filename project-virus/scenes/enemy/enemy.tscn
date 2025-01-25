@@ -308,6 +308,7 @@ _data = {
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 16
+collision_mask = 17
 script = ExtResource("1_76442")
 
 [node name="AlertSprite" type="AnimatedSprite2D" parent="."]
@@ -337,7 +338,6 @@ scale_amount_max = 0.02
 color_ramp = SubResource("Gradient_jem2y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -11)
 shape = SubResource("CircleShape2D_r4w0q")
 
