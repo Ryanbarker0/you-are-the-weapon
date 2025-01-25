@@ -1,6 +1,7 @@
 [
 	{
 		"name": "Contagion's Orbit",
+		"description": "A swirling mass of contagion that orbits the player, dealing damage to enemies that come too close.",
 		"damage_min": 50,
 		"damage_max": 60,
 		"scene_ref": "contagions_orbit",
@@ -9,18 +10,20 @@
 	},
 	{
 		"name": "Viral Discharge",
-		"damage_min": 50,
-		"damage_max": 60,
-		"scene_ref": "",
-		"texture_ref": "",
-		"type": "persistent"
+		"description": "A projectile that fires at will, dealing damage to enemies that it hits.",
+		"damage_min": 80,
+		"damage_max": 120,
+		"scene_ref": "viral_discharge",
+		"texture_ref": "virald_discharge_sprite.png",
+		"type": "projectile"
 	},
 	{
-		"name": "Noxious Eruption",
-		"damage_min": 50,
-		"damage_max": 60,
-		"scene_ref": "",
-		"texture_ref": "",
-		"type": "persistent"
+		"name": "Noxious Spread",
+		"description": "A projectile that bursts from the virus and spreads out in all directions, dealing damage to enemies that it hits.",
+		"damage_min": 35,
+		"damage_max": 55,
+		"scene_ref": "noxious_spread",
+		"texture_ref": "noxious_spread_sprite.png",
+		"type": "projectile"
 	}
 ]

@@ -1,19 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://bu0mm7ib57nck"]
+[gd_scene load_steps=4 format=3 uid="uid://bu0mm7ib57nck"]
 
 [ext_resource type="Script" path="res://components/hitbox_component.gd" id="1_3wrhx"]
+[ext_resource type="Script" path="res://scenes/items/scripts/projectile.gd" id="1_ncgpt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6jwh5"]
 radius = 16.0
 
-[node name="PersistentProjectile" type="Area2D"]
+[node name="Projectile" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_ncgpt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
 position = Vector2(2, -1)
 color = Color(0.696162, 0.000367334, 0.696568, 1)
-polygon = PackedVector2Array(-19, 3, -2, 20, 15, 2, 1, -17)
+polygon = PackedVector2Array(-14, 11, -14, 5, -7, 5, -7, -5, -6, -11, -2, -14, 1, -13, 3, -11, 3, 4, 9, 4, 9, 11, 3, 11, 0, 8, -3, 8, -6, 11)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6jwh5")
 
 [node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
 script = ExtResource("1_3wrhx")

@@ -15,7 +15,6 @@ func _ready() -> void:
 	stats_component.no_health.connect(destroy)
 
 func destroy() -> void:
-	print("Oh dear, You Are Dead!")
 	# create an effect (from the spawner component) and free the actor
 	# destroy_effect_spawner_component.spawn(actor.global_position)
 	actor.queue_free()

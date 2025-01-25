@@ -5,7 +5,7 @@ class_name NpcDead
 @export var move_speed: float = 0.0
 @export var death_animation: AnimationPlayer
 
-var upgrade_item: PackedScene = preload("res://scenes/levels/upgrade_item.tscn")
+var upgrade_item: PackedScene = preload("res://scenes/items/upgrade_item.tscn")
 
 var move_direction: Vector2
 var wonder_time: float
