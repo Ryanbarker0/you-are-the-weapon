@@ -7,7 +7,6 @@
 [ext_resource type="Resource" uid="uid://be0l7uoexqolr" path="res://scenes/levels/resources/game_stats.tres" id="3_0dt2u"]
 [ext_resource type="Theme" uid="uid://bc8n00ertwfok" path="res://scenes/ui/themes/button.tres" id="4_0bcll"]
 
-
 [sub_resource type="LabelSettings" id="LabelSettings_684i0"]
 font = ExtResource("1_clp7c")
 font_size = 20
