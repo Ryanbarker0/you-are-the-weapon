@@ -81,12 +81,14 @@ position = Vector2(917, 256)
 [node name="NpcSpawner" parent="ySort" instance=ExtResource("4_7urdm")]
 
 [node name="LevelMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("15_liitr")
 autoplay = true
 bus = &"Music"
 
 [node name="GameOver" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_2yjua")
+bus = &"Music"
 
 [node name="Items" parent="." instance=ExtResource("15_866qc")]
 position = Vector2(-54, 293)
