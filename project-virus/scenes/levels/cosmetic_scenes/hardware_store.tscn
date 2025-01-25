@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://c52k2o0ijaidp"]
 
-[ext_resource type="PackedScene" uid="uid://d00pf8rimd4u3" path="res://scenes/levels/scenary.tscn" id="1_0v1yb"]
-[ext_resource type="Texture2D" uid="uid://c51ryisvxoui1" path="res://scenes/levels/assets/individual_objects/buildings/hardware_store.png" id="2_cnapd"]
+[ext_resource type="PackedScene" uid="uid://d00pf8rimd4u3" path="res://scenes/levels/Scenery.tscn" id="1_0v1yb"]
+[ext_resource type="Texture2D" uid="uid://dmfc6x3px77l3" path="res://scenes/levels/assets/individual_objects/buildings/hardware_store.png" id="2_cnapd"]
+
 
 [node name="Scenery" instance=ExtResource("1_0v1yb")]
 

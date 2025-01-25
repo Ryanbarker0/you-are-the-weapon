@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://bcl5wgju2kwb7"]
+[gd_scene load_steps=18 format=3 uid="uid://bcl5wgju2kwb7"]
 
 [ext_resource type="Script" path="res://scenes/levels/scripts/main.gd" id="1_iqtew"]
 [ext_resource type="PackedScene" uid="uid://ce2x2iwrnea4c" path="res://scenes/player/player.tscn" id="1_jsecc"]
 [ext_resource type="PackedScene" uid="uid://mvb3pdkma0m5" path="res://scenes/npcs/npc.tscn" id="2_55umx"]
 [ext_resource type="Resource" uid="uid://be0l7uoexqolr" path="res://scenes/levels/resources/game_stats.tres" id="2_ism7h"]
 [ext_resource type="PackedScene" uid="uid://dd1y1xuwpp3c6" path="res://scenes/ui/game_over.tscn" id="3_gbfek"]
+[ext_resource type="PackedScene" uid="uid://ciw63q6733ryo" path="res://scenes/levels/Background.tscn" id="3_n3ory"]
 [ext_resource type="PackedScene" uid="uid://bew6rb6ixfule" path="res://scenes/enemy/enemy.tscn" id="3_q0qlg"]
 [ext_resource type="PackedScene" uid="uid://cj8lfgcvkqall" path="res://scenes/ui/score_container.tscn" id="3_tgki3"]
 [ext_resource type="PackedScene" uid="uid://b3kjkrkfvx1pk" path="res://scenes/levels/npc_spawner.tscn" id="4_7urdm"]
@@ -13,8 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://bd26g7ujilatd" path="res://scenes/ui/HealthBar.tscn" id="5_wu0to"]
 [ext_resource type="PackedScene" uid="uid://xa300pmubomh" path="res://scenes/levels/cosmetic_scenes/hotel.tscn" id="6_75crw"]
 [ext_resource type="PackedScene" uid="uid://c52k2o0ijaidp" path="res://scenes/levels/cosmetic_scenes/hardware_store.tscn" id="7_56xv6"]
-[ext_resource type="AudioStream" uid="uid://c2lha4q03pf3i" path="res://scenes/sounds/soundtrack/Cookedmusic.wav" id="13_vli7l"]
-[ext_resource type="AudioStream" uid="uid://rsvbgqikl0l6" path="res://scenes/sounds/soundtrack/Gameover.wav" id="14_2yjua"]
+[ext_resource type="AudioStream" uid="uid://c1e34atrof286" path="res://scenes/sounds/soundtrack/Cookedmusic.wav" id="13_vli7l"]
+[ext_resource type="AudioStream" uid="uid://baw5g27jf838m" path="res://scenes/sounds/soundtrack/Gameover.wav" id="14_2yjua"]
 [ext_resource type="PackedScene" uid="uid://cx4wifhuc5akl" path="res://scenes/levels/stat_items.tscn" id="15_866qc"]
 [ext_resource type="PackedScene" uid="uid://byum7y2wtuap4" path="res://scenes/levels/debug/get_spinning_weapon.tscn" id="16_4bwd4"]
 [ext_resource type="PackedScene" uid="uid://385gy14wby1l" path="res://scenes/levels/upgrade_item.tscn" id="18_2g2yu"]
@@ -23,6 +24,8 @@
 script = ExtResource("1_iqtew")
 game_stats = ExtResource("2_ism7h")
 player = NodePath("ySort/Player")
+
+[node name="Node2D" parent="." instance=ExtResource("3_n3ory")]
 
 [node name="Menus" type="CanvasLayer" parent="."]
 
@@ -55,14 +58,14 @@ y_sort_enabled = true
 y_sort_enabled = true
 
 [node name="Hospital" parent="ySort/Scenary" instance=ExtResource("4_vussl")]
-position = Vector2(1349, -498)
+position = Vector2(1807, -1977)
 collision_mask = 1
 
 [node name="Hotel" parent="ySort/Scenary" instance=ExtResource("6_75crw")]
-position = Vector2(158, -600)
+position = Vector2(497, -1888)
 
 [node name="HardwareStore" parent="ySort/Scenary" instance=ExtResource("7_56xv6")]
-position = Vector2(-531, -419)
+position = Vector2(-387, -1695)
 
 [node name="Player" parent="ySort" instance=ExtResource("1_jsecc")]
 position = Vector2(335, 404)
