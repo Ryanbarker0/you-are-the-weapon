@@ -252,7 +252,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_oemnf"]
 resource_name = "rotate_and_explode"
-length = 3.0
+length = 1.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

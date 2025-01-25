@@ -6,11 +6,13 @@ class_name PersistentProjectile
 var upgrades: Array[BasePersistentProjectileUpgrade] = []
 @onready var current_upgrade_amount: int = 0
 @onready var parent: Node2D = get_parent()
+@onready var total_rotating_projectiles: Array[PersistentProjectile] = parent.total_rotating_projectiles
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	behaviour_controller.initialise_behaviour(self)
+	total_rotating_projectiles.append(self)
+	behaviour_controller.initialise_behaviour(self, total_rotating_projectiles)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):

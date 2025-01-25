@@ -22,6 +22,7 @@ extends Node2D
 
 # Menu elements
 @onready var game_over_screen: Control = $Menus/GameOver
+@onready var upgrade_panel: Control = $Menus/UpgradePanel
 
 func _ready():
 	animation_player.play("fade_out")
@@ -77,5 +78,3 @@ func on_player_destroyed(_actor: Node2D) -> void:
 	# Create a tween for the fade-in effect
 	var tween = get_tree().create_tween()
 	tween.tween_property(game_over_screen, "modulate", Color(1, 1, 1, 1), 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-
-	

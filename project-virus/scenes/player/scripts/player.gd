@@ -4,6 +4,7 @@ class_name Player
 @export var stats_component: StatsComponent
 
 var upgrades: Array[BasePlayerUpgrade] = []
+var total_rotating_projectiles: Array[PersistentProjectile]	= []
 @onready var current_upgrade_amount: int = 0
 
 

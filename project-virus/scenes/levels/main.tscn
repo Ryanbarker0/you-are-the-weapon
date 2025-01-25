@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bew6rb6ixfule" path="res://scenes/enemy/enemy.tscn" id="3_q0qlg"]
 [ext_resource type="PackedScene" uid="uid://cj8lfgcvkqall" path="res://scenes/ui/score_container.tscn" id="3_tgki3"]
 [ext_resource type="PackedScene" uid="uid://b3kjkrkfvx1pk" path="res://scenes/levels/npc_spawner.tscn" id="4_7urdm"]
+[ext_resource type="PackedScene" uid="uid://y0x78wnou8oe" path="res://scenes/ui/upgrade_panel.tscn" id="4_vgifo"]
 [ext_resource type="PackedScene" uid="uid://d2qsr4anwy4bv" path="res://scenes/levels/cosmetic_scenes/hospital.tscn" id="4_vussl"]
 [ext_resource type="PackedScene" uid="uid://bd26g7ujilatd" path="res://scenes/ui/HealthBar.tscn" id="5_wu0to"]
 [ext_resource type="PackedScene" uid="uid://xa300pmubomh" path="res://scenes/levels/cosmetic_scenes/hotel.tscn" id="6_75crw"]
@@ -17,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://baw5g27jf838m" path="res://scenes/sounds/soundtrack/Gameover.wav" id="14_2yjua"]
 [ext_resource type="PackedScene" uid="uid://cx4wifhuc5akl" path="res://scenes/levels/stat_items.tscn" id="15_866qc"]
 [ext_resource type="PackedScene" uid="uid://byum7y2wtuap4" path="res://scenes/levels/debug/get_spinning_weapon.tscn" id="16_4bwd4"]
+[ext_resource type="PackedScene" uid="uid://385gy14wby1l" path="res://scenes/levels/upgrade_item.tscn" id="18_2g2yu"]
 
 [node name="main" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_iqtew")
@@ -28,6 +30,10 @@ player = NodePath("ySort/Player")
 [node name="Menus" type="CanvasLayer" parent="."]
 
 [node name="GameOver" parent="Menus" instance=ExtResource("3_gbfek")]
+visible = false
+
+[node name="UpgradePanel" parent="Menus" instance=ExtResource("4_vgifo")]
+process_mode = 3
 visible = false
 
 [node name="HUD" type="CanvasLayer" parent="."]
@@ -100,3 +106,6 @@ offset_top = 250.0
 offset_right = 388.0
 offset_bottom = 281.0
 text = "Click For Weapon"
+
+[node name="UpgradeItem" parent="." instance=ExtResource("18_2g2yu")]
+position = Vector2(618, 345)
