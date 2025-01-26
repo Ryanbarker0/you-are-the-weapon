@@ -1,11 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://cjxsrh2cvgrc8"]
+[gd_scene load_steps=24 format=3 uid="uid://cjxsrh2cvgrc8"]
 
 [ext_resource type="PackedScene" uid="uid://bu0mm7ib57nck" path="res://scenes/levels/projectile.tscn" id="1_0m8r7"]
 [ext_resource type="Texture2D" uid="uid://c0iof3j8rndhf" path="res://addons/kenney_particle_pack/rotated/dirt_01.png" id="3_ghupy"]
-[ext_resource type="Texture2D" uid="uid://of1ickwnfr73" path="res://scenes/items/weapons/viral_discharge/viral_discharge_sprite.png" id="3_qln3b"]
 [ext_resource type="Script" path="res://scenes/items/weapons/viral_discharge/sprite_2d.gd" id="5_nlygy"]
 [ext_resource type="Script" path="res://scenes/items/weapons/viral_discharge/animate_and_destroy.gd" id="6_3hcp5"]
 [ext_resource type="Texture2D" uid="uid://bhdtm1ceu65xv" path="res://scenes/items/weapons/viral_discharge/scorch_01-sheet.png" id="7_r7gwx"]
+[ext_resource type="Texture2D" uid="uid://bn3wed1endlt7" path="res://scenes/items/weapons/viral_discharge/scorch_01_short.png" id="7_truq7"]
 
 [sub_resource type="Gradient" id="Gradient_4uojk"]
 offsets = PackedFloat32Array(0, 0.56962, 1)
@@ -43,7 +43,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/path = NodePath("TrailParticles:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -55,26 +55,26 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TrailParticles:emitting")
+tracks/1/path = NodePath("ExpodeParticles:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("ExpodeParticles:emitting")
+tracks/2/path = NodePath("GPUParticles2D:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_y7pps"]
@@ -83,7 +83,7 @@ length = 1.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/path = NodePath("TrailParticles:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -95,26 +95,26 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TrailParticles:emitting")
+tracks/1/path = NodePath("ExpodeParticles:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.0333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, false]
+"values": [false, true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("ExpodeParticles:emitting")
+tracks/2/path = NodePath("GPUParticles2D:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.0333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, true]
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u8mk2"]
@@ -131,8 +131,8 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="Gradient" id="Gradient_xnepo"]
-offsets = PackedFloat32Array(0.0253165, 0.71519, 0.993671)
-colors = PackedColorArray(0.0156863, 0.0470588, 0.0235294, 1, 0.537255, 0.635294, 0.341176, 1, 0.537255, 0.635294, 0.341176, 0)
+offsets = PackedFloat32Array(0.0253165, 0.35443, 0.71519, 0.993671)
+colors = PackedColorArray(0.298039, 0.345098, 0.494118, 1, 0.737255, 0.552941, 1, 1, 0.988235, 0.607843, 0.827451, 1, 0.537255, 0.635294, 0.341176, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_f20dp"]
 gradient = SubResource("Gradient_xnepo")
@@ -146,9 +146,37 @@ initial_velocity_max = 20.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.1
 scale_max = 0.1
+color = Color(0.737255, 0.552941, 1, 1)
 color_ramp = SubResource("GradientTexture1D_f20dp")
 anim_speed_min = 5.0
 anim_speed_max = 5.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f5j13"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_1ljp7"]
+offsets = PackedFloat32Array(0, 0.170886, 0.822785, 1)
+colors = PackedColorArray(0.537255, 0.466667, 0.788235, 1, 0.737255, 0.552941, 1, 1, 0.988235, 0.607843, 0.827451, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gu178"]
+gradient = SubResource("Gradient_1ljp7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_40lnv"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 10.0
+angular_velocity_min = 50.0
+angular_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 0.2
+color = Color(0.537255, 0.466667, 0.788235, 1)
+color_ramp = SubResource("GradientTexture1D_gu178")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
 
 [node name="ViralDischarge" instance=ExtResource("1_0m8r7")]
 collision_mask = 0
@@ -156,13 +184,13 @@ damage_min = 80
 damage_max = 120
 
 [node name="TrailParticles" type="GPUParticles2D" parent="." index="0"]
+visible = false
 amount = 100
 process_material = SubResource("ParticleProcessMaterial_b6srg")
 texture = ExtResource("3_ghupy")
 
 [node name="Sprite2D" parent="." index="1"]
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_qln3b")
 script = ExtResource("5_nlygy")
 
 [node name="HitboxComponent" parent="." index="4"]
@@ -187,3 +215,11 @@ process_material = SubResource("ParticleProcessMaterial_sw45j")
 texture = ExtResource("7_r7gwx")
 one_shot = true
 explosiveness = 1.0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="8"]
+material = SubResource("CanvasItemMaterial_f5j13")
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_40lnv")
+texture = ExtResource("7_truq7")
+lifetime = 0.1
+explosiveness = 0.2

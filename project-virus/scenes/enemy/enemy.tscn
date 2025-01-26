@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bew6rb6ixfule"]
+[gd_scene load_steps=49 format=3 uid="uid://bew6rb6ixfule"]
 
 [ext_resource type="Script" path="res://scenes/enemy/scripts/enemy.gd" id="1_76442"]
 [ext_resource type="Texture2D" uid="uid://drb81ddgdbvjh" path="res://scenes/enemy/assets/ui/exclamation_mark.png" id="2_6fwkk"]
@@ -15,6 +15,8 @@
 [ext_resource type="Script" path="res://components/hurt_component.gd" id="12_t815d"]
 [ext_resource type="Script" path="res://components/flash_component.gd" id="13_qy6xi"]
 [ext_resource type="PackedScene" uid="uid://c5wyv2newkk3j" path="res://components/health_bar.tscn" id="15_lqnvb"]
+[ext_resource type="Script" path="res://components/score_component.gd" id="16_2bxir"]
+[ext_resource type="Resource" uid="uid://be0l7uoexqolr" path="res://scenes/levels/resources/game_stats.tres" id="17_15w8x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8mfgt"]
 atlas = ExtResource("2_6fwkk")
@@ -213,7 +215,7 @@ radius = 24.0
 height = 70.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8des0"]
-radius = 354.203
+radius = 1019.01
 
 [sub_resource type="Curve" id="Curve_8755n"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -306,6 +308,7 @@ _data = {
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 16
+collision_mask = 17
 script = ExtResource("1_76442")
 
 [node name="AlertSprite" type="AnimatedSprite2D" parent="."]
@@ -335,7 +338,6 @@ scale_amount_max = 0.02
 color_ramp = SubResource("Gradient_jem2y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -11)
 shape = SubResource("CircleShape2D_r4w0q")
 
@@ -360,7 +362,6 @@ position = Vector2(0, -40)
 shape = SubResource("CapsuleShape2D_wcu26")
 
 [node name="ProximityArea" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 8
 
@@ -387,12 +388,15 @@ proximity_area = NodePath("../../ProximityArea")
 alert_spirte = NodePath("../../AlertSprite")
 stats_component = NodePath("../../StatsComponent")
 
-[node name="EnemyDied" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "hitbox_component", "hurtbox_component", "death_animation")]
+[node name="EnemyDied" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "hitbox_component", "hurtbox_component", "death_animation", "health_bar", "score_component")]
 script = ExtResource("11_y3pmf")
 enemy = NodePath("../..")
 hitbox_component = NodePath("../../HitboxComponent")
 hurtbox_component = NodePath("../../HurtboxComponent")
 death_animation = NodePath("../../DeathAnimationPlayer")
+health_bar = NodePath("../../HealthBar")
+drop_rate_percent = 40
+score_component = NodePath("../../ScoreComponent")
 
 [node name="StatsComponent" type="Node" parent="."]
 script = ExtResource("11_qr216")
@@ -442,3 +446,8 @@ offset_right = 20.0
 offset_bottom = -39.0
 scale = Vector2(1, 0.1)
 stats_component = NodePath("../StatsComponent")
+
+[node name="ScoreComponent" type="Node" parent="."]
+script = ExtResource("16_2bxir")
+game_stats = ExtResource("17_15w8x")
+adjust_amount = 1

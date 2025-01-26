@@ -12,3 +12,4 @@ func _physics_process(_delta):
 
 	if velocity.x == 0 && velocity.y == 0:
 		animated_sprite_2d.play("idle_down")
+

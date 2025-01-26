@@ -18,9 +18,9 @@ const WEAPON_DATA_PATH = "res://scenes/items/weapon_data.json"
 @onready var upgrade_3_texture: TextureRect = $MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeThree/MarginContainer/VBoxContainer/TextureRect
 
 # Names
-@onready var upgrade_1_label: Label = $MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeOne/MarginContainer/VBoxContainer/Label
-@onready var upgrade_2_label: Label = $MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeTwo/MarginContainer/VBoxContainer/Label
-@onready var upgrade_3_label: Label = $MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeThree/MarginContainer/VBoxContainer/Label
+@onready var upgrade_1_label: Label = $MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeOne/MarginContainer/VBoxContainer/Title
+@onready var upgrade_2_label: Label = $MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeTwo/MarginContainer/VBoxContainer/Title
+@onready var upgrade_3_label: Label = $MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeThree/MarginContainer/VBoxContainer/Title
 
 # Descriptions
 @onready var upgrade_1_rich_text_label: RichTextLabel = $MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeOne/MarginContainer/VBoxContainer/RichTextLabel
@@ -54,6 +54,7 @@ func _populate_upgrade_panels():
 	# Each data element is like this
 	# 	{
 	# 	"name": "Contagion's Orbit",
+	# 	"description": "A weapon that releases a contagious virus that spreads to nearby enemies.",
 	# 	"damage_min": 50,
 	# 	"damage_max": 60,
 	# 	"scene_ref": "contaigions_orbit",
@@ -67,7 +68,7 @@ func _populate_upgrade_panels():
 	upgrade_1_scene = load(weapon_1_scene_path)
 	upgrade_1_texture.texture = load(weapon_1_texture_path)
 	upgrade_1_label.text = weapon_1["name"]
-	upgrade_1_rich_text_label.text = "Damage: " + str(weapon_1["damage_min"]) + " - " + str(weapon_1["damage_max"])
+	upgrade_1_rich_text_label.text = "Damage: " + "[color=red]" + str(weapon_1["damage_min"]) + "[/color]" + " - " + "[color=red]" + str(weapon_1["damage_max"]) + "[/color]" + "\n" + "\n" + weapon_1["description"]
 
 	var weapon_2 = weapon_data[1]
 	var weapon_2_texture_path = get_item_sprite_path(weapon_2["scene_ref"])
@@ -76,7 +77,7 @@ func _populate_upgrade_panels():
 	upgrade_2_scene = load(weapon_2_scene_path)
 	upgrade_2_texture.texture = load(weapon_2_texture_path)
 	upgrade_2_label.text = weapon_2["name"]
-	upgrade_2_rich_text_label.text = "Damage: " + str(weapon_2["damage_min"]) + " - " + str(weapon_2["damage_max"])
+	upgrade_2_rich_text_label.text = "Damage: " + "[color=red]" + str(weapon_2["damage_min"]) + "[/color]" + " - " + "[color=red]" + str(weapon_2["damage_max"]) + "[/color]" + "\n" + "\n" + weapon_2["description"]
 
 	var weapon_3 = weapon_data[2]
 	var weapon_3_texture_path = get_item_sprite_path(weapon_3["scene_ref"])
@@ -85,7 +86,7 @@ func _populate_upgrade_panels():
 	upgrade_3_scene = load(weapon_3_scene_path)
 	upgrade_3_texture.texture = load(weapon_3_texture_path)
 	upgrade_3_label.text = weapon_3["name"]
-	upgrade_3_rich_text_label.text = "Damage: " + str(weapon_3["damage_min"]) + " - " + str(weapon_3["damage_max"])
+	upgrade_3_rich_text_label.text = "Damage: " + "[color=red]" + str(weapon_3["damage_min"]) + "[/color]" + " - " + "[color=red]" + str(weapon_3["damage_max"]) + "[/color]" + "\n" + "\n" + weapon_3["description"]
 
 # Helpers
 func get_item_sprite_path(item_name: String):

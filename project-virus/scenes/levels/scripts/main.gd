@@ -68,6 +68,7 @@ func animate_score_components(new_score: int) -> void:
 
 func on_player_destroyed(_actor: Node2D) -> void:
 	score_container.hide()
+	game_stats.final_score = game_stats.score
 	game_over_screen.visible = true
 	# Music Change
 	game_music.stop()

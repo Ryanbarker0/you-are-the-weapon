@@ -24,5 +24,4 @@ func _ready():
 	hurt.connect(display_damage_numbers)
 
 func display_damage_numbers(hitbox: HitboxComponent):
-	print("Hurt! Damage: ", hitbox.damage)
 	DamageNumbers.display_number(hitbox.damage, damage_number_origin.global_position)

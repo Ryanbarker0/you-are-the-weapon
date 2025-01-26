@@ -8,6 +8,8 @@ var progress: Array[float]
 @onready var animation_player: AnimationPlayer = SceneTransition.get_node("AnimationPlayer")
 @onready var color_rect: ColorRect = SceneTransition.get_node("ColorRect")
 
+@onready var volume_sliders: VBoxContainer = $VolumeSliders 
+
 @onready var loading_overlay: CanvasLayer = $CanvasLayer
 @onready var progress_bar : ProgressBar = $CanvasLayer/ProgressBar
 

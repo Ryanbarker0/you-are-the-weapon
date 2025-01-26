@@ -31,7 +31,7 @@ anim_speed_min = 1.0
 anim_speed_max = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2g2tw"]
-radius = 20.025
+radius = 28.0179
 
 [node name="UpgradeItem" type="Area2D"]
 collision_layer = 0
@@ -48,7 +48,7 @@ lifetime = 3.0
 explosiveness = 0.2
 
 [node name="ItemSprite" type="Sprite2D" parent="."]
-scale = Vector2(0.05, 0.05)
+scale = Vector2(0.08, 0.08)
 texture = ExtResource("1_x24h1")
 script = ExtResource("4_3s6hm")
 
