@@ -380,7 +380,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_5bqqw")
 
 [node name="Choose An upgrade" type="Label" parent="PanelContainer"]
 layout_mode = 2
-text = "Choose An Upgrade"
+text = "PICK A MUTATION"
 label_settings = SubResource("LabelSettings_l7ubk")
 horizontal_alignment = 1
 uppercase = true
