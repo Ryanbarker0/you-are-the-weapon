@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://bew6rb6ixfule"]
+[gd_scene load_steps=50 format=3 uid="uid://bew6rb6ixfule"]
 
 [ext_resource type="Script" path="res://scenes/enemy/scripts/enemy.gd" id="1_76442"]
 [ext_resource type="Texture2D" uid="uid://drb81ddgdbvjh" path="res://scenes/enemy/assets/ui/exclamation_mark.png" id="2_6fwkk"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://scenes/enemy/scripts/states/EnemyDied.gd" id="11_y3pmf"]
 [ext_resource type="Script" path="res://components/hurt_component.gd" id="12_t815d"]
 [ext_resource type="Script" path="res://components/flash_component.gd" id="13_qy6xi"]
+[ext_resource type="AudioStream" uid="uid://dmy1g71icxg6t" path="res://scenes/sounds/sfx/damage-dealt.wav" id="14_wsd5a"]
 [ext_resource type="PackedScene" uid="uid://c5wyv2newkk3j" path="res://components/health_bar.tscn" id="15_lqnvb"]
 [ext_resource type="Script" path="res://components/score_component.gd" id="16_2bxir"]
 [ext_resource type="Resource" uid="uid://be0l7uoexqolr" path="res://scenes/levels/resources/game_stats.tres" id="17_15w8x"]
@@ -402,10 +403,12 @@ score_component = NodePath("../../ScoreComponent")
 script = ExtResource("11_qr216")
 health = 1000
 
-[node name="HurtComponent" type="Node" parent="." node_paths=PackedStringArray("stats_component", "hurtbox_component")]
+[node name="HurtComponent" type="Node" parent="." node_paths=PackedStringArray("stats_component", "hurtbox_component", "audio_player")]
 script = ExtResource("12_t815d")
 stats_component = NodePath("../StatsComponent")
 hurtbox_component = NodePath("../HurtboxComponent")
+audio_player = NodePath("../AudioStreamPlayer")
+hit_sound = ExtResource("14_wsd5a")
 
 [node name="FlashComponent" type="Node" parent="." node_paths=PackedStringArray("sprite", "hurtbox_component")]
 script = ExtResource("13_qy6xi")
@@ -451,3 +454,5 @@ stats_component = NodePath("../StatsComponent")
 script = ExtResource("16_2bxir")
 game_stats = ExtResource("17_15w8x")
 adjust_amount = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
