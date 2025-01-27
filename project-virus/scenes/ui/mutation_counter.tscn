@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://8wweehasp1op"]
+
+[ext_resource type="FontFile" uid="uid://cyw4rphwc8a7k" path="res://scenes/ui/assets/fonts/Pixeled.ttf" id="1_larou"]
+[ext_resource type="Script" path="res://scenes/ui/scripts/mutagen_counter.gd" id="2_g0lkd"]
+[ext_resource type="Resource" uid="uid://be0l7uoexqolr" path="res://scenes/levels/resources/game_stats.tres" id="3_fkovj"]
+[ext_resource type="Texture2D" uid="uid://b5sb4tgf3og8l" path="res://scenes/items/assets/mutagen_vial-sheet.png" id="3_lnj66"]
+
+[sub_resource type="Theme" id="Theme_4fch7"]
+Label/fonts/font = ExtResource("1_larou")
+
+[node name="MutationCounter" type="HBoxContainer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 367.0
+offset_top = -84.0
+offset_right = 642.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="ScoreLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+theme = SubResource("Theme_4fch7")
+theme_override_colors/default_color = Color(0.117647, 0.392157, 0.105882, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/normal_font = ExtResource("1_larou")
+theme_override_font_sizes/normal_font_size = 30
+text = "0
+"
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("2_g0lkd")
+stats = ExtResource("3_fkovj")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_top = 18
+
+[node name="BioIcon" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("3_lnj66")
+expand_mode = 2
+stretch_mode = 4

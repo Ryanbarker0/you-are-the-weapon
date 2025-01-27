@@ -10,4 +10,8 @@ class_name GameStats
 
 @export var final_score: int = 0
 
+@export var player_level: int = 1
+
+@export var current_xp: int = 0
+
 signal score_changed(new_score)

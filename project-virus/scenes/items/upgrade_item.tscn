@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://385gy14wby1l"]
+[gd_scene load_steps=11 format=3 uid="uid://385gy14wby1l"]
 
 [ext_resource type="Script" path="res://scenes/levels/scripts/upgrade_item.gd" id="1_wqox6"]
+[ext_resource type="Resource" uid="uid://be0l7uoexqolr" path="res://scenes/levels/resources/game_stats.tres" id="2_x7iiv"]
 [ext_resource type="Texture2D" uid="uid://uxt6gf0wtedx" path="res://scenes/levels/assets/textures/floaty_32.png" id="3_2xj2x"]
 [ext_resource type="Texture2D" uid="uid://b5sb4tgf3og8l" path="res://scenes/items/assets/mutagen_vial-sheet.png" id="3_h7205"]
 [ext_resource type="Script" path="res://scenes/levels/scripts/rotate_continuos.gd" id="4_3s6hm"]
@@ -37,6 +38,7 @@ radius = 28.0179
 collision_layer = 0
 collision_mask = 8
 script = ExtResource("1_wqox6")
+game_stats = ExtResource("2_x7iiv")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_tpigp")
