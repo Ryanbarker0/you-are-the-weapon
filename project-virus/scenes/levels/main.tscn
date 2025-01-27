@@ -51,6 +51,7 @@ player = NodePath("../../ySort/Player")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1, -274)
+zoom = Vector2(0.75, 0.75)
 position_smoothing_enabled = true
 
 [node name="ySort" type="Node2D" parent="."]
