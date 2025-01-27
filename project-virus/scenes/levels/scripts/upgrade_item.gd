@@ -13,6 +13,7 @@ func _on_body_entered(body: Node2D):
 			hud.hide()
 			upgrade_panel.show()
 			get_tree().paused = true
+			queue_free()
 		else:
 			# Play audio
 			queue_free()
