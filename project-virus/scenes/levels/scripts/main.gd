@@ -30,6 +30,8 @@ func _ready():
 	fade_in_game_music()
 	# Initialize the game stats
 	game_stats.score = 0
+	game_stats.current_xp = 0
+	game_stats.player_level = 1
 	update_score_label(game_stats.score)
 	game_stats.score_changed.connect(on_score_changed)
 	var children = player.get_children()

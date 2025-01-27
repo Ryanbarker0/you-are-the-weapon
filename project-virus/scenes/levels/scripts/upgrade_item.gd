@@ -18,4 +18,3 @@ func _on_body_entered(body: Node2D):
 			# Play audio
 			queue_free()
 			pass
-
