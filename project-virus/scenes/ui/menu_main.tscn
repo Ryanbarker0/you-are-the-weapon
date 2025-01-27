@@ -10,8 +10,8 @@
 [ext_resource type="Script" path="res://scenes/ui/scripts/title_animation.gd" id="8_38dsf"]
 [ext_resource type="PackedScene" uid="uid://dadxqjntqwyts" path="res://scenes/ui/volume_sliders.tscn" id="9_qk75c"]
 [ext_resource type="Material" uid="uid://cn0lhbmm7apve" path="res://scenes/ui/themes/title.tres" id="10_1m6f3"]
-[ext_resource type="AudioStream" uid="uid://bdfqwu0jg1y18" path="res://scenes/sounds/soundtrack/Host-Hunter-Title.wav" id="10_ppgd5"]
 [ext_resource type="Texture2D" uid="uid://b0dia2xnkeq8k" path="res://scenes/ui/assets/Host-Hunter-title.png" id="10_slfih"]
+[ext_resource type="AudioStream" uid="uid://cxe6n2wlye0qn" path="res://scenes/sounds/soundtrack/Host-Hunter-Title-loop.ogg" id="11_mwon8"]
 
 [node name="MenuMain" type="Control"]
 layout_mode = 3
@@ -89,10 +89,11 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_ppgd5")
+stream = ExtResource("11_mwon8")
 pitch_scale = 0.95
 autoplay = true
 bus = &"Music"
+parameters/looping = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false

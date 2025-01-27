@@ -5,19 +5,19 @@ signal MUSIC_VOLUME_UPDATED(new_value)
 
 enum AudioBusChannels { Master, Music, SFX }
 
-var master_volume = 0.3:
+var master_volume = 0.5:
 	set(value):
 		if (master_volume != value):
 			master_volume = value
 			set_bus_volume(AudioBusChannels.Master, master_volume)
 
-var music_volume = 0.3:
+var music_volume = 1.0:
 	set(value):
 		if (music_volume != value):
 			music_volume = value
 			set_bus_volume(AudioBusChannels.Music, music_volume)
 
-var sfx_volume = 0.3:
+var sfx_volume = 1.0:
 	set(value):
 		if (sfx_volume != value):
 			sfx_volume = value

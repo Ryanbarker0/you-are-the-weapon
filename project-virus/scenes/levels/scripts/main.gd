@@ -26,6 +26,7 @@ extends Node2D
 
 func _ready():
 	animation_player.play("fade_out")
+	fade_in_game_music()
 	# Initialize the game stats
 	game_stats.score = 0
 	update_score_label(game_stats.score)
@@ -34,6 +35,12 @@ func _ready():
 	for child in children:
 		if child is DestroyComponent:
 			child.destroyed.connect(on_player_destroyed)
+
+func fade_in_game_music():
+	game_music.volume_db = -80
+	game_music.play()
+	var tween = get_tree().create_tween()
+	tween.tween_property(game_music, "volume_db", 0, 1.5)
 
 # Signal handler for score changes
 func on_score_changed(new_score: int) -> void:

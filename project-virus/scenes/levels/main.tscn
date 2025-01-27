@@ -12,9 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://bd26g7ujilatd" path="res://scenes/ui/HealthBar.tscn" id="5_wu0to"]
 [ext_resource type="PackedScene" uid="uid://xa300pmubomh" path="res://scenes/levels/cosmetic_scenes/hotel.tscn" id="6_75crw"]
 [ext_resource type="PackedScene" uid="uid://c52k2o0ijaidp" path="res://scenes/levels/cosmetic_scenes/hardware_store.tscn" id="7_56xv6"]
+[ext_resource type="AudioStream" uid="uid://b4a4vlj78xjgu" path="res://scenes/sounds/soundtrack/Host-Hunter-Gameplay-loop.ogg" id="13_3aed4"]
 [ext_resource type="AudioStream" uid="uid://rsvbgqikl0l6" path="res://scenes/sounds/soundtrack/Gameover.wav" id="14_2yjua"]
 [ext_resource type="PackedScene" uid="uid://cx4wifhuc5akl" path="res://scenes/levels/stat_items.tscn" id="15_866qc"]
-[ext_resource type="AudioStream" uid="uid://vtyv5lvfv5iq" path="res://scenes/sounds/soundtrack/Host-Hunter-Gameplay.wav" id="15_liitr"]
 [ext_resource type="PackedScene" uid="uid://385gy14wby1l" path="res://scenes/items/upgrade_item.tscn" id="18_2g2yu"]
 
 [node name="main" type="Node2D" node_paths=PackedStringArray("player")]
@@ -75,9 +75,9 @@ game_over_screen = NodePath("../../Menus/GameOver")
 
 [node name="LevelMusic" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("15_liitr")
-autoplay = true
+stream = ExtResource("13_3aed4")
 bus = &"Music"
+parameters/looping = true
 
 [node name="GameOver" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_2yjua")
