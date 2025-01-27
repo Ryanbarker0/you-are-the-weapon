@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://y0x78wnou8oe"]
+[gd_scene load_steps=35 format=3 uid="uid://y0x78wnou8oe"]
 
 [ext_resource type="Script" path="res://scenes/ui/scripts/upgrade_panel.gd" id="1_e3evd"]
 [ext_resource type="Texture2D" uid="uid://sr02oujf4h8" path="res://scenes/npcs/assets/spore.png" id="1_u22qe"]
@@ -8,17 +8,7 @@
 [ext_resource type="FontFile" uid="uid://dki1nkh6typ54" path="res://scenes/ui/assets/fonts/VCR_OSD_MONO_1.001.ttf" id="5_c8ycf"]
 [ext_resource type="Texture2D" uid="uid://baijrmxm40j1u" path="res://scenes/items/weapons/noxious_spread/fire_02.png" id="6_er654"]
 [ext_resource type="Texture2D" uid="uid://bn3wed1endlt7" path="res://scenes/items/weapons/viral_discharge/scorch_01_short.png" id="6_n7hwx"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vrfdf"]
-bg_color = Color(0.20871, 0.20871, 0.20871, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.41598, 0.41598, 0.41598, 1)
-shadow_color = Color(0, 0, 0, 0.670588)
-shadow_size = 1
-shadow_offset = Vector2(2, 2)
+[ext_resource type="Theme" uid="uid://cqg4ecycoya3h" path="res://scenes/ui/themes/upgrade_panel_container.tres" id="7_7boo1"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sat4x"]
 particles_animation = true
@@ -116,6 +106,17 @@ font = ExtResource("5_c8ycf")
 font_size = 22
 shadow_size = 3
 shadow_color = Color(0, 0, 0, 0.760784)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kv6cg"]
+bg_color = Color(0.0687983, 0.0687983, 0.0687982, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 1
+
+[sub_resource type="Theme" id="Theme_83uhv"]
+Panel/styles/panel = SubResource("StyleBoxFlat_kv6cg")
 
 [sub_resource type="Gradient" id="Gradient_d0yuu"]
 offsets = PackedFloat32Array(0, 0.398734, 0.746835, 1)
@@ -219,19 +220,16 @@ script = ExtResource("2_saouf")
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_vrfdf")
+theme = ExtResource("7_7boo1")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeOne"]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeOne/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Control" type="Control" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeOne/MarginContainer/VBoxContainer"]
+[node name="Control" type="Panel" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeOne/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(250, 250)
 layout_mode = 2
 
@@ -272,21 +270,19 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_tjjq3")
 [node name="UpgradeTwo" type="PanelContainer" parent="MarginContainerRoot/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_vrfdf")
+theme = ExtResource("7_7boo1")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeTwo"]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeTwo/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Control" type="Control" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeTwo/MarginContainer/VBoxContainer"]
+[node name="Control" type="Panel" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeTwo/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(250, 250)
 layout_mode = 2
+theme = ExtResource("7_7boo1")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeTwo/MarginContainer/VBoxContainer/Control"]
 material = SubResource("CanvasItemMaterial_dkt0w")
@@ -324,21 +320,19 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_tjjq3")
 [node name="UpgradeThree" type="PanelContainer" parent="MarginContainerRoot/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_vrfdf")
+theme = ExtResource("7_7boo1")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeThree"]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeThree/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Control" type="Control" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeThree/MarginContainer/VBoxContainer"]
+[node name="Control" type="Panel" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeThree/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(250, 250)
 layout_mode = 2
+theme = SubResource("Theme_83uhv")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeThree/MarginContainer/VBoxContainer/Control"]
 amount = 100
@@ -386,7 +380,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_5bqqw")
 
 [node name="Choose An upgrade" type="Label" parent="PanelContainer"]
 layout_mode = 2
-text = "Choose An Upgrade"
+text = "PICK A MUTATION"
 label_settings = SubResource("LabelSettings_l7ubk")
 horizontal_alignment = 1
 uppercase = true

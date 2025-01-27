@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://385gy14wby1l"]
 
 [ext_resource type="Script" path="res://scenes/levels/scripts/upgrade_item.gd" id="1_wqox6"]
-[ext_resource type="Texture2D" uid="uid://yjr53p6kovyk" path="res://scenes/levels/assets/items/virus-upgrade.png" id="1_x24h1"]
 [ext_resource type="Texture2D" uid="uid://uxt6gf0wtedx" path="res://scenes/levels/assets/textures/floaty_32.png" id="3_2xj2x"]
+[ext_resource type="Texture2D" uid="uid://q1c4f0h3xnu3" path="res://scenes/items/assets/mutagen_vial-sheet.png" id="3_h7205"]
 [ext_resource type="Script" path="res://scenes/levels/scripts/rotate_continuos.gd" id="4_3s6hm"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tpigp"]
@@ -40,19 +40,20 @@ script = ExtResource("1_wqox6")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_tpigp")
-position = Vector2(0, 1)
-amount = 40
+position = Vector2(0, 3)
+amount = 60
 process_material = SubResource("ParticleProcessMaterial_2teqm")
 texture = ExtResource("3_2xj2x")
 lifetime = 3.0
 explosiveness = 0.2
 
 [node name="ItemSprite" type="Sprite2D" parent="."]
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("1_x24h1")
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_h7205")
 script = ExtResource("4_3s6hm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_2g2tw")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -5,7 +5,7 @@ extends Node2D
 
 @export var game_over_screen: Control
 
-var margin = 150
+var margin = 250
 var screen_width = ProjectSettings.get_setting("display/window/size/viewport_width")
 
 @onready var spawner_component: SpawnerComponent = $SpawnerComponent
