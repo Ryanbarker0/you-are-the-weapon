@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://components/hurtbox_component.gd" id="4_55g0b"]
 [ext_resource type="Script" path="res://components/stats_component.gd" id="5_22ljq"]
 [ext_resource type="Script" path="res://components/hurt_component.gd" id="6_t5jnu"]
+[ext_resource type="AudioStream" uid="uid://di6qa3q8ou7go" path="res://scenes/sounds/sfx/player-damaged.wav" id="7_23dfh"]
 [ext_resource type="Script" path="res://components/destroy_component.gd" id="7_vn2i5"]
 [ext_resource type="Script" path="res://components/screen_shake_component.gd" id="8_cqhd3"]
 [ext_resource type="PackedScene" uid="uid://cue8wxqy8ajca" path="res://scenes/ui/experience_bar.tscn" id="9_cb65o"]
@@ -83,10 +84,12 @@ script = ExtResource("5_22ljq")
 damage_min = 80
 damage_max = 100
 
-[node name="HurtComponent" type="Node" parent="." node_paths=PackedStringArray("stats_component", "hurtbox_component")]
+[node name="HurtComponent" type="Node" parent="." node_paths=PackedStringArray("stats_component", "hurtbox_component", "audio_player")]
 script = ExtResource("6_t5jnu")
 stats_component = NodePath("../StatsComponent")
 hurtbox_component = NodePath("../HurtboxComponent")
+audio_player = NodePath("../AudioStreamPlayer")
+hit_sound = ExtResource("7_23dfh")
 
 [node name="DestroyComponent" type="Node" parent="." node_paths=PackedStringArray("actor", "stats_component")]
 script = ExtResource("7_vn2i5")
@@ -107,3 +110,4 @@ offset_left = -24.0
 offset_top = 30.0
 offset_right = 29.0
 offset_bottom = 34.0
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
