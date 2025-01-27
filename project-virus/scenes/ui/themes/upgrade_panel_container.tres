@@ -1,0 +1,36 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://cqg4ecycoya3h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cnhin"]
+bg_color = Color(0, 0, 0, 0.262745)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0j7t1"]
+bg_color = Color(0.0605303, 0.0605304, 0.0605303, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u1aub"]
+bg_color = Color(0.0666667, 0.137255, 0.0941176, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.745098, 0.862745, 0.498039, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 2
+shadow_offset = Vector2(2, 2)
+
+[resource]
+Button/styles/hover = SubResource("StyleBoxFlat_cnhin")
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_right = 10
+MarginContainer/constants/margin_top = 10
+Panel/styles/panel = SubResource("StyleBoxFlat_0j7t1")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_u1aub")

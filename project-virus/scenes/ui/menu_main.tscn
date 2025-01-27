@@ -75,7 +75,7 @@ scale = Vector2(4.77719, 3.76957)
 [node name="Infect" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_hppku")
-text = "Infect"
+text = "INFECT"
 
 [node name="TransitionColor" type="ColorRect" parent="."]
 visible = false
@@ -96,7 +96,6 @@ bus = &"Music"
 parameters/looping = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15

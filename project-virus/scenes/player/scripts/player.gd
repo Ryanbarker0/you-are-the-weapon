@@ -7,6 +7,7 @@ var upgrades: Array[BasePlayerUpgrade] = []
 var total_rotating_projectiles: Array[PersistentProjectile]	= []
 @onready var current_upgrade_amount: int = 0
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
+@onready var camera: Camera2D = get_parent().get_parent().get_node("Camera2D")
 
 func _process(_delta):
 	var damage = randi_range(stats_component.damage_min, stats_component.damage_max)

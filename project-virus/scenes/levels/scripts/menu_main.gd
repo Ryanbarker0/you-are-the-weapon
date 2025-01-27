@@ -28,7 +28,10 @@ func _process(_delta: float) -> void:
 		ResourceLoader.THREAD_LOAD_IN_PROGRESS:
 			progress_bar.value = progress[0] * 100 # Change the ProgressBar value
 		ResourceLoader.THREAD_LOAD_LOADED:
-			loading_overlay.visible = false
+			# Could add a really short timer so we visibly display the progress hit 100% beforing hiding
+			if progress_bar.value == 100:
+				loading_overlay.visible = false
+			progress_bar.value = 100
 		ResourceLoader.THREAD_LOAD_FAILED:
 			print("Error loading main scene")
 	

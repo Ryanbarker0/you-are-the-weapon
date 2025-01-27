@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dw747f8w07bsh"]
+[gd_scene load_steps=6 format=3 uid="uid://dw747f8w07bsh"]
 
 [ext_resource type="PackedScene" uid="uid://dadxqjntqwyts" path="res://scenes/ui/volume_sliders.tscn" id="1_bc2cn"]
 [ext_resource type="Script" path="res://scenes/ui/scripts/pause_screen.gd" id="1_hypps"]
 [ext_resource type="FontFile" uid="uid://cyw4rphwc8a7k" path="res://scenes/ui/assets/fonts/Pixeled.ttf" id="2_kfjna"]
+[ext_resource type="Theme" uid="uid://bc8n00ertwfok" path="res://scenes/ui/themes/button.tres" id="4_0rxmp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_234hv"]
 resource_local_to_scene = true
@@ -11,18 +12,6 @@ font = ExtResource("2_kfjna")
 font_size = 48
 shadow_size = 3
 shadow_color = Color(0, 0, 0, 0.760784)
-
-[sub_resource type="Theme" id="Theme_ar7l1"]
-Button/font_sizes/font_size = 25
-Button/fonts/font = ExtResource("2_kfjna")
-ProgressBar/constants/outline_size = 10
-ProgressBar/fonts/font = ExtResource("2_kfjna")
-
-[sub_resource type="Theme" id="Theme_iu5xt"]
-Button/font_sizes/font_size = 25
-Button/fonts/font = ExtResource("2_kfjna")
-ProgressBar/constants/outline_size = 10
-ProgressBar/fonts/font = ExtResource("2_kfjna")
 
 [node name="PauseScreen" type="Control"]
 layout_mode = 3
@@ -50,7 +39,7 @@ offset_top = 69.0
 offset_right = 144.0
 offset_bottom = 204.0
 grow_horizontal = 2
-text = "Paused"
+text = "PAUSED"
 label_settings = SubResource("LabelSettings_234hv")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -67,15 +56,18 @@ offset_right = 100.0
 offset_bottom = 139.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 20
 
 [node name="Resume" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme = SubResource("Theme_ar7l1")
-text = "Resume"
+theme = ExtResource("4_0rxmp")
+theme_override_font_sizes/font_size = 15
+text = "RESUME"
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme = SubResource("Theme_iu5xt")
+theme = ExtResource("4_0rxmp")
+theme_override_font_sizes/font_size = 15
 text = "Quit"
 
 [connection signal="pressed" from="VBoxContainer/Resume" to="." method="on_resume_pressed"]
