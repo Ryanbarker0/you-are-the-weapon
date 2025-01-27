@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/levels/scripts/upgrade_item.gd" id="1_wqox6"]
 [ext_resource type="Texture2D" uid="uid://uxt6gf0wtedx" path="res://scenes/levels/assets/textures/floaty_32.png" id="3_2xj2x"]
-[ext_resource type="Texture2D" uid="uid://q1c4f0h3xnu3" path="res://scenes/items/assets/mutagen_vial-sheet.png" id="3_h7205"]
+[ext_resource type="Texture2D" uid="uid://b5sb4tgf3og8l" path="res://scenes/items/assets/mutagen_vial-sheet.png" id="3_h7205"]
 [ext_resource type="Script" path="res://scenes/levels/scripts/rotate_continuos.gd" id="4_3s6hm"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tpigp"]
@@ -20,8 +20,8 @@ gradient = SubResource("Gradient_c0ot0")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2teqm"]
 particle_flag_disable_z = true
-emission_shape = 1
-emission_sphere_radius = 10.0
+emission_shape = 2
+emission_sphere_radius = 20.0
 initial_velocity_min = -10.0
 initial_velocity_max = 10.0
 gravity = Vector3(0, -10, 0)
@@ -55,5 +55,14 @@ script = ExtResource("4_3s6hm")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_2g2tw")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_tpigp")
+position = Vector2(0, 19)
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_2teqm")
+texture = ExtResource("3_2xj2x")
+lifetime = 3.0
+explosiveness = 0.2
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
