@@ -14,9 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://xa300pmubomh" path="res://scenes/levels/cosmetic_scenes/hotel.tscn" id="6_75crw"]
 [ext_resource type="PackedScene" uid="uid://c52k2o0ijaidp" path="res://scenes/levels/cosmetic_scenes/hardware_store.tscn" id="7_56xv6"]
 [ext_resource type="Script" path="res://scenes/levels/scripts/screen_shake.gd" id="9_tmix2"]
-[ext_resource type="AudioStream" uid="uid://b4a4vlj78xjgu" path="res://scenes/sounds/soundtrack/Host-Hunter-Gameplay-loop.ogg" id="13_3aed4"]
+[ext_resource type="AudioStream" uid="uid://6lp2oey4dv0" path="res://scenes/sounds/soundtrack/Host-Hunter-Gameplay-loop.ogg" id="13_3aed4"]
 [ext_resource type="PackedScene" uid="uid://cx4wifhuc5akl" path="res://scenes/levels/stat_items.tscn" id="15_866qc"]
-[ext_resource type="AudioStream" uid="uid://d3irppql78w5t" path="res://scenes/sounds/soundtrack/Host-Hunter-Game-Over.ogg" id="16_e1emd"]
+[ext_resource type="AudioStream" uid="uid://bq5w57decj1wx" path="res://scenes/sounds/soundtrack/Host-Hunter-Game-Over.ogg" id="16_e1emd"]
 [ext_resource type="PackedScene" uid="uid://385gy14wby1l" path="res://scenes/items/upgrade_item.tscn" id="18_2g2yu"]
 
 [node name="main" type="Node2D" node_paths=PackedStringArray("player")]
@@ -51,10 +51,13 @@ offset_bottom = 251.0
 player = NodePath("../../ySort/Player")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-
 position = Vector2(1, -274)
 zoom = Vector2(0.75, 0.75)
-
+limit_left = -6000
+limit_top = -4570
+limit_right = 6000
+limit_bottom = 550
+limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("9_tmix2")
 
@@ -75,7 +78,6 @@ position = Vector2(497, -1888)
 position = Vector2(-387, -1695)
 
 [node name="Player" parent="ySort" instance=ExtResource("1_jsecc")]
-
 position = Vector2(1, -274)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="ySort/Player"]
