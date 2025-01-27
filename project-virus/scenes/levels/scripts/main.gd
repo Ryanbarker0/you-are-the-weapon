@@ -23,6 +23,7 @@ extends Node2D
 # Menu elements
 @onready var game_over_screen: Control = $Menus/GameOver
 @onready var upgrade_panel: Control = $Menus/UpgradePanel
+@onready var pause_screen: Control = $Menus/PauseScreen
 
 func _ready():
 	animation_player.play("fade_out")
@@ -35,6 +36,11 @@ func _ready():
 	for child in children:
 		if child is DestroyComponent:
 			child.destroyed.connect(on_player_destroyed)
+
+# func _process(delta):
+# 	if Input.is_action_just_pressed("pause"):
+# 		get_tree().paused = !get_tree().paused
+# 		pause_screen.show()
 
 func fade_in_game_music():
 	game_music.volume_db = -80

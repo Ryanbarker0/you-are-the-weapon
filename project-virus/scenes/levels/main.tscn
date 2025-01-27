@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bcl5wgju2kwb7"]
+[gd_scene load_steps=18 format=3 uid="uid://bcl5wgju2kwb7"]
 
 [ext_resource type="Script" path="res://scenes/levels/scripts/main.gd" id="1_iqtew"]
 [ext_resource type="PackedScene" uid="uid://ce2x2iwrnea4c" path="res://scenes/player/player.tscn" id="1_jsecc"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b3kjkrkfvx1pk" path="res://scenes/levels/npc_spawner.tscn" id="4_7urdm"]
 [ext_resource type="PackedScene" uid="uid://y0x78wnou8oe" path="res://scenes/ui/upgrade_panel.tscn" id="4_vgifo"]
 [ext_resource type="PackedScene" uid="uid://d2qsr4anwy4bv" path="res://scenes/levels/cosmetic_scenes/hospital.tscn" id="4_vussl"]
+[ext_resource type="PackedScene" uid="uid://dw747f8w07bsh" path="res://scenes/ui/pause_screen.tscn" id="5_3xpl7"]
 [ext_resource type="PackedScene" uid="uid://bd26g7ujilatd" path="res://scenes/ui/HealthBar.tscn" id="5_wu0to"]
 [ext_resource type="PackedScene" uid="uid://xa300pmubomh" path="res://scenes/levels/cosmetic_scenes/hotel.tscn" id="6_75crw"]
 [ext_resource type="PackedScene" uid="uid://c52k2o0ijaidp" path="res://scenes/levels/cosmetic_scenes/hardware_store.tscn" id="7_56xv6"]
@@ -27,6 +28,10 @@ player = NodePath("ySort/Player")
 [node name="Menus" type="CanvasLayer" parent="."]
 
 [node name="GameOver" parent="Menus" instance=ExtResource("3_gbfek")]
+visible = false
+
+[node name="PauseScreen" parent="Menus" instance=ExtResource("5_3xpl7")]
+process_mode = 3
 visible = false
 
 [node name="UpgradePanel" parent="Menus" instance=ExtResource("4_vgifo")]
