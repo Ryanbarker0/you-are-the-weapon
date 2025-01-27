@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dffn37m8q1qe5"]
+[gd_scene load_steps=13 format=3 uid="uid://dffn37m8q1qe5"]
 
 [ext_resource type="Script" path="res://scenes/levels/scripts/menu_main.gd" id="1_itnti"]
 [ext_resource type="Theme" uid="uid://bc8n00ertwfok" path="res://scenes/ui/themes/button.tres" id="2_hppku"]
@@ -8,9 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://dmp6ftchp2xpv" path="res://scenes/ui/assets/VirusBG-midground.png" id="4_onmfa"]
 [ext_resource type="LabelSettings" uid="uid://bmmbtn5cv02qy" path="res://scenes/ui/themes/lore_text.tres" id="5_angst"]
 [ext_resource type="Script" path="res://scenes/ui/scripts/title_animation.gd" id="8_38dsf"]
+[ext_resource type="PackedScene" uid="uid://dadxqjntqwyts" path="res://scenes/ui/volume_sliders.tscn" id="9_qk75c"]
 [ext_resource type="Material" uid="uid://cn0lhbmm7apve" path="res://scenes/ui/themes/title.tres" id="10_1m6f3"]
-[ext_resource type="AudioStream" uid="uid://bdfqwu0jg1y18" path="res://scenes/sounds/soundtrack/Host-Hunter-Title.wav" id="10_ppgd5"]
 [ext_resource type="Texture2D" uid="uid://b0dia2xnkeq8k" path="res://scenes/ui/assets/Host-Hunter-title.png" id="10_slfih"]
+[ext_resource type="AudioStream" uid="uid://cxe6n2wlye0qn" path="res://scenes/sounds/soundtrack/Host-Hunter-Title-loop.ogg" id="11_mwon8"]
 
 [node name="MenuMain" type="Control"]
 layout_mode = 3
@@ -56,6 +57,13 @@ position = Vector2(649, 155)
 texture = ExtResource("10_slfih")
 script = ExtResource("8_38dsf")
 
+[node name="VolumeSliders" parent="." instance=ExtResource("9_qk75c")]
+layout_mode = 1
+offset_left = 1083.0
+offset_top = 609.0
+offset_right = 1233.0
+offset_bottom = 669.0
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 552.0
@@ -67,7 +75,7 @@ scale = Vector2(4.77719, 3.76957)
 [node name="Infect" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_hppku")
-text = "Infect"
+text = "INFECT"
 
 [node name="TransitionColor" type="ColorRect" parent="."]
 visible = false
@@ -81,10 +89,11 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_ppgd5")
+stream = ExtResource("11_mwon8")
 pitch_scale = 0.95
 autoplay = true
 bus = &"Music"
+parameters/looping = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -123,7 +132,7 @@ offset_right = 20.0
 offset_bottom = -41.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Loading Game..."
+text = "Incubating Virus..."
 label_settings = ExtResource("5_angst")
 
 [connection signal="pressed" from="VBoxContainer/Infect" to="." method="_on_infect_pressed"]

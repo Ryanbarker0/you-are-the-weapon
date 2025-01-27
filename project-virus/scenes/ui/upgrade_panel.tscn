@@ -1,49 +1,158 @@
-[gd_scene load_steps=13 format=3 uid="uid://y0x78wnou8oe"]
+[gd_scene load_steps=35 format=3 uid="uid://y0x78wnou8oe"]
 
 [ext_resource type="Script" path="res://scenes/ui/scripts/upgrade_panel.gd" id="1_e3evd"]
 [ext_resource type="Texture2D" uid="uid://sr02oujf4h8" path="res://scenes/npcs/assets/spore.png" id="1_u22qe"]
+[ext_resource type="Script" path="res://scenes/ui/scripts/upgrade_h_box_container.gd" id="2_saouf"]
 [ext_resource type="FontFile" uid="uid://cyw4rphwc8a7k" path="res://scenes/ui/assets/fonts/Pixeled.ttf" id="3_373d2"]
+[ext_resource type="Texture2D" uid="uid://puxwr8l38d52" path="res://scenes/items/weapons/contagions_orbit/smoke_07-sheet.png" id="3_mrcuu"]
+[ext_resource type="FontFile" uid="uid://dki1nkh6typ54" path="res://scenes/ui/assets/fonts/VCR_OSD_MONO_1.001.ttf" id="5_c8ycf"]
+[ext_resource type="Texture2D" uid="uid://baijrmxm40j1u" path="res://scenes/items/weapons/noxious_spread/fire_02.png" id="6_er654"]
+[ext_resource type="Texture2D" uid="uid://bn3wed1endlt7" path="res://scenes/items/weapons/viral_discharge/scorch_01_short.png" id="6_n7hwx"]
+[ext_resource type="Theme" uid="uid://cqg4ecycoya3h" path="res://scenes/ui/themes/upgrade_panel_container.tres" id="7_7boo1"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vrfdf"]
-bg_color = Color(0.20871, 0.20871, 0.20871, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.41598, 0.41598, 0.41598, 1)
-shadow_color = Color(0, 0, 0, 0.670588)
-shadow_size = 1
-shadow_offset = Vector2(2, 2)
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sat4x"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_vdqia"]
+offsets = PackedFloat32Array(0, 0.462025, 0.85443, 1)
+colors = PackedColorArray(0.670588, 0.337255, 0.458824, 1, 0.933333, 0.415686, 0.486275, 1, 1, 0.654902, 0.647059, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7arv8"]
+gradient = SubResource("Gradient_vdqia")
+
+[sub_resource type="Curve" id="Curve_k3nr5"]
+_data = [Vector2(0, 0.659341), 0.0, 0.0, 0, 0, Vector2(0.586021, 0.912088), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_pg01h"]
+curve = SubResource("Curve_k3nr5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7e1l0"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 3.0
+angle_min = 1.07288e-05
+angle_max = 180.0
+direction = Vector3(0, 0, 0)
+angular_velocity_min = 0.999984
+angular_velocity_max = 0.999984
+orbit_velocity_min = 1.0
+orbit_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 5.0
+linear_accel_max = 5.0
+radial_accel_min = 0.499998
+radial_accel_max = 0.999998
+scale_min = 0.5
+scale_max = 0.52
+scale_curve = SubResource("CurveTexture_pg01h")
+color = Color(0.670588, 0.337255, 0.458824, 1)
+color_ramp = SubResource("GradientTexture1D_7arv8")
+hue_variation_min = 0.95
+hue_variation_max = 1.0
+anim_speed_min = 1.0
+anim_speed_max = 1.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_7032t"]
 resource_local_to_scene = true
 line_spacing = 0.0
-font = ExtResource("3_373d2")
-font_size = 13
+font = ExtResource("5_c8ycf")
+font_size = 22
 shadow_size = 3
 shadow_color = Color(0, 0, 0, 0.760784)
 
 [sub_resource type="Theme" id="Theme_snex6"]
-RichTextLabel/fonts/normal_font = ExtResource("3_373d2")
+RichTextLabel/fonts/normal_font = ExtResource("5_c8ycf")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jf5kq"]
 bg_color = Color(0.6, 0.6, 0.6, 0.529412)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tjjq3"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dkt0w"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_dwhv7"]
+offsets = PackedFloat32Array(0, 0.170886, 0.822785, 1)
+colors = PackedColorArray(0.537255, 0.466667, 0.788235, 1, 0.737255, 0.552941, 1, 1, 0.988235, 0.607843, 0.827451, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3yrao"]
+gradient = SubResource("Gradient_dwhv7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8hal0"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 10.0
+angular_velocity_min = 50.0
+angular_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.7
+scale_max = 0.8
+color = Color(0.537255, 0.466667, 0.788235, 1)
+color_ramp = SubResource("GradientTexture1D_3yrao")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
 [sub_resource type="LabelSettings" id="LabelSettings_f4dhd"]
 resource_local_to_scene = true
 line_spacing = 0.0
-font = ExtResource("3_373d2")
-font_size = 13
+font = ExtResource("5_c8ycf")
+font_size = 22
 shadow_size = 3
 shadow_color = Color(0, 0, 0, 0.760784)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kv6cg"]
+bg_color = Color(0.0687983, 0.0687983, 0.0687982, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 1
+
+[sub_resource type="Theme" id="Theme_83uhv"]
+Panel/styles/panel = SubResource("StyleBoxFlat_kv6cg")
+
+[sub_resource type="Gradient" id="Gradient_d0yuu"]
+offsets = PackedFloat32Array(0, 0.398734, 0.746835, 1)
+colors = PackedColorArray(0.117647, 0.227451, 0.160784, 1, 0.188235, 0.364706, 0.258824, 1, 0.537255, 0.635294, 0.341176, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yll8c"]
+gradient = SubResource("Gradient_d0yuu")
+
+[sub_resource type="Curve" id="Curve_kkfcu"]
+_data = [Vector2(0.00537635, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2007g"]
+curve = SubResource("Curve_kkfcu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vke2f"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(5, 5, 5)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angular_velocity_min = 175.0
+angular_velocity_max = 225.0
+radial_velocity_min = 4.99998
+radial_velocity_max = 9.99998
+gravity = Vector3(0, 0, 0)
+scale_min = 0.7
+scale_max = 0.8
+scale_curve = SubResource("CurveTexture_2007g")
+color = Color(0.301961, 0.501961, 0.380392, 1)
+color_ramp = SubResource("GradientTexture1D_yll8c")
 
 [sub_resource type="LabelSettings" id="LabelSettings_vhc65"]
 resource_local_to_scene = true
 line_spacing = 0.0
-font = ExtResource("3_373d2")
-font_size = 13
+font = ExtResource("5_c8ycf")
+font_size = 22
 shadow_size = 3
 shadow_color = Color(0, 0, 0, 0.760784)
 
@@ -105,29 +214,41 @@ theme_override_constants/margin_bottom = 125
 layout_mode = 2
 theme_override_constants/separation = 13
 alignment = 1
+script = ExtResource("2_saouf")
 
 [node name="UpgradeOne" type="PanelContainer" parent="MarginContainerRoot/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_vrfdf")
+theme = ExtResource("7_7boo1")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeOne"]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeOne/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
+[node name="Control" type="Panel" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeOne/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeOne/MarginContainer/VBoxContainer/Control"]
+material = SubResource("CanvasItemMaterial_sat4x")
+position = Vector2(0, -7.5)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_7e1l0")
+texture = ExtResource("3_mrcuu")
+lifetime = 2.0
+local_coords = true
+
 [node name="TextureRect" type="TextureRect" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeOne/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 texture = ExtResource("1_u22qe")
 expand_mode = 5
 
-[node name="Label" type="Label" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeOne/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeOne/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Contagion's Orbit"
 label_settings = SubResource("LabelSettings_7032t")
@@ -137,6 +258,7 @@ horizontal_alignment = 1
 layout_mode = 2
 theme = SubResource("Theme_snex6")
 theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
 text = "- 256 to 261 damage"
 fit_content = true
 
@@ -148,24 +270,35 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_tjjq3")
 [node name="UpgradeTwo" type="PanelContainer" parent="MarginContainerRoot/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_vrfdf")
+theme = ExtResource("7_7boo1")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeTwo"]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeTwo/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
+[node name="Control" type="Panel" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeTwo/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+theme = ExtResource("7_7boo1")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeTwo/MarginContainer/VBoxContainer/Control"]
+material = SubResource("CanvasItemMaterial_dkt0w")
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_8hal0")
+texture = ExtResource("6_n7hwx")
+lifetime = 0.1
+explosiveness = 0.2
+
 [node name="TextureRect" type="TextureRect" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeTwo/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 texture = ExtResource("1_u22qe")
 expand_mode = 5
 
-[node name="Label" type="Label" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeTwo/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeTwo/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Viral Discharge"
 label_settings = SubResource("LabelSettings_f4dhd")
@@ -175,6 +308,7 @@ horizontal_alignment = 1
 layout_mode = 2
 theme = SubResource("Theme_snex6")
 theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
 text = "- 256 to 261 damage"
 fit_content = true
 
@@ -186,24 +320,34 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_tjjq3")
 [node name="UpgradeThree" type="PanelContainer" parent="MarginContainerRoot/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_vrfdf")
+theme = ExtResource("7_7boo1")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeThree"]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeThree/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
+[node name="Control" type="Panel" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeThree/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+theme = SubResource("Theme_83uhv")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeThree/MarginContainer/VBoxContainer/Control"]
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_vke2f")
+texture = ExtResource("6_er654")
+lifetime = 0.4
+explosiveness = 0.2
+
 [node name="TextureRect" type="TextureRect" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeThree/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 texture = ExtResource("1_u22qe")
 expand_mode = 5
 
-[node name="Label" type="Label" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeThree/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="MarginContainerRoot/MarginContainer/HBoxContainer/UpgradeThree/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Noxious Spread"
 label_settings = SubResource("LabelSettings_vhc65")
@@ -213,6 +357,7 @@ horizontal_alignment = 1
 layout_mode = 2
 theme = SubResource("Theme_snex6")
 theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
 text = "- 256 to 261 damage"
 fit_content = true
 
@@ -235,7 +380,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_5bqqw")
 
 [node name="Choose An upgrade" type="Label" parent="PanelContainer"]
 layout_mode = 2
-text = "Choose An Upgrade"
+text = "PICK A MUTATION"
 label_settings = SubResource("LabelSettings_l7ubk")
 horizontal_alignment = 1
 uppercase = true

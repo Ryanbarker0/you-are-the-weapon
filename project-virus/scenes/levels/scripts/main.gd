@@ -23,9 +23,11 @@ extends Node2D
 # Menu elements
 @onready var game_over_screen: Control = $Menus/GameOver
 @onready var upgrade_panel: Control = $Menus/UpgradePanel
+@onready var pause_screen: Control = $Menus/PauseScreen
 
 func _ready():
 	animation_player.play("fade_out")
+	fade_in_game_music()
 	# Initialize the game stats
 	game_stats.score = 0
 	update_score_label(game_stats.score)
@@ -34,6 +36,17 @@ func _ready():
 	for child in children:
 		if child is DestroyComponent:
 			child.destroyed.connect(on_player_destroyed)
+
+# func _process(delta):
+# 	if Input.is_action_just_pressed("pause"):
+# 		get_tree().paused = !get_tree().paused
+# 		pause_screen.show()
+
+func fade_in_game_music():
+	game_music.volume_db = -80
+	game_music.play()
+	var tween = get_tree().create_tween()
+	tween.tween_property(game_music, "volume_db", 0, 1.5)
 
 # Signal handler for score changes
 func on_score_changed(new_score: int) -> void:
@@ -68,6 +81,7 @@ func animate_score_components(new_score: int) -> void:
 
 func on_player_destroyed(_actor: Node2D) -> void:
 	score_container.hide()
+	game_stats.final_score = game_stats.score
 	game_over_screen.visible = true
 	# Music Change
 	game_music.stop()

@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://mvb3pdkma0m5" path="res://scenes/npcs/npc.tscn" id="2_my7tr"]
 [ext_resource type="PackedScene" uid="uid://bew6rb6ixfule" path="res://scenes/enemy/enemy.tscn" id="3_0wo1u"]
 
-
 [node name="NpcSpawner" type="Node2D"]
 script = ExtResource("1_f0m7n")
 BasicNpcScene = ExtResource("2_my7tr")
@@ -15,10 +14,15 @@ BasicEnemyScene = ExtResource("3_0wo1u")
 script = ExtResource("1_sr6pe")
 
 [node name="BasicNpcSpawnTimer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 autostart = true
 
 [node name="BasicEnemySpawnTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 5.0
 one_shot = true
+autostart = true
+
+[node name="GameTimer" type="Timer" parent="."]
+wait_time = 30.0
 autostart = true
