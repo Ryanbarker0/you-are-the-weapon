@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://scenes/levels/scripts/screen_shake.gd" id="9_tmix2"]
 [ext_resource type="AudioStream" uid="uid://75364sy8g0gx" path="res://scenes/sounds/soundtrack/Host-Hunter-Gameplay-loop.ogg" id="13_3aed4"]
 [ext_resource type="PackedScene" uid="uid://cx4wifhuc5akl" path="res://scenes/levels/stat_items.tscn" id="15_866qc"]
+[ext_resource type="AudioStream" uid="uid://6nj02l65fkph" path="res://scenes/sounds/soundtrack/Host-Hunter-Game-Over.ogg" id="16_e1emd"]
 [ext_resource type="PackedScene" uid="uid://385gy14wby1l" path="res://scenes/items/upgrade_item.tscn" id="18_2g2yu"]
 
 [node name="main" type="Node2D" node_paths=PackedStringArray("player")]
