@@ -1,4 +1,4 @@
-[gd_scene load_steps=149 format=3 uid="uid://mvb3pdkma0m5"]
+[gd_scene load_steps=150 format=3 uid="uid://mvb3pdkma0m5"]
 
 [ext_resource type="Script" path="res://scenes/npcs/scripts/npc.gd" id="1_6f8ce"]
 [ext_resource type="Texture2D" uid="uid://bv5c4f4s56380" path="res://scenes/npcs/assets/yellow_exclamation_mark.png" id="2_k5oxs"]
@@ -28,6 +28,7 @@
 [ext_resource type="Script" path="res://components/stats_component.gd" id="16_stpxt"]
 [ext_resource type="Script" path="res://components/flash_component.gd" id="17_i18vk"]
 [ext_resource type="PackedScene" uid="uid://c5wyv2newkk3j" path="res://components/health_bar.tscn" id="18_4nmkq"]
+[ext_resource type="AudioStream" uid="uid://dmy1g71icxg6t" path="res://scenes/sounds/sfx/damage-dealt.wav" id="26_lvefx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0u2cs"]
 atlas = ExtResource("2_k5oxs")
@@ -1116,10 +1117,12 @@ adjust_amount = 1
 wait_time = 6.0
 one_shot = true
 
-[node name="HurtComponent" type="Node" parent="." node_paths=PackedStringArray("stats_component", "hurtbox_component")]
+[node name="HurtComponent" type="Node" parent="." node_paths=PackedStringArray("stats_component", "hurtbox_component", "audio_player")]
 script = ExtResource("15_qcq21")
 stats_component = NodePath("../StatsComponent")
 hurtbox_component = NodePath("../HurtboxComponent")
+audio_player = NodePath("../NpcDamaged")
+hit_sound = ExtResource("26_lvefx")
 
 [node name="StatsComponent" type="Node" parent="."]
 script = ExtResource("16_stpxt")
@@ -1160,5 +1163,7 @@ offset_right = 20.0
 offset_bottom = -39.0
 scale = Vector2(1, 0.1)
 stats_component = NodePath("../StatsComponent")
+
+[node name="NpcDamaged" type="AudioStreamPlayer" parent="."]
 
 [connection signal="timeout" from="DeadTime" to="StateMachine/NpcInfected" method="_on_dead_time_timeout"]
