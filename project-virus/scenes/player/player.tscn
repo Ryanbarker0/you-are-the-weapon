@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ce2x2iwrnea4c"]
+[gd_scene load_steps=14 format=3 uid="uid://ce2x2iwrnea4c"]
 
 [ext_resource type="Script" path="res://scenes/player/scripts/player.gd" id="1_nq7jy"]
 [ext_resource type="Texture2D" uid="uid://pp00xxafmrf" path="res://scenes/player/assets/player_particle.png" id="2_ndenp"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://components/hurt_component.gd" id="6_t5jnu"]
 [ext_resource type="Script" path="res://components/destroy_component.gd" id="7_vn2i5"]
 [ext_resource type="Script" path="res://components/screen_shake_component.gd" id="8_cqhd3"]
+[ext_resource type="PackedScene" uid="uid://cue8wxqy8ajca" path="res://scenes/ui/experience_bar.tscn" id="9_cb65o"]
 
 [sub_resource type="Gradient" id="Gradient_p2coy"]
 offsets = PackedFloat32Array(0.0169014, 0.72043, 0.944606)
@@ -99,3 +100,10 @@ position = Vector2(0, -32)
 script = ExtResource("8_cqhd3")
 hurtbox_component = NodePath("../HurtboxComponent")
 player = NodePath("..")
+
+[node name="Experience" parent="." instance=ExtResource("9_cb65o")]
+z_index = 50
+offset_left = -24.0
+offset_top = 30.0
+offset_right = 29.0
+offset_bottom = 34.0

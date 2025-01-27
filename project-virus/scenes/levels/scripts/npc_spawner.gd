@@ -19,6 +19,8 @@ var screen_width = ProjectSettings.get_setting("display/window/size/viewport_wid
 # Enemy Timers
 @onready var basic_enemy_spawn_timer: Timer = $BasicEnemySpawnTimer
 
+var phase: int = 0
+
 func _ready():
 	game_timer.timeout.connect(game_timer_timeout)
 	basic_npc_spawn_timer.timeout.connect(handle_spawn.bind(BasicNpcScene, basic_npc_spawn_timer))
@@ -59,10 +61,7 @@ func handle_spawn(entity_scene: PackedScene, timer: Timer):
 	timer.start()
 
 func game_timer_timeout():
-	print("Updating spawn timers... ")
-	print("NPC timer: ",  basic_npc_spawn_timer.wait_time) 
-	print("Enemy Timer: ", basic_enemy_spawn_timer.wait_time)
-	
+	phase += 1
 	if basic_npc_spawn_timer.wait_time == 5:
 		basic_npc_spawn_timer.autostart = false
 		basic_npc_spawn_timer.stop()
