@@ -10,7 +10,7 @@ class_name RareNpcDead
 @export var flash_component: FlashComponent
 @export var health_bar: TextureProgressBar
 
-var upgrade_item: PackedScene = preload("res://scenes/items/upgrade_item.tscn")
+var upgrade_item: PackedScene = preload("res://scenes/items/health_item.tscn")
 
 var move_direction: Vector2
 var wonder_time: float

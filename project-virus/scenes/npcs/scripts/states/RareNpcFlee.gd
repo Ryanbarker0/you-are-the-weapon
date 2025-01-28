@@ -13,7 +13,7 @@ var wonder_time: float
 var player: CharacterBody2D
 
 func Enter():
-	stats_component.move_speed = 80.0
+	stats_component.move_speed = 100.0
 	stressed_animation.show()
 	stats_component.no_health.connect(on_no_health)
 	proximity_area.body_exited.connect(on_proximity_area_body_exited)

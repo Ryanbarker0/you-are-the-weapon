@@ -3,18 +3,23 @@ extends Control
 @onready var SceneTransition: Node = get_node("/root/ScreenEffects/SceneTransitionAnimation")
 @onready var animation_player: AnimationPlayer = SceneTransition.get_node("AnimationPlayer")
 
+@export var hud: CanvasLayer
+
 func _process(delta):
 	if Input.is_action_just_pressed("pause"):
 		if not get_tree().paused:
 			get_tree().paused = true
+			hud.hide()
 			show()
 		else:
 			get_tree().paused = false
+			hud.show()
 			hide()
 
 func on_resume_pressed():
 	get_tree().paused = false
 	hide()
+	hud.show()
 
 func _on_quit_pressed():
 	get_tree().paused = false

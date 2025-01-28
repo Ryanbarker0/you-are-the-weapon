@@ -1,29 +1,22 @@
-[gd_scene load_steps=11 format=3 uid="uid://cx4wifhuc5akl"]
+[gd_scene load_steps=9 format=3 uid="uid://5mat0jpqsrp"]
 
-[ext_resource type="Script" path="res://scenes/levels/scripts/items.gd" id="1_f71v2"]
-[ext_resource type="Texture2D" uid="uid://cvrhlvmvh5fi0" path="res://scenes/levels/assets/items/animated_sprout_48x48.png" id="1_knwl8"]
-[ext_resource type="Script" path="res://resources/player_upgrades/speed_player_upgrade.gd" id="2_wcgrh"]
-
-[sub_resource type="Resource" id="Resource_4o0j6"]
-script = ExtResource("2_wcgrh")
-speed_increase = 100.0
-texture = ExtResource("1_knwl8")
-upgrade_text = "Speed"
+[ext_resource type="Script" path="res://scenes/items/scripts/health_item.gd" id="1_3erin"]
+[ext_resource type="Texture2D" uid="uid://cvrhlvmvh5fi0" path="res://scenes/levels/assets/items/animated_sprout_48x48.png" id="3_5h8qo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x2oku"]
-atlas = ExtResource("1_knwl8")
+atlas = ExtResource("3_5h8qo")
 region = Rect2(0, 0, 48, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_480l5"]
-atlas = ExtResource("1_knwl8")
+atlas = ExtResource("3_5h8qo")
 region = Rect2(48, 0, 48, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g5vu4"]
-atlas = ExtResource("1_knwl8")
+atlas = ExtResource("3_5h8qo")
 region = Rect2(96, 0, 48, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g0obq"]
-atlas = ExtResource("1_knwl8")
+atlas = ExtResource("3_5h8qo")
 region = Rect2(144, 0, 48, 96)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tc6oj"]
@@ -50,11 +43,9 @@ animations = [{
 radius = 19.0
 height = 62.0
 
-[node name="Items" type="Area2D" node_paths=PackedStringArray("sprite")]
+[node name="Items" type="Area2D"]
 collision_mask = 8
-script = ExtResource("1_f71v2")
-sprite = NodePath("AnimatedSprite2D")
-player_upgrade = SubResource("Resource_4o0j6")
+script = ExtResource("1_3erin")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tc6oj")
