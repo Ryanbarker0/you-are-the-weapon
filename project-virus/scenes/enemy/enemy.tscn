@@ -1,12 +1,14 @@
-[gd_scene load_steps=50 format=3 uid="uid://bew6rb6ixfule"]
+[gd_scene load_steps=58 format=3 uid="uid://bew6rb6ixfule"]
 
 [ext_resource type="Script" path="res://scenes/enemy/scripts/enemy.gd" id="1_76442"]
 [ext_resource type="Texture2D" uid="uid://drb81ddgdbvjh" path="res://scenes/enemy/assets/ui/exclamation_mark.png" id="2_6fwkk"]
 [ext_resource type="Texture2D" uid="uid://bhv4y6udf8qwk" path="res://scenes/enemy/assets/doctor/doctor-1-idle.png" id="2_vq12d"]
 [ext_resource type="Texture2D" uid="uid://8eebt5y3tluh" path="res://scenes/enemy/assets/doctor/doctor-1-run.png" id="3_j7wke"]
+[ext_resource type="Shader" path="res://scenes/enemy/enemy.gdshader" id="4_ftt8c"]
 [ext_resource type="Script" path="res://components/hitbox_component.gd" id="4_o6kv4"]
 [ext_resource type="Texture2D" uid="uid://sr02oujf4h8" path="res://scenes/npcs/assets/spore.png" id="4_x4487"]
 [ext_resource type="Script" path="res://scenes/enemy/scripts/states/EnemyIdle.gd" id="5_jk251"]
+[ext_resource type="Shader" path="res://scenes/enemy/shaders/enemy_glow.gdshader" id="5_m0dhq"]
 [ext_resource type="Script" path="res://components/StateMachine.gd" id="5_v7ngr"]
 [ext_resource type="Script" path="res://scenes/enemy/scripts/states/EnemyChase.gd" id="6_kk1x5"]
 [ext_resource type="Script" path="res://components/hurtbox_component.gd" id="10_r4fin"]
@@ -18,6 +20,15 @@
 [ext_resource type="PackedScene" uid="uid://c5wyv2newkk3j" path="res://components/health_bar.tscn" id="15_lqnvb"]
 [ext_resource type="Script" path="res://components/score_component.gd" id="16_2bxir"]
 [ext_resource type="Resource" uid="uid://be0l7uoexqolr" path="res://scenes/levels/resources/game_stats.tres" id="17_15w8x"]
+[ext_resource type="Texture2D" uid="uid://bod6s4vjo0f7u" path="res://addons/kenney_particle_pack/star_09.png" id="19_5w7xj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ivy0u"]
+shader = ExtResource("4_ftt8c")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.841
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8mfgt"]
 atlas = ExtResource("2_6fwkk")
@@ -40,6 +51,31 @@ animations = [{
 "name": &"default",
 "speed": 8.0
 }]
+
+[sub_resource type="Gradient" id="Gradient_8203l"]
+offsets = PackedFloat32Array(0, 0.746835, 0.968354)
+colors = PackedColorArray(0.909804, 0.231373, 0.231373, 1, 0.682353, 0.137255, 0.203922, 1, 0.682353, 0.137255, 0.203922, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5nyd4"]
+gradient = SubResource("Gradient_8203l")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ag1dv"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(5, 35, 1)
+angular_velocity_min = -30.0
+angular_velocity_max = 30.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.02
+scale_max = 0.02
+color = Color(0.909804, 0.231373, 0.231373, 0.470588)
+color_ramp = SubResource("GradientTexture1D_5nyd4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u3aqn"]
+shader = ExtResource("5_m0dhq")
+shader_parameter/glow_color = Color(0.975661, 4.06224e-05, 1.90598e-05, 1)
+shader_parameter/glow_intensity = 1.0
+shader_parameter/pulse_speed = 3.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_envtn"]
 atlas = ExtResource("2_vq12d")
@@ -314,12 +350,22 @@ script = ExtResource("1_76442")
 
 [node name="AlertSprite" type="AnimatedSprite2D" parent="."]
 visible = false
+material = SubResource("ShaderMaterial_ivy0u")
 position = Vector2(0, -99)
 sprite_frames = SubResource("SpriteFrames_tlsld")
 autoplay = "default"
 frame_progress = 0.515579
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+visible = false
+position = Vector2(0, -40)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_ag1dv")
+texture = ExtResource("19_5w7xj")
+lifetime = 0.3
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_u3aqn")
 position = Vector2(0, -48)
 sprite_frames = SubResource("SpriteFrames_4uv16")
 animation = &"idle_down"
@@ -339,6 +385,7 @@ scale_amount_max = 0.02
 color_ramp = SubResource("Gradient_jem2y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -11)
 shape = SubResource("CircleShape2D_r4w0q")
 
@@ -353,20 +400,24 @@ position = Vector2(0, -35)
 shape = SubResource("CapsuleShape2D_6bf45")
 
 [node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("damage_number_origin")]
+visible = false
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("10_r4fin")
 damage_number_origin = NodePath("../DamageNumberOrigin")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+visible = false
 position = Vector2(0, -40)
 shape = SubResource("CapsuleShape2D_wcu26")
 
 [node name="ProximityArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ProximityArea"]
+visible = false
 position = Vector2(0, -35)
 shape = SubResource("CircleShape2D_8des0")
 
@@ -416,6 +467,7 @@ sprite = NodePath("../AnimatedSprite2D")
 hurtbox_component = NodePath("../HurtboxComponent")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+visible = false
 position = Vector2(0, -30)
 emitting = false
 amount = 100
@@ -443,6 +495,7 @@ libraries = {
 position = Vector2(0, -71)
 
 [node name="HealthBar" parent="." node_paths=PackedStringArray("stats_component") instance=ExtResource("15_lqnvb")]
+visible = false
 offset_left = -20.0
 offset_top = -79.0
 offset_right = 20.0
