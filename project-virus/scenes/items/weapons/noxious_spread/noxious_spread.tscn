@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://dywd3waqmaf7i"]
 
 [ext_resource type="PackedScene" uid="uid://bu0mm7ib57nck" path="res://scenes/levels/projectile.tscn" id="1_sm2ja"]
-[ext_resource type="Texture2D" uid="uid://6gvqlmuvplsk" path="res://scenes/items/weapons/noxious_spread/noxious_spread_sprite.png" id="2_kvd5u"]
-[ext_resource type="Texture2D" uid="uid://baijrmxm40j1u" path="res://scenes/items/weapons/noxious_spread/fire_02.png" id="3_hmreb"]
+[ext_resource type="Texture2D" uid="uid://e0o2r8svdml6" path="res://scenes/items/weapons/noxious_spread/noxious_spread_sprite.png" id="2_kvd5u"]
+[ext_resource type="Texture2D" uid="uid://bs3fvppg12g51" path="res://scenes/items/weapons/noxious_spread/fire_02.png" id="3_hmreb"]
 
 [sub_resource type="Gradient" id="Gradient_q5r80"]
 offsets = PackedFloat32Array(0, 0.398734, 0.746835, 1)

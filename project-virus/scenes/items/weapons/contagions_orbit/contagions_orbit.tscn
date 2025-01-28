@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://dtiqowks26cfr" path="res://scenes/levels/persistent_projectile.tscn" id="1_7siwo"]
 [ext_resource type="Script" path="res://scenes/items/weapons/contagions_orbit/contagions_orbit.gd" id="2_muguh"]
-[ext_resource type="Texture2D" uid="uid://puxwr8l38d52" path="res://scenes/items/weapons/contagions_orbit/smoke_07-sheet.png" id="3_dn4xm"]
-[ext_resource type="Texture2D" uid="uid://bxu1wjjvinlk" path="res://scenes/items/weapons/contagions_orbit/contagions_orbit_sprite.png" id="3_vakyx"]
+[ext_resource type="Texture2D" uid="uid://bp1ff4lsd4yu6" path="res://scenes/items/weapons/contagions_orbit/smoke_07-sheet.png" id="3_dn4xm"]
+[ext_resource type="Texture2D" uid="uid://1m65tx7vegcu" path="res://scenes/items/weapons/contagions_orbit/contagions_orbit_sprite.png" id="3_vakyx"]
 
 [sub_resource type="Resource" id="Resource_j5me8"]
 resource_local_to_scene = true
