@@ -67,10 +67,17 @@ func handle_spawn(entity_scene: PackedScene, timer: Timer, entity_name: String):
 
 func game_timer_timeout():
 	phase += 1
-	if basic_npc_spawn_timer.wait_time == 5:
+	# Once npc spawner hits phase 10 stop spawning basic npcs
+	if basic_npc_spawn_timer.wait_time == 5 && phase == 10:
 		basic_npc_spawn_timer.autostart = false
 		basic_npc_spawn_timer.stop()
 	if basic_enemy_spawn_timer.wait_time == 0.5:
 		return
+
 	basic_npc_spawn_timer.wait_time += 0.5
 	basic_enemy_spawn_timer.wait_time -= 0.5
+	
+	# Only spawn enemies after phase 2	
+	if phase == 2:
+		basic_enemy_spawn_timer.wait_time = 5
+		basic_enemy_spawn_timer.start()

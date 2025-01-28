@@ -23,10 +23,10 @@ autostart = true
 [node name="BasicEnemySpawnTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
-autostart = true
 
 [node name="RareNpcSpawnTimer" type="Timer" parent="."]
 wait_time = 10.0
+one_shot = true
 autostart = true
 
 [node name="GameTimer" type="Timer" parent="."]

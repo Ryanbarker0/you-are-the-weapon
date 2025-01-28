@@ -1,4 +1,4 @@
-[gd_scene load_steps=156 format=3 uid="uid://dvdk8llmij3f4"]
+[gd_scene load_steps=155 format=3 uid="uid://dvdk8llmij3f4"]
 
 [ext_resource type="Script" path="res://scenes/npcs/scripts/npc.gd" id="1_2kat3"]
 [ext_resource type="Texture2D" uid="uid://dni0s1kdffp8e" path="res://scenes/npcs/assets/yellow_exclamation_mark.png" id="2_84ja1"]
@@ -17,10 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://sr02oujf4h8" path="res://scenes/npcs/assets/spore.png" id="15_p4ur5"]
 [ext_resource type="Script" path="res://components/hurtbox_component.gd" id="16_gth4j"]
 [ext_resource type="Script" path="res://components/StateMachine.gd" id="17_vnjn2"]
-[ext_resource type="Script" path="res://scenes/npcs/scripts/states/NpcInfected.gd" id="18_n3m1x"]
-[ext_resource type="Script" path="res://scenes/npcs/scripts/states/NpcIdle.gd" id="19_nhg1l"]
-[ext_resource type="Script" path="res://scenes/npcs/scripts/states/NpcFlee.gd" id="20_h17yq"]
-[ext_resource type="Script" path="res://scenes/npcs/scripts/states/NpcDead.gd" id="21_vd7xl"]
+[ext_resource type="Script" path="res://scenes/npcs/scripts/states/RareNpcDead.gd" id="18_b64yv"]
+[ext_resource type="Script" path="res://scenes/npcs/scripts/states/RareNpcFlee.gd" id="19_3saal"]
+[ext_resource type="Script" path="res://scenes/npcs/scripts/states/RareNpcIdle.gd" id="20_mfmgg"]
 [ext_resource type="AudioStream" uid="uid://cvkxdtqfctpv1" path="res://scenes/npcs/sounds/wheezy-coughing-83635.mp3" id="22_06xdm"]
 [ext_resource type="Script" path="res://components/score_component.gd" id="23_lrwml"]
 [ext_resource type="Resource" uid="uid://be0l7uoexqolr" path="res://scenes/levels/resources/game_stats.tres" id="24_wbp4b"]
@@ -1130,42 +1129,31 @@ shape = SubResource("CircleShape2D_8des0")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("17_vnjn2")
-initial_state = NodePath("NpcIdle")
+initial_state = NodePath("")
 
-[node name="NpcInfected" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc_sprite", "npc", "audio_stream", "deathtime", "score_component", "hurtbox_component", "flash_component", "health_bar")]
-script = ExtResource("18_n3m1x")
-npc_sprite = NodePath("../../AnimatedSprite2D")
+[node name="RareNpcDead" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc", "death_animation", "score_component", "hurtbox_component", "flash_component", "health_bar")]
+script = ExtResource("18_b64yv")
 npc = NodePath("../..")
-audio_stream = NodePath("../../AudioStreamPlayer")
-deathtime = NodePath("../../DeadTime")
+death_animation = NodePath("../../DeathAnimationPlayer")
+drop_rate_percent = 100
 score_component = NodePath("../../ScoreComponent")
 hurtbox_component = NodePath("../../HurtboxComponent")
 flash_component = NodePath("../../FlashComponent")
 health_bar = NodePath("../../HealthBar")
 
-[node name="NpcIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc", "stats_component", "proximity_area")]
-script = ExtResource("19_nhg1l")
-npc = NodePath("../..")
-stats_component = NodePath("../../StatsComponent")
-proximity_area = NodePath("../../ProximityArea")
-
-[node name="NpcFlee" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc", "stats_component", "proximity_area", "stressed_animation", "character_animation")]
-script = ExtResource("20_h17yq")
+[node name="RareNpcFlee" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc", "stats_component", "proximity_area", "stressed_animation", "character_animation")]
+script = ExtResource("19_3saal")
 npc = NodePath("../..")
 stats_component = NodePath("../../StatsComponent")
 proximity_area = NodePath("../../ProximityArea")
 stressed_animation = NodePath("../../StressedAnimation")
 character_animation = NodePath("../../AnimatedSprite2D")
 
-[node name="NpcDead" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc", "death_animation", "score_component", "hurtbox_component", "flash_component", "health_bar")]
-script = ExtResource("21_vd7xl")
+[node name="RareNpcIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc", "stats_component", "proximity_area")]
+script = ExtResource("20_mfmgg")
 npc = NodePath("../..")
-death_animation = NodePath("../../DeathAnimationPlayer")
-drop_rate_percent = 30
-score_component = NodePath("../../ScoreComponent")
-hurtbox_component = NodePath("../../HurtboxComponent")
-flash_component = NodePath("../../FlashComponent")
-health_bar = NodePath("../../HealthBar")
+stats_component = NodePath("../../StatsComponent")
+proximity_area = NodePath("../../ProximityArea")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_06xdm")
@@ -1236,5 +1224,3 @@ process_material = SubResource("ParticleProcessMaterial_x7dhr")
 texture = ExtResource("3_0f0m8")
 lifetime = 3.0
 local_coords = true
-
-[connection signal="timeout" from="DeadTime" to="StateMachine/NpcInfected" method="_on_dead_time_timeout"]
