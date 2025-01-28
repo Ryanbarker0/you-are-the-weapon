@@ -12,7 +12,7 @@ extends Node2D
 @export var top_edge: Marker2D
 @export var bottom_edge: Marker2D
 
-var margin = 250
+var margin = 350
 var screen_width = ProjectSettings.get_setting("display/window/size/viewport_width")
 
 @onready var spawner_component: SpawnerComponent = $SpawnerComponent
@@ -34,6 +34,7 @@ func _ready():
 func _process(delta):
 	if game_over_screen.visible:
 		game_timer.stop()
+		rare_npc_spawn_timer.stop()
 		basic_npc_spawn_timer.stop()
 		basic_enemy_spawn_timer.stop()
 
@@ -49,7 +50,9 @@ func handle_spawn(entity_scene: PackedScene, timer: Timer, entity_name: String):
 	# Only spawn if spawn_position is valid
 	if is_valid_spawn_position(spawn_position):
 		if entity_name == "rare_npc":
-			if game_stats.current_rare_npc == 1:
+			if game_stats.current_rare_npc == 3:
+				timer.wait_time = randf_range(3, 5)
+				timer.start()
 				return
 			else:
 				spawner_component.spawn(spawn_position)
@@ -58,7 +61,7 @@ func handle_spawn(entity_scene: PackedScene, timer: Timer, entity_name: String):
 			spawner_component.spawn(spawn_position)
 
 	if entity_name == "rare_npc":
-		timer.wait_time = randf_range(10, 30)
+		timer.wait_time = randf_range(15, 30)
 	timer.start()
 
 func get_spawn_position_just_outside_viewport(camera_position: Vector2, viewport_size: Vector2) -> Vector2:

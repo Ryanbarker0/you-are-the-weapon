@@ -1,4 +1,4 @@
-[gd_scene load_steps=155 format=3 uid="uid://dvdk8llmij3f4"]
+[gd_scene load_steps=154 format=3 uid="uid://dvdk8llmij3f4"]
 
 [ext_resource type="Script" path="res://scenes/npcs/scripts/npc.gd" id="1_2kat3"]
 [ext_resource type="Texture2D" uid="uid://bv5c4f4s56380" path="res://scenes/npcs/assets/yellow_exclamation_mark.png" id="2_84ja1"]
@@ -24,7 +24,7 @@
 [ext_resource type="Script" path="res://components/score_component.gd" id="23_lrwml"]
 [ext_resource type="Resource" uid="uid://be0l7uoexqolr" path="res://scenes/levels/resources/game_stats.tres" id="24_wbp4b"]
 [ext_resource type="Script" path="res://components/hurt_component.gd" id="25_3rrrn"]
-[ext_resource type="AudioStream" uid="uid://dmy1g71icxg6t" path="res://scenes/Sounds/sfx/damage-dealt.wav" id="26_535w2"]
+[ext_resource type="AudioStream" uid="uid://dmy1g71icxg6t" path="res://scenes/sounds/sfx/damage-dealt.wav" id="26_535w2"]
 [ext_resource type="Script" path="res://components/stats_component.gd" id="27_n3n61"]
 [ext_resource type="Script" path="res://components/flash_component.gd" id="28_446fp"]
 [ext_resource type="PackedScene" uid="uid://c5wyv2newkk3j" path="res://components/health_bar.tscn" id="29_4xah4"]
@@ -976,22 +976,10 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CPUParticles2D:emitting")
+tracks/1/path = NodePath("AnimatedSprite2D:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite2D:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -1016,22 +1004,10 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CPUParticles2D:emitting")
+tracks/1/path = NodePath("AnimatedSprite2D:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.766667),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite2D:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.733333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -1054,10 +1030,6 @@ height = 78.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8des0"]
 radius = 354.203
-
-[sub_resource type="Curve" id="Curve_wkthv"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
 
 [node name="NpcRare" type="CharacterBody2D"]
 collision_layer = 16
@@ -1185,25 +1157,6 @@ move_speed = 30.0
 script = ExtResource("28_446fp")
 sprite = NodePath("../AnimatedSprite2D")
 hurtbox_component = NodePath("../HurtboxComponent")
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2(0, -30)
-emitting = false
-amount = 100
-lifetime = 0.5
-one_shot = true
-explosiveness = 1.0
-texture = ExtResource("15_p4ur5")
-emission_shape = 1
-emission_sphere_radius = 10.0
-direction = Vector2(2, 2)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 150.0
-initial_velocity_max = 170.0
-scale_amount_min = 0.03
-scale_amount_max = 0.03
-scale_amount_curve = SubResource("Curve_wkthv")
 
 [node name="DamageNumberOrigin" type="Node2D" parent="."]
 position = Vector2(0, -71)
