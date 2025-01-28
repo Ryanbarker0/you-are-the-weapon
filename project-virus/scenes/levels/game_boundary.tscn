@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2c1yrthuhta7"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_2kmdg"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8eqgx"]
+distance = -6495.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_85r6l"]
+normal = Vector2(0.0148715, -0.999889)
+distance = -3898.51
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tpaqu"]
+distance = -5505.0
+
+[node name="Game boundary" type="StaticBody2D"]
+position = Vector2(-495, 250)
+
+[node name="South wall" type="CollisionShape2D" parent="."]
+position = Vector2(493, 144)
+shape = SubResource("WorldBoundaryShape2D_2kmdg")
+
+[node name="East Wall" type="CollisionShape2D" parent="."]
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_8eqgx")
+
+[node name="North wall" type="CollisionShape2D" parent="."]
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_85r6l")
+
+[node name="West Wall" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_tpaqu")
