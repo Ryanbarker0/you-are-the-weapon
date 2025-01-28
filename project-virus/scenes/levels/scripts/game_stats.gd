@@ -14,4 +14,6 @@ class_name GameStats
 
 @export var current_xp: int = 0
 
+@export var current_rare_npc: int = 0
+
 signal score_changed(new_score)

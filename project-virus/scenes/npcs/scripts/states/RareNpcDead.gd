@@ -1,6 +1,8 @@
 extends State
 class_name RareNpcDead
 
+@export var game_stats: GameStats
+
 @export var npc: CharacterBody2D
 @export var move_speed: float = 0.0
 @export var death_animation: AnimationPlayer
@@ -33,4 +35,5 @@ func _on_animation_finished(_name):
 		var upgrade_item_instance = upgrade_item.instantiate()
 		upgrade_item_instance.global_position = npc.global_position
 		npc.get_parent().get_parent().add_child(upgrade_item_instance)
+	game_stats.current_rare_npc -= 1
 	npc.queue_free()

@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var game_stats: GameStats
+
 @export var BasicNpcScene: PackedScene
 @export var BasicEnemyScene: PackedScene
 @export var RareNpcScene: PackedScene
@@ -46,7 +48,14 @@ func handle_spawn(entity_scene: PackedScene, timer: Timer, entity_name: String):
 
 	# Only spawn if spawn_position is valid
 	if is_valid_spawn_position(spawn_position):
-		spawner_component.spawn(spawn_position)
+		if entity_name == "rare_npc":
+			if game_stats.current_rare_npc == 1:
+				return
+			else:
+				spawner_component.spawn(spawn_position)
+				game_stats.current_rare_npc +=1
+		else:
+			spawner_component.spawn(spawn_position)
 
 	if entity_name == "rare_npc":
 		timer.wait_time = randf_range(10, 30)
