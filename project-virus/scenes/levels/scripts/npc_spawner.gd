@@ -2,6 +2,7 @@ extends Node2D
 
 @export var BasicNpcScene: PackedScene
 @export var BasicEnemyScene: PackedScene
+@export var RareNpcScene: PackedScene
 
 @export var game_over_screen: Control
 
@@ -16,6 +17,7 @@ var screen_width = ProjectSettings.get_setting("display/window/size/viewport_wid
 @onready var game_timer: Timer = $GameTimer
 # NPC Timers
 @onready var basic_npc_spawn_timer: Timer = $BasicNpcSpawnTimer
+@onready var rare_npc_spawn_timer: Timer = $RareNpcSpawnTimer
 # Enemy Timers
 @onready var basic_enemy_spawn_timer: Timer = $BasicEnemySpawnTimer
 
@@ -23,8 +25,9 @@ var phase: int = 0
 
 func _ready():
 	game_timer.timeout.connect(game_timer_timeout)
-	basic_npc_spawn_timer.timeout.connect(handle_spawn.bind(BasicNpcScene, basic_npc_spawn_timer))
-	basic_enemy_spawn_timer.timeout.connect(handle_spawn.bind(BasicEnemyScene, basic_enemy_spawn_timer))
+	basic_npc_spawn_timer.timeout.connect(handle_spawn.bind(BasicNpcScene, basic_npc_spawn_timer, "basic_npc"))
+	rare_npc_spawn_timer.timeout.connect(handle_spawn.bind(RareNpcScene, rare_npc_spawn_timer, "rare_npc"))
+	basic_enemy_spawn_timer.timeout.connect(handle_spawn.bind(BasicEnemyScene, basic_enemy_spawn_timer, "basic_enemy"))
 	# Add more entity timers here for additional entity types
 
 func _process(delta):
@@ -33,7 +36,7 @@ func _process(delta):
 		basic_npc_spawn_timer.stop()
 		basic_enemy_spawn_timer.stop()
 
-func handle_spawn(entity_scene: PackedScene, timer: Timer):
+func handle_spawn(entity_scene: PackedScene, timer: Timer, entity_name: String):
 	spawner_component.scene = entity_scene
 	
 	var camera = get_viewport().get_camera_2d()
@@ -58,6 +61,8 @@ func handle_spawn(entity_scene: PackedScene, timer: Timer):
 			spawn_position.y = camera_position.y + viewport_size.y / 2 + margin
 
 	spawner_component.spawn(spawn_position)
+	if entity_name == "rare_npc":
+		timer.wait_time = randf_range(10, 30)
 	timer.start()
 
 func game_timer_timeout():
@@ -66,6 +71,6 @@ func game_timer_timeout():
 		basic_npc_spawn_timer.autostart = false
 		basic_npc_spawn_timer.stop()
 	if basic_enemy_spawn_timer.wait_time == 0.5:
-		return 
+		return
 	basic_npc_spawn_timer.wait_time += 0.5
 	basic_enemy_spawn_timer.wait_time -= 0.5
