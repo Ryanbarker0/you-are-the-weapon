@@ -1,0 +1,107 @@
+[gd_scene load_steps=14 format=3 uid="uid://ktmfxy6wwefw"]
+
+[ext_resource type="Script" path="res://components/hitbox_component.gd" id="1_odx5g"]
+[ext_resource type="Script" path="res://scenes/npcs/scripts/aoe.gd" id="1_se3df"]
+[ext_resource type="Texture2D" uid="uid://cplir8b05m01s" path="res://scenes/npcs/assets/fire_01-sheet.png" id="3_emjhr"]
+
+[sub_resource type="Gradient" id="Gradient_0fcii"]
+offsets = PackedFloat32Array(0.00537634, 1)
+colors = PackedColorArray(0.0666667, 0.137255, 0.0941176, 1, 1, 1, 1, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wnqf2"]
+radius = 11.1803
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_70xd8"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_b8kp1"]
+colors = PackedColorArray(0.117647, 0.227451, 0.160784, 1, 0.933333, 1, 0.8, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vabyd"]
+gradient = SubResource("Gradient_b8kp1")
+
+[sub_resource type="Gradient" id="Gradient_qvm5a"]
+offsets = PackedFloat32Array(0, 0.481013, 1)
+colors = PackedColorArray(0.301961, 0.501961, 0.380392, 1, 0.537255, 0.635294, 0.341176, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lsymw"]
+gradient = SubResource("Gradient_qvm5a")
+
+[sub_resource type="Curve" id="Curve_cy5h3"]
+_data = [Vector2(0.00537635, 0.296703), 0.0, 0.0, 0, 0, Vector2(0.655914, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_mtko3"]
+curve = SubResource("Curve_cy5h3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4ao0p"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 20.0
+angle_min = -90.0
+angle_max = 90.0
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 800.0
+radial_accel_max = 800.0
+damping_min = 400.0
+damping_max = 400.0
+scale_min = 0.2
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_mtko3")
+color_ramp = SubResource("GradientTexture1D_lsymw")
+color_initial_ramp = SubResource("GradientTexture1D_vabyd")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="Aoe" type="Node2D"]
+script = ExtResource("1_se3df")
+max_radius = 300.0
+damage_max = 1299
+damage_min = 1137
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+visible = false
+amount = 10000
+lifetime = 0.8
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 50.0
+gravity = Vector2(0, 0)
+linear_accel_min = 100.0
+linear_accel_max = 200.0
+radial_accel_min = 200.0
+radial_accel_max = 250.0
+tangential_accel_min = 100.0
+tangential_accel_max = 100.0
+scale_amount_min = 2.0
+scale_amount_max = 5.0
+color = Color(0.117647, 0.227451, 0.160784, 1)
+color_ramp = SubResource("Gradient_0fcii")
+hue_variation_min = 0.5
+hue_variation_max = 1.0
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_odx5g")
+damage = 2000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_wnqf2")
+debug_color = Color(0.249072, 0.635572, 0, 0.42)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_70xd8")
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_4ao0p")
+texture = ExtResource("3_emjhr")
+one_shot = true
+explosiveness = 1.0
+draw_order = 2

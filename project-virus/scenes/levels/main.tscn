@@ -107,7 +107,6 @@ position = Vector2(1, -274)
 remote_path = NodePath("../../../Camera2D")
 
 [node name="NpcSpawner" parent="ySort" node_paths=PackedStringArray("game_over_screen", "left_edge", "right_edge", "top_edge", "bottom_edge") instance=ExtResource("4_7urdm")]
-game_stats = ExtResource("2_ism7h")
 game_over_screen = NodePath("../../Menus/GameOver")
 left_edge = NodePath("../../LeftEdge")
 right_edge = NodePath("../../RightEdge")

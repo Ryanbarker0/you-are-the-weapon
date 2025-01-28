@@ -1,13 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3kjkrkfvx1pk"]
+[gd_scene load_steps=7 format=3 uid="uid://b3kjkrkfvx1pk"]
 
 [ext_resource type="Script" path="res://scenes/levels/scripts/npc_spawner.gd" id="1_f0m7n"]
 [ext_resource type="Script" path="res://components/spawner_component.gd" id="1_sr6pe"]
 [ext_resource type="PackedScene" uid="uid://mvb3pdkma0m5" path="res://scenes/npcs/npc.tscn" id="2_my7tr"]
+[ext_resource type="Resource" uid="uid://be0l7uoexqolr" path="res://scenes/levels/resources/game_stats.tres" id="2_wx451"]
 [ext_resource type="PackedScene" uid="uid://bew6rb6ixfule" path="res://scenes/enemy/enemy.tscn" id="3_0wo1u"]
 [ext_resource type="PackedScene" uid="uid://dvdk8llmij3f4" path="res://scenes/npcs/npc_rare.tscn" id="4_46pty"]
 
 [node name="NpcSpawner" type="Node2D"]
 script = ExtResource("1_f0m7n")
+game_stats = ExtResource("2_wx451")
 BasicNpcScene = ExtResource("2_my7tr")
 BasicEnemyScene = ExtResource("3_0wo1u")
 RareNpcScene = ExtResource("4_46pty")
