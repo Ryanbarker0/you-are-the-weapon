@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bcl5wgju2kwb7"]
+[gd_scene load_steps=21 format=3 uid="uid://bcl5wgju2kwb7"]
 
 [ext_resource type="Script" path="res://scenes/levels/scripts/main.gd" id="1_iqtew"]
 [ext_resource type="PackedScene" uid="uid://ce2x2iwrnea4c" path="res://scenes/player/player.tscn" id="1_jsecc"]
@@ -9,14 +9,15 @@
 [ext_resource type="PackedScene" uid="uid://b3kjkrkfvx1pk" path="res://scenes/levels/npc_spawner.tscn" id="4_7urdm"]
 [ext_resource type="PackedScene" uid="uid://y0x78wnou8oe" path="res://scenes/ui/upgrade_panel.tscn" id="4_vgifo"]
 [ext_resource type="PackedScene" uid="uid://d2qsr4anwy4bv" path="res://scenes/levels/cosmetic_scenes/hospital.tscn" id="4_vussl"]
+[ext_resource type="PackedScene" uid="uid://b2c1yrthuhta7" path="res://scenes/levels/game_boundary.tscn" id="4_wvkbi"]
 [ext_resource type="PackedScene" uid="uid://dw747f8w07bsh" path="res://scenes/ui/pause_screen.tscn" id="5_3xpl7"]
 [ext_resource type="PackedScene" uid="uid://bd26g7ujilatd" path="res://scenes/ui/HealthBar.tscn" id="5_wu0to"]
 [ext_resource type="PackedScene" uid="uid://xa300pmubomh" path="res://scenes/levels/cosmetic_scenes/hotel.tscn" id="6_75crw"]
 [ext_resource type="PackedScene" uid="uid://c52k2o0ijaidp" path="res://scenes/levels/cosmetic_scenes/hardware_store.tscn" id="7_56xv6"]
 [ext_resource type="Script" path="res://scenes/levels/scripts/screen_shake.gd" id="9_tmix2"]
-[ext_resource type="AudioStream" uid="uid://blg1b3hc28x44" path="res://scenes/sounds/soundtrack/Host-Hunter-Gameplay-loop.ogg" id="13_3aed4"]
+[ext_resource type="AudioStream" uid="uid://b4a4vlj78xjgu" path="res://scenes/sounds/soundtrack/Host-Hunter-Gameplay-loop.ogg" id="13_3aed4"]
 [ext_resource type="PackedScene" uid="uid://cx4wifhuc5akl" path="res://scenes/levels/stat_items.tscn" id="15_866qc"]
-[ext_resource type="AudioStream" uid="uid://djyg8b1w6grrt" path="res://scenes/sounds/soundtrack/Host-Hunter-Game-Over.ogg" id="16_e1emd"]
+[ext_resource type="AudioStream" uid="uid://d3irppql78w5t" path="res://scenes/sounds/soundtrack/Host-Hunter-Game-Over.ogg" id="16_e1emd"]
 [ext_resource type="PackedScene" uid="uid://385gy14wby1l" path="res://scenes/items/upgrade_item.tscn" id="18_2g2yu"]
 [ext_resource type="PackedScene" uid="uid://8wweehasp1op" path="res://scenes/ui/mutation_counter.tscn" id="19_3820g"]
 
@@ -25,7 +26,21 @@ script = ExtResource("1_iqtew")
 game_stats = ExtResource("2_ism7h")
 player = NodePath("ySort/Player")
 
-[node name="Node2D" parent="." instance=ExtResource("3_n3ory")]
+[node name="LeftEdge" type="Marker2D" parent="."]
+position = Vector2(-5996, -498)
+
+[node name="RightEdge" type="Marker2D" parent="."]
+position = Vector2(5974, -11)
+
+[node name="BottomEdge" type="Marker2D" parent="."]
+position = Vector2(-11, 441)
+
+[node name="TopEdge" type="Marker2D" parent="."]
+position = Vector2(-11, -3643)
+
+[node name="MapElements" parent="." instance=ExtResource("3_n3ory")]
+
+[node name="Game boundary" parent="." instance=ExtResource("4_wvkbi")]
 
 [node name="Menus" type="CanvasLayer" parent="."]
 
@@ -91,8 +106,12 @@ position = Vector2(1, -274)
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="ySort/Player"]
 remote_path = NodePath("../../../Camera2D")
 
-[node name="NpcSpawner" parent="ySort" node_paths=PackedStringArray("game_over_screen") instance=ExtResource("4_7urdm")]
+[node name="NpcSpawner" parent="ySort" node_paths=PackedStringArray("game_over_screen", "left_edge", "right_edge", "top_edge", "bottom_edge") instance=ExtResource("4_7urdm")]
 game_over_screen = NodePath("../../Menus/GameOver")
+left_edge = NodePath("../../LeftEdge")
+right_edge = NodePath("../../RightEdge")
+top_edge = NodePath("../../TopEdge")
+bottom_edge = NodePath("../../BottomEdge")
 
 [node name="LevelMusic" type="AudioStreamPlayer" parent="."]
 process_mode = 3
