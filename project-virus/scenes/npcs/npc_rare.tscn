@@ -1103,7 +1103,7 @@ shape = SubResource("CircleShape2D_8des0")
 script = ExtResource("17_vnjn2")
 initial_state = NodePath("RareNpcIdle")
 
-[node name="RareNpcDead" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc", "death_animation", "score_component", "hurtbox_component", "flash_component", "health_bar")]
+[node name="RareNpcDead" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc", "death_animation", "score_component", "hurtbox_component", "flash_component", "health_bar", "explosion_sound")]
 script = ExtResource("18_b64yv")
 game_stats = ExtResource("24_wbp4b")
 npc = NodePath("../..")
@@ -1113,6 +1113,7 @@ score_component = NodePath("../../ScoreComponent")
 hurtbox_component = NodePath("../../HurtboxComponent")
 flash_component = NodePath("../../FlashComponent")
 health_bar = NodePath("../../HealthBar")
+explosion_sound = NodePath("")
 
 [node name="RareNpcFlee" type="Node" parent="StateMachine" node_paths=PackedStringArray("npc", "stats_component", "proximity_area", "stressed_animation", "character_animation")]
 script = ExtResource("19_3saal")

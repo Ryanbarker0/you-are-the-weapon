@@ -19,6 +19,9 @@ extends Node2D
 @onready var bio_icon: TextureRect = $HUD/ScoreContainer/MarginContainer/BioIcon
 @onready var healthpath: Control = $HUD/HealthBar
 @onready var health_bar: ProgressBar = $HUD/HealthBar/ProgressBar
+@onready var mutation_container: HBoxContainer = $HUD/MutationCounter
+@onready var mutation_label: RichTextLabel = $HUD/MutationCounter/ScoreLabel
+@onready var mutation_icon: TextureRect = $HUD/MutationCounter/MarginContainer/BioIcon
 
 # Menu elements
 @onready var game_over_screen: Control = $Menus/GameOver
@@ -34,21 +37,29 @@ func _ready():
 	game_stats.player_level = 1
 	update_score_label(game_stats.score)
 	game_stats.score_changed.connect(on_score_changed)
+	game_stats.current_xp_changed.connect(on_current_xp_changed)
 	var children = player.get_children()
 	for child in children:
 		if child is DestroyComponent:
 			child.destroyed.connect(on_player_destroyed)
 
-# func _process(delta):
-# 	if Input.is_action_just_pressed("pause"):
-# 		get_tree().paused = !get_tree().paused
-# 		pause_screen.show()
-
 func fade_in_game_music():
 	game_music.volume_db = -80
 	game_music.play()
 	var tween = get_tree().create_tween()
-	tween.tween_property(game_music, "volume_db", 0, 1.5)
+	tween.tween_property(game_music, "volume_db", 0, 0.8)
+
+func on_current_xp_changed(xp: int):
+		# Create a tween for the animation
+	var tween = get_tree().create_tween()
+
+	# Scale up the ScoreLabel and BioIcon simultaneously with a smoother transition
+	tween.tween_property(mutation_label, "scale", Vector2(1.5, 1.5), 0.25).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.parallel().tween_property(mutation_icon, "scale", Vector2(1.5, 1.5), 0.25).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	
+	# Scale back down the ScoreLabel and BioIcon simultaneously with a smooth transition
+	tween.tween_property(mutation_label, "scale", Vector2(1, 1), 0.25).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.parallel().tween_property(mutation_icon, "scale", Vector2(1, 1), 0.25).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
 # Signal handler for score changes
 func on_score_changed(new_score: int) -> void:
@@ -58,17 +69,10 @@ func on_score_changed(new_score: int) -> void:
 func update_score_label(new_score: int) -> void:
 	score_label.text = str(new_score)
 
-# TODO: Play a sound effect when the score changes
-func play_score_sound() -> void:
-	# Add sound effect code here
-	pass
-
 # Function to animate the score label and icon
 func animate_score_components(new_score: int) -> void:
 	# Update the label text immediately
 	update_score_label(new_score)
-
-	play_score_sound()
 
 	# Create a tween for the animation
 	var tween = get_tree().create_tween()

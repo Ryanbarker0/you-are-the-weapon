@@ -1,14 +1,15 @@
-[gd_scene load_steps=35 format=3 uid="uid://y0x78wnou8oe"]
+[gd_scene load_steps=36 format=3 uid="uid://y0x78wnou8oe"]
 
 [ext_resource type="Script" path="res://scenes/ui/scripts/upgrade_panel.gd" id="1_e3evd"]
 [ext_resource type="Texture2D" uid="uid://sr02oujf4h8" path="res://scenes/npcs/assets/spore.png" id="1_u22qe"]
 [ext_resource type="Script" path="res://scenes/ui/scripts/upgrade_h_box_container.gd" id="2_saouf"]
-[ext_resource type="FontFile" uid="uid://vkq51wdwvf0w" path="res://scenes/ui/assets/fonts/Pixeled.ttf" id="3_373d2"]
-[ext_resource type="Texture2D" uid="uid://bp1ff4lsd4yu6" path="res://scenes/items/weapons/contagions_orbit/smoke_07-sheet.png" id="3_mrcuu"]
-[ext_resource type="FontFile" uid="uid://dxiu0ue154xws" path="res://scenes/ui/assets/fonts/VCR_OSD_MONO_1.001.ttf" id="5_c8ycf"]
-[ext_resource type="Texture2D" uid="uid://bs3fvppg12g51" path="res://scenes/items/weapons/noxious_spread/fire_02.png" id="6_er654"]
-[ext_resource type="Texture2D" uid="uid://ciwov512cgm1o" path="res://scenes/items/weapons/viral_discharge/scorch_01_short.png" id="6_n7hwx"]
+[ext_resource type="FontFile" uid="uid://cyw4rphwc8a7k" path="res://scenes/ui/assets/fonts/Pixeled.ttf" id="3_373d2"]
+[ext_resource type="Texture2D" uid="uid://puxwr8l38d52" path="res://scenes/items/weapons/contagions_orbit/smoke_07-sheet.png" id="3_mrcuu"]
+[ext_resource type="FontFile" uid="uid://dki1nkh6typ54" path="res://scenes/ui/assets/fonts/VCR_OSD_MONO_1.001.ttf" id="5_c8ycf"]
+[ext_resource type="Texture2D" uid="uid://baijrmxm40j1u" path="res://scenes/items/weapons/noxious_spread/fire_02.png" id="6_er654"]
+[ext_resource type="Texture2D" uid="uid://bn3wed1endlt7" path="res://scenes/items/weapons/viral_discharge/scorch_01_short.png" id="6_n7hwx"]
 [ext_resource type="Theme" uid="uid://cqg4ecycoya3h" path="res://scenes/ui/themes/upgrade_panel_container.tres" id="7_7boo1"]
+[ext_resource type="AudioStream" uid="uid://hxrqlcsyci1v" path="res://scenes/sounds/sfx/upgrade-selected.wav" id="10_56npf"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sat4x"]
 particles_animation = true
@@ -384,3 +385,8 @@ text = "PICK A MUTATION"
 label_settings = SubResource("LabelSettings_l7ubk")
 horizontal_alignment = 1
 uppercase = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("10_56npf")
+bus = &"SFX"

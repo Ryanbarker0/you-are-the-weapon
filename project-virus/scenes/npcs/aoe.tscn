@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://ktmfxy6wwefw"]
+[gd_scene load_steps=15 format=3 uid="uid://ktmfxy6wwefw"]
 
 [ext_resource type="Script" path="res://components/hitbox_component.gd" id="1_odx5g"]
 [ext_resource type="Script" path="res://scenes/npcs/scripts/aoe.gd" id="1_se3df"]
 [ext_resource type="Texture2D" uid="uid://cplir8b05m01s" path="res://scenes/npcs/assets/fire_01-sheet.png" id="3_emjhr"]
+[ext_resource type="AudioStream" uid="uid://dhi3tmgrh1mac" path="res://scenes/npcs/sounds/Explosion.wav" id="4_1mhpr"]
 
 [sub_resource type="Gradient" id="Gradient_0fcii"]
 offsets = PackedFloat32Array(0.00537634, 1)
@@ -105,3 +106,6 @@ texture = ExtResource("3_emjhr")
 one_shot = true
 explosiveness = 1.0
 draw_order = 2
+
+[node name="ExplodeSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_1mhpr")

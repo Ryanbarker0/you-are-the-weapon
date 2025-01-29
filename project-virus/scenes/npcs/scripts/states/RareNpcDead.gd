@@ -11,6 +11,7 @@ class_name RareNpcDead
 @export var hurtbox_component: HurtboxComponent
 @export var flash_component: FlashComponent
 @export var health_bar: TextureProgressBar
+@export var explosion_sound: AudioStreamPlayer
 
 var upgrade_item: PackedScene = preload("res://scenes/items/health_item.tscn")
 var aoe_explosion: PackedScene = preload("res://scenes/npcs/aoe.tscn")
