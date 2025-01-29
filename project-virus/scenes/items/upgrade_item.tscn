@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scenes/levels/scripts/upgrade_item.gd" id="1_wqox6"]
 [ext_resource type="Resource" uid="uid://be0l7uoexqolr" path="res://scenes/levels/resources/game_stats.tres" id="2_x7iiv"]
-[ext_resource type="Texture2D" uid="uid://uxt6gf0wtedx" path="res://scenes/levels/assets/textures/floaty_32.png" id="3_2xj2x"]
-[ext_resource type="Texture2D" uid="uid://b5sb4tgf3og8l" path="res://scenes/items/assets/mutagen_vial-sheet.png" id="3_h7205"]
+[ext_resource type="Texture2D" uid="uid://dx6w170i2fy02" path="res://scenes/levels/assets/textures/floaty_32.png" id="3_2xj2x"]
+[ext_resource type="Texture2D" uid="uid://bjdjssh0hd0r" path="res://scenes/items/assets/mutagen_vial-sheet.png" id="3_h7205"]
 [ext_resource type="Script" path="res://scenes/levels/scripts/rotate_continuos.gd" id="4_3s6hm"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tpigp"]
@@ -55,7 +55,6 @@ texture = ExtResource("3_h7205")
 script = ExtResource("4_3s6hm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_2g2tw")
 
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
