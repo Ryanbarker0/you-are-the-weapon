@@ -4,6 +4,8 @@ const MAIN_SCENE_PATH: String = "res://scenes/levels/main.tscn"
 var loading_status: int
 var progress: Array[float]
 
+@onready var intro: PackedScene = preload("res://scenes/levels/Intro.tscn") 
+
 @onready var SceneTransition: Node = get_node("/root/ScreenEffects/SceneTransitionAnimation")
 @onready var animation_player: AnimationPlayer = SceneTransition.get_node("AnimationPlayer")
 @onready var color_rect: ColorRect = SceneTransition.get_node("ColorRect")
@@ -47,4 +49,4 @@ func _on_infect_pressed():
 func _on_fade_in_complete(_arg):
 	animation_player.animation_finished.disconnect(_on_fade_in_complete)
 	var loaded_main_scene: PackedScene = ResourceLoader.load_threaded_get(MAIN_SCENE_PATH)
-	get_tree().change_scene_to_packed(loaded_main_scene)
+	get_tree().change_scene_to_packed(intro)
