@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://385gy14wby1l"]
+[gd_scene load_steps=12 format=3 uid="uid://385gy14wby1l"]
 
 [ext_resource type="Script" path="res://scenes/levels/scripts/upgrade_item.gd" id="1_wqox6"]
 [ext_resource type="Resource" uid="uid://be0l7uoexqolr" path="res://scenes/levels/resources/game_stats.tres" id="2_x7iiv"]
 [ext_resource type="Texture2D" uid="uid://uxt6gf0wtedx" path="res://scenes/levels/assets/textures/floaty_32.png" id="3_2xj2x"]
 [ext_resource type="Texture2D" uid="uid://b5sb4tgf3og8l" path="res://scenes/items/assets/mutagen_vial-sheet.png" id="3_h7205"]
 [ext_resource type="Script" path="res://scenes/levels/scripts/rotate_continuos.gd" id="4_3s6hm"]
+[ext_resource type="AudioStream" uid="uid://cxwru3jhuxgd7" path="res://scenes/sounds/sfx/vial-pickup.wav" id="6_gybqf"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tpigp"]
 particles_animation = true
@@ -32,7 +33,7 @@ anim_speed_min = 1.0
 anim_speed_max = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2g2tw"]
-radius = 28.0179
+radius = 37.0
 
 [node name="UpgradeItem" type="Area2D"]
 collision_layer = 0
@@ -55,7 +56,6 @@ texture = ExtResource("3_h7205")
 script = ExtResource("4_3s6hm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_2g2tw")
 
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
@@ -66,5 +66,8 @@ process_material = SubResource("ParticleProcessMaterial_2teqm")
 texture = ExtResource("3_2xj2x")
 lifetime = 3.0
 explosiveness = 0.2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_gybqf")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

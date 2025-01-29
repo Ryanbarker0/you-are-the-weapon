@@ -2,6 +2,10 @@ extends Area2D
 
 @onready var hud: CanvasLayer = get_parent().get_node("HUD")
 @onready var upgrade_panel: Control = get_parent().get_node("Menus").get_node("UpgradePanel")
+
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
+
 @export var game_stats: GameStats
 
 func _on_body_entered(body: Node2D):
@@ -15,6 +19,7 @@ func _on_body_entered(body: Node2D):
 			get_tree().paused = true
 			queue_free()
 		else:
-			# Play audio
-			queue_free()
-			pass
+			audio_player.play()
+			collision_shape.queue_free()
+			hide()
+			audio_player.finished.connect(queue_free)

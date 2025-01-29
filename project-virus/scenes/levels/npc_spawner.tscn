@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3kjkrkfvx1pk"]
+[gd_scene load_steps=7 format=3 uid="uid://b3kjkrkfvx1pk"]
 
 [ext_resource type="Script" path="res://scenes/levels/scripts/npc_spawner.gd" id="1_f0m7n"]
 [ext_resource type="Script" path="res://components/spawner_component.gd" id="1_sr6pe"]

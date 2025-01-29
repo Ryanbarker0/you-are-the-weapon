@@ -2,6 +2,8 @@ extends Control
 
 const WEAPON_DATA_PATH = "res://scenes/items/weapon_data.json"
 
+@onready var upgrade_selected: AudioStreamPlayer = $AudioStreamPlayer
+
 # Player
 @onready var player: CharacterBody2D = get_parent().get_parent().get_node("ySort/Player")
 
@@ -41,7 +43,9 @@ var upgrade_3_scene: PackedScene
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	await read_json_file(WEAPON_DATA_PATH)
-	self.draw.connect(overlay_shown)
+	modulate.a = 0
+	self.visibility_changed.connect(_on_visibility_changed)
+	# self.draw.connect(_on_visibility_changed)
 	upgrade_1_button.pressed.connect(on_selection_one_pressed)
 	upgrade_2_button.pressed.connect(on_selection_two_pressed)
 	upgrade_3_button.pressed.connect(on_selection_three_pressed)
@@ -96,13 +100,22 @@ func get_item_scene_path(item_name: String):
 	return "res://scenes/items/weapons/" + item_name + "/" + item_name + ".tscn"
 
 func complete_upgrade():
+	upgrade_selected.play()
 	hide()
 	get_tree().paused = false
 	hud.show()
 
 # Signals
-func overlay_shown():
-	_populate_upgrade_panels()
+func _on_visibility_changed():
+	if visible:
+		get_tree().paused = true
+		hud.hide()
+		_populate_upgrade_panels()
+		var tween = create_tween()
+		tween.tween_property(self, "modulate:a", 1.0, 0.2)
+		await tween.finished
+	else:
+		modulate.a = 0
 
 func on_selection_one_pressed():
 	var instance = upgrade_1_scene.instantiate()

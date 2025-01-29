@@ -12,8 +12,12 @@ class_name GameStats
 
 @export var player_level: int = 1
 
-@export var current_xp: int = 0
+@export var current_xp: int = 0:
+    set(value):
+        current_xp = value
+        current_xp_changed.emit(current_xp)
 
 @export var current_rare_npc: int = 0
 
 signal score_changed(new_score)
+signal current_xp_changed(new_xp)
