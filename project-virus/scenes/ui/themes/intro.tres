@@ -1,0 +1,13 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://wl24j0wsag6u"]
+
+[ext_resource type="FontFile" uid="uid://vkq51wdwvf0w" path="res://scenes/ui/assets/fonts/Pixeled.ttf" id="1_q7dw7"]
+
+[resource]
+resource_local_to_scene = true
+line_spacing = 0.0
+font = ExtResource("1_q7dw7")
+font_size = 48
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 0.760784)
