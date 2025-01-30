@@ -66,6 +66,7 @@ shadow_size = 3
 shadow_color = Color(0, 0, 0, 0.760784)
 
 [sub_resource type="Theme" id="Theme_snex6"]
+RichTextLabel/font_sizes/normal_font_size = 18
 RichTextLabel/fonts/normal_font = ExtResource("5_c8ycf")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jf5kq"]
