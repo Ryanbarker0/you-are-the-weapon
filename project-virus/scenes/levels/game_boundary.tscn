@@ -7,7 +7,7 @@ distance = -6495.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_85r6l"]
 normal = Vector2(0.0148715, -0.999889)
-distance = -3898.51
+distance = -3855.51
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tpaqu"]
 distance = -5505.0
