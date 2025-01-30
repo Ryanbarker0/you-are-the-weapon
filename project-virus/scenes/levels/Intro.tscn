@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://f32114bcvky"]
+[gd_scene load_steps=36 format=4 uid="uid://f32114bcvky"]
 
 [ext_resource type="Texture2D" uid="uid://comd4srvu8lc" path="res://scenes/player/assets/player_particle.png" id="1_ri4qf"]
 [ext_resource type="Script" path="res://scenes/levels/intro.gd" id="1_sdmyj"]
@@ -7,6 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://dquy0lt63hnsj" path="res://scenes/npcs/assets/medic-1-run.png" id="4_b3x8y"]
 [ext_resource type="Texture2D" uid="uid://bjdjssh0hd0r" path="res://scenes/items/assets/mutagen_vial-sheet.png" id="5_f0tf2"]
 [ext_resource type="LabelSettings" uid="uid://hg1q8h4sy3mg" path="res://scenes/ui/themes/Gametext.tres" id="6_hrd55"]
+[ext_resource type="AudioStream" uid="uid://bi6mb7r8oi01o" path="res://scenes/Sounds/Soundtrack/intromusic.mp3" id="8_as4w8"]
+[ext_resource type="AudioStream" uid="uid://ps78tjtso6g2" path="res://scenes/Sounds/sfx/sneeze.wav" id="9_ak1l0"]
+[ext_resource type="AudioStream" uid="uid://hmiga3j4kili" path="res://scenes/Sounds/sfx/talking.wav" id="10_xvob3"]
+[ext_resource type="AudioStream" uid="uid://dr2uqybj1wkt3" path="res://scenes/sounds/sfx/vial-pickup.wav" id="11_bwwxb"]
+[ext_resource type="AudioStream" uid="uid://bjbma8o18q83b" path="res://scenes/Sounds/sfx/Slip.mp3" id="12_kjbgk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bc3x5"]
 texture = ExtResource("2_fqo5a")
@@ -5676,6 +5681,30 @@ tracks/11/keys = {
 "update": 1,
 "values": [&"ReplaceSneeze"]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("talkSFX:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Slip:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_j6i3d"]
 resource_name = "Intro+Raise"
@@ -5787,6 +5816,117 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [1]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("talkSFX:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.3, 2.23333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="Animation" id="Animation_xigvb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Raise"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:speed_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ItemSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CPUParticles2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(996, 350)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("talkSFX:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sneeze sound:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Pickup:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Slip:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_22fmf"]
@@ -5923,6 +6063,30 @@ tracks/10/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"WalkoutVirus"]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("talkSFX:playing")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.5, 3.16667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Sneeze sound:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(2.36667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_agekg"]
@@ -6084,56 +6248,29 @@ tracks/12/keys = {
 "update": 1,
 "values": [true, false]
 }
-
-[sub_resource type="Animation" id="Animation_xigvb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Raise"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:speed_scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ItemSprite:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("talkSFX:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0.133333),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CPUParticles2D:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Pickup:playing")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(5.63333),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(996, 350)]
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mnprq"]
@@ -6164,8 +6301,7 @@ tile_set = SubResource("TileSet_y42fi")
 
 [node name="ItemSprite" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(994, 362)
-rotation = -0.00877839
+position = Vector2(990, 359)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_f0tf2")
 
@@ -6286,6 +6422,7 @@ label_settings = ExtResource("6_hrd55")
 [node name="ColorRect" type="ColorRect" parent="Control"]
 z_index = -3
 z_as_relative = false
+layout_mode = 0
 offset_left = 264.0
 offset_top = 16.0
 offset_right = 1360.0
@@ -6293,9 +6430,30 @@ offset_bottom = 631.0
 color = Color(0, 0, 0, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(962, 355)
-rotation = 0.0106362
+position = Vector2(784, 279)
 ignore_rotation = false
 zoom = Vector2(2, 2)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_as4w8")
+autoplay = true
+bus = &"Music"
+
+[node name="Sneeze sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_ak1l0")
+volume_db = -13.432
+bus = &"SFX"
+
+[node name="talkSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_xvob3")
+bus = &"SFX"
+
+[node name="Pickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_bwwxb")
+bus = &"SFX"
+
+[node name="Slip" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_kjbgk")
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
