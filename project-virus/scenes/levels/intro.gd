@@ -13,4 +13,10 @@ func _ready() -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "WalkoutVirus":
-		get_tree().change_scene_to_packed(main_scene)
+		animation_player.animation_finished.connect(_on_fade_in_complete)
+		animation_player.play("fade_in")
+
+func _on_fade_in_complete(_arg):
+	animation_player.animation_finished.disconnect(_on_fade_in_complete)
+	get_tree().change_scene_to_packed(main_scene)
+

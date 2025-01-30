@@ -1,0 +1,303 @@
+[gd_scene load_steps=35 format=3 uid="uid://tdkm13oulgjg"]
+
+[ext_resource type="Texture2D" uid="uid://drb81ddgdbvjh" path="res://scenes/enemy/assets/ui/exclamation_mark.png" id="1_acv2q"]
+[ext_resource type="Script" path="res://scenes/ui/scripts/info_button.gd" id="1_dochg"]
+[ext_resource type="Theme" uid="uid://c8ylfjvq8pwow" path="res://scenes/ui/themes/tutorial_labl.tres" id="1_k4m2d"]
+[ext_resource type="Texture2D" uid="uid://8eebt5y3tluh" path="res://scenes/enemy/assets/doctor/doctor-1-run.png" id="2_gc4gm"]
+[ext_resource type="Texture2D" uid="uid://bv5c4f4s56380" path="res://scenes/npcs/assets/yellow_exclamation_mark.png" id="4_7umbw"]
+[ext_resource type="Texture2D" uid="uid://ddu4gglfdplcg" path="res://scenes/npcs/assets/Premade_Character_48x48_12_run.png" id="4_shak0"]
+[ext_resource type="Texture2D" uid="uid://uxt6gf0wtedx" path="res://scenes/levels/assets/textures/floaty_32.png" id="6_soq17"]
+[ext_resource type="Texture2D" uid="uid://b5sb4tgf3og8l" path="res://scenes/items/assets/mutagen_vial-sheet.png" id="6_xdwxc"]
+[ext_resource type="FontFile" uid="uid://dki1nkh6typ54" path="res://scenes/ui/assets/fonts/VCR_OSD_MONO_1.001.ttf" id="9_rxndc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx7nk"]
+atlas = ExtResource("1_acv2q")
+region = Rect2(0, 0, 48, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isg7l"]
+atlas = ExtResource("1_acv2q")
+region = Rect2(48, 0, 48, 47)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gatf0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tx7nk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isg7l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2j01"]
+atlas = ExtResource("2_gc4gm")
+region = Rect2(576, 0, 48, 81)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uv4xv"]
+atlas = ExtResource("2_gc4gm")
+region = Rect2(624, 0, 48, 81)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwy4y"]
+atlas = ExtResource("2_gc4gm")
+region = Rect2(672, 0, 48, 81)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfafa"]
+atlas = ExtResource("2_gc4gm")
+region = Rect2(720, 0, 48, 81)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_us2vv"]
+atlas = ExtResource("2_gc4gm")
+region = Rect2(768, 0, 48, 81)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vy2hu"]
+atlas = ExtResource("2_gc4gm")
+region = Rect2(816, 0, 48, 81)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tbh4e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2j01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uv4xv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwy4y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfafa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_us2vv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vy2hu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5adg"]
+atlas = ExtResource("4_7umbw")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26n20"]
+atlas = ExtResource("4_7umbw")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l7akn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5adg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26n20")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2f8jk"]
+atlas = ExtResource("4_shak0")
+region = Rect2(576, 0, 48, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_boydq"]
+atlas = ExtResource("4_shak0")
+region = Rect2(624, 0, 48, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1svv"]
+atlas = ExtResource("4_shak0")
+region = Rect2(672, 0, 48, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emfhb"]
+atlas = ExtResource("4_shak0")
+region = Rect2(720, 0, 48, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1veo"]
+atlas = ExtResource("4_shak0")
+region = Rect2(768, 0, 48, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otvtg"]
+atlas = ExtResource("4_shak0")
+region = Rect2(816, 0, 48, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s622k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2f8jk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_boydq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1svv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emfhb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1veo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otvtg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1tc7h"]
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_x7u6i"]
+offsets = PackedFloat32Array(0, 0.493671, 1)
+colors = PackedColorArray(0.117647, 0.227451, 0.160784, 1, 0.537255, 0.635294, 0.341176, 1, 0.933333, 1, 0.8, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_oi772"]
+gradient = SubResource("Gradient_x7u6i")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2s0m5"]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 20.0
+initial_velocity_min = -10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, -10, 0)
+color = Color(0.933333, 1, 0.8, 1)
+color_ramp = SubResource("GradientTexture1D_oi772")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="Theme" id="Theme_ed46e"]
+default_font = ExtResource("9_rxndc")
+
+[node name="Info" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dochg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Alert" type="AnimatedSprite2D" parent="."]
+position = Vector2(329, 271.5)
+sprite_frames = SubResource("SpriteFrames_gatf0")
+autoplay = "default"
+frame_progress = 0.109221
+
+[node name="Doctor" type="AnimatedSprite2D" parent="."]
+position = Vector2(328, 326.5)
+sprite_frames = SubResource("SpriteFrames_tbh4e")
+autoplay = "default"
+frame_progress = 0.722541
+
+[node name="Doctors" type="Label" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 408.0
+offset_right = 464.0
+offset_bottom = 431.0
+theme = ExtResource("1_k4m2d")
+text = "BEWARE THE CURE"
+horizontal_alignment = 1
+
+[node name="Alert2" type="AnimatedSprite2D" parent="."]
+position = Vector2(632, 264)
+sprite_frames = SubResource("SpriteFrames_l7akn")
+autoplay = "default"
+frame_progress = 0.786159
+metadata/_edit_group_ = true
+
+[node name="Civillian" type="AnimatedSprite2D" parent="."]
+position = Vector2(632, 328)
+sprite_frames = SubResource("SpriteFrames_s622k")
+autoplay = "default"
+frame_progress = 0.870529
+metadata/_edit_group_ = true
+
+[node name="Civillians" type="Label" parent="."]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 408.0
+offset_right = 720.0
+offset_bottom = 431.0
+theme = ExtResource("1_k4m2d")
+text = "INFECT CIVILIANS"
+metadata/_edit_group_ = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_1tc7h")
+position = Vector2(944, 344)
+amount = 60
+process_material = SubResource("ParticleProcessMaterial_2s0m5")
+texture = ExtResource("6_soq17")
+lifetime = 3.0
+explosiveness = 0.2
+
+[node name="Vial" type="Sprite2D" parent="."]
+position = Vector2(944, 336)
+texture = ExtResource("6_xdwxc")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_1tc7h")
+position = Vector2(944, 360)
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_2s0m5")
+texture = ExtResource("6_soq17")
+lifetime = 3.0
+explosiveness = 0.2
+
+[node name="Vials" type="Label" parent="."]
+layout_mode = 0
+offset_left = 840.0
+offset_top = 408.0
+offset_right = 1056.0
+offset_bottom = 441.0
+theme = ExtResource("1_k4m2d")
+text = "COLLECT VIALS TO 
+MUTATE"
+horizontal_alignment = 1
+
+[node name="Start" type="Label" parent="."]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 616.0
+offset_right = 720.0
+offset_bottom = 639.0
+theme = SubResource("Theme_ed46e")
+text = "CLICK TO START"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
