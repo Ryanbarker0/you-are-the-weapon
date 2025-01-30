@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://uxt6gf0wtedx" path="res://scenes/levels/assets/textures/floaty_32.png" id="3_2xj2x"]
 [ext_resource type="Texture2D" uid="uid://b5sb4tgf3og8l" path="res://scenes/items/assets/mutagen_vial-sheet.png" id="3_h7205"]
 [ext_resource type="Script" path="res://scenes/levels/scripts/rotate_continuos.gd" id="4_3s6hm"]
-[ext_resource type="AudioStream" uid="uid://dr2uqybj1wkt3" path="res://scenes/sounds/sfx/vial-pickup.wav" id="6_gybqf"]
+[ext_resource type="AudioStream" uid="uid://cxwru3jhuxgd7" path="res://scenes/sounds/sfx/vial-pickup.wav" id="6_gybqf"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tpigp"]
 particles_animation = true

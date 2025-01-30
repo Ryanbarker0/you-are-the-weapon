@@ -1,14 +1,14 @@
 [gd_scene load_steps=35 format=3 uid="uid://tdkm13oulgjg"]
 
-[ext_resource type="Texture2D" uid="uid://crxork64e5060" path="res://scenes/enemy/assets/ui/exclamation_mark.png" id="1_acv2q"]
+[ext_resource type="Texture2D" uid="uid://drb81ddgdbvjh" path="res://scenes/enemy/assets/ui/exclamation_mark.png" id="1_acv2q"]
 [ext_resource type="Script" path="res://scenes/ui/scripts/info_button.gd" id="1_dochg"]
 [ext_resource type="Theme" uid="uid://c8ylfjvq8pwow" path="res://scenes/ui/themes/tutorial_labl.tres" id="1_k4m2d"]
-[ext_resource type="Texture2D" uid="uid://co87newdelgh5" path="res://scenes/enemy/assets/doctor/doctor-1-run.png" id="2_gc4gm"]
-[ext_resource type="Texture2D" uid="uid://dni0s1kdffp8e" path="res://scenes/npcs/assets/yellow_exclamation_mark.png" id="4_7umbw"]
+[ext_resource type="Texture2D" uid="uid://8eebt5y3tluh" path="res://scenes/enemy/assets/doctor/doctor-1-run.png" id="2_gc4gm"]
+[ext_resource type="Texture2D" uid="uid://bv5c4f4s56380" path="res://scenes/npcs/assets/yellow_exclamation_mark.png" id="4_7umbw"]
 [ext_resource type="Texture2D" uid="uid://ddu4gglfdplcg" path="res://scenes/npcs/assets/Premade_Character_48x48_12_run.png" id="4_shak0"]
-[ext_resource type="Texture2D" uid="uid://cp3naneqkdyfu" path="res://scenes/levels/assets/textures/floaty_32.png" id="6_soq17"]
-[ext_resource type="Texture2D" uid="uid://c4kuurss8w66c" path="res://scenes/items/assets/mutagen_vial-sheet.png" id="6_xdwxc"]
-[ext_resource type="FontFile" uid="uid://cxt1gnwkqo56w" path="res://scenes/ui/assets/fonts/VCR_OSD_MONO_1.001.ttf" id="9_rxndc"]
+[ext_resource type="Texture2D" uid="uid://uxt6gf0wtedx" path="res://scenes/levels/assets/textures/floaty_32.png" id="6_soq17"]
+[ext_resource type="Texture2D" uid="uid://b5sb4tgf3og8l" path="res://scenes/items/assets/mutagen_vial-sheet.png" id="6_xdwxc"]
+[ext_resource type="FontFile" uid="uid://dki1nkh6typ54" path="res://scenes/ui/assets/fonts/VCR_OSD_MONO_1.001.ttf" id="9_rxndc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tx7nk"]
 atlas = ExtResource("1_acv2q")
