@@ -1,11 +1,11 @@
 [gd_scene load_steps=36 format=4 uid="uid://f32114bcvky"]
 
-[ext_resource type="Texture2D" uid="uid://comd4srvu8lc" path="res://scenes/player/assets/player_particle.png" id="1_ri4qf"]
+[ext_resource type="Texture2D" uid="uid://pp00xxafmrf" path="res://scenes/player/assets/player_particle.png" id="1_ri4qf"]
 [ext_resource type="Script" path="res://scenes/levels/intro.gd" id="1_sdmyj"]
-[ext_resource type="Texture2D" uid="uid://c74ifk7hjgnps" path="res://scenes/levels/assets/tile_maps/19_Hospital_48x48.png" id="2_fqo5a"]
-[ext_resource type="Texture2D" uid="uid://24n6vs3lgfd6" path="res://scenes/levels/assets/tile_maps/Room_Builder_48x48.png" id="3_uj0c5"]
-[ext_resource type="Texture2D" uid="uid://dquy0lt63hnsj" path="res://scenes/npcs/assets/medic-1-run.png" id="4_b3x8y"]
-[ext_resource type="Texture2D" uid="uid://bjdjssh0hd0r" path="res://scenes/items/assets/mutagen_vial-sheet.png" id="5_f0tf2"]
+[ext_resource type="Texture2D" uid="uid://dqpfnwbdpdlnk" path="res://scenes/levels/assets/tile_maps/19_Hospital_48x48.png" id="2_fqo5a"]
+[ext_resource type="Texture2D" uid="uid://bfvjeiydh04im" path="res://scenes/levels/assets/tile_maps/Room_Builder_48x48.png" id="3_uj0c5"]
+[ext_resource type="Texture2D" uid="uid://bj2rwf865wkck" path="res://scenes/npcs/assets/medic-1-run.png" id="4_b3x8y"]
+[ext_resource type="Texture2D" uid="uid://b5sb4tgf3og8l" path="res://scenes/items/assets/mutagen_vial-sheet.png" id="5_f0tf2"]
 [ext_resource type="LabelSettings" uid="uid://hg1q8h4sy3mg" path="res://scenes/ui/themes/Gametext.tres" id="6_hrd55"]
 [ext_resource type="AudioStream" uid="uid://bi6mb7r8oi01o" path="res://scenes/Sounds/Soundtrack/intromusic.mp3" id="8_as4w8"]
 [ext_resource type="AudioStream" uid="uid://ps78tjtso6g2" path="res://scenes/Sounds/sfx/sneeze.wav" id="9_ak1l0"]
@@ -5927,6 +5927,57 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_xigvb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Raise"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:speed_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ItemSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CPUParticles2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(996, 350)]
 }
 
 [sub_resource type="Animation" id="Animation_22fmf"]

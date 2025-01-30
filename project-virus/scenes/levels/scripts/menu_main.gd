@@ -48,5 +48,5 @@ func _on_infect_pressed():
 
 func _on_fade_in_complete(_arg):
 	animation_player.animation_finished.disconnect(_on_fade_in_complete)
-	var loaded_main_scene: PackedScene = ResourceLoader.load_threaded_get(MAIN_SCENE_PATH)
+	# var loaded_main_scene: PackedScene = ResourceLoader.load_threaded_get(MAIN_SCENE_PATH)
 	get_tree().change_scene_to_packed(intro)

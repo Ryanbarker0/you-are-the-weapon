@@ -14,6 +14,7 @@ extends Node2D
 @onready var game_music: AudioStreamPlayer = $LevelMusic
 
 # HUD elements
+@onready var hud: CanvasLayer = $HUD
 @onready var score_container: HBoxContainer = $HUD/ScoreContainer
 @onready var score_label: RichTextLabel = $HUD/ScoreContainer/ScoreLabel
 @onready var bio_icon: TextureRect = $HUD/ScoreContainer/MarginContainer/BioIcon
@@ -27,10 +28,19 @@ extends Node2D
 @onready var game_over_screen: Control = $Menus/GameOver
 @onready var upgrade_panel: Control = $Menus/UpgradePanel
 @onready var pause_screen: Control = $Menus/PauseScreen
+@onready var info: Control = $Menus/Info
 
 func _ready():
+	hud.hide()
+	info.show()
+	game_music.volume_db = -80
+	game_music.play()
+	var tween = get_tree().create_tween()
+	tween.tween_property(game_music, "volume_db", 0, 0.8)
+	await tween.finished
 	animation_player.play("fade_out")
-	fade_in_game_music()
+	animation_player.animation_finished.connect(on_fade_out_finished)
+	# fade_in_game_music()
 	# Initialize the game stats
 	game_stats.score = 0
 	game_stats.current_xp = 0
@@ -43,11 +53,12 @@ func _ready():
 		if child is DestroyComponent:
 			child.destroyed.connect(on_player_destroyed)
 
-func fade_in_game_music():
-	game_music.volume_db = -80
-	game_music.play()
-	var tween = get_tree().create_tween()
-	tween.tween_property(game_music, "volume_db", 0, 0.8)
+
+# func fade_in_game_music():
+
+
+func on_fade_out_finished(_anim):
+	get_tree().paused = true
 
 func on_current_xp_changed(xp: int):
 		# Create a tween for the animation

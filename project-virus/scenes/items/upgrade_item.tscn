@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scenes/levels/scripts/upgrade_item.gd" id="1_wqox6"]
 [ext_resource type="Resource" uid="uid://be0l7uoexqolr" path="res://scenes/levels/resources/game_stats.tres" id="2_x7iiv"]
-[ext_resource type="Texture2D" uid="uid://dx6w170i2fy02" path="res://scenes/levels/assets/textures/floaty_32.png" id="3_2xj2x"]
-[ext_resource type="Texture2D" uid="uid://bjdjssh0hd0r" path="res://scenes/items/assets/mutagen_vial-sheet.png" id="3_h7205"]
+[ext_resource type="Texture2D" uid="uid://uxt6gf0wtedx" path="res://scenes/levels/assets/textures/floaty_32.png" id="3_2xj2x"]
+[ext_resource type="Texture2D" uid="uid://b5sb4tgf3og8l" path="res://scenes/items/assets/mutagen_vial-sheet.png" id="3_h7205"]
 [ext_resource type="Script" path="res://scenes/levels/scripts/rotate_continuos.gd" id="4_3s6hm"]
 [ext_resource type="AudioStream" uid="uid://dr2uqybj1wkt3" path="res://scenes/sounds/sfx/vial-pickup.wav" id="6_gybqf"]
 
@@ -17,7 +17,7 @@ particles_anim_loop = false
 offsets = PackedFloat32Array(0, 0.493671, 1)
 colors = PackedColorArray(0.117647, 0.227451, 0.160784, 1, 0.537255, 0.635294, 0.341176, 1, 0.933333, 1, 0.8, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_oi772"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c36et"]
 gradient = SubResource("Gradient_c0ot0")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2teqm"]
@@ -28,7 +28,7 @@ initial_velocity_min = -10.0
 initial_velocity_max = 10.0
 gravity = Vector3(0, -10, 0)
 color = Color(0.933333, 1, 0.8, 1)
-color_ramp = SubResource("GradientTexture1D_oi772")
+color_ramp = SubResource("GradientTexture1D_c36et")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bcl5wgju2kwb7"]
+[gd_scene load_steps=22 format=3 uid="uid://bcl5wgju2kwb7"]
 
 [ext_resource type="Script" path="res://scenes/levels/scripts/main.gd" id="1_iqtew"]
 [ext_resource type="PackedScene" uid="uid://ce2x2iwrnea4c" path="res://scenes/player/player.tscn" id="1_jsecc"]
@@ -14,10 +14,11 @@
 [ext_resource type="PackedScene" uid="uid://bd26g7ujilatd" path="res://scenes/ui/HealthBar.tscn" id="5_wu0to"]
 [ext_resource type="PackedScene" uid="uid://xa300pmubomh" path="res://scenes/levels/cosmetic_scenes/hotel.tscn" id="6_75crw"]
 [ext_resource type="PackedScene" uid="uid://c52k2o0ijaidp" path="res://scenes/levels/cosmetic_scenes/hardware_store.tscn" id="7_56xv6"]
+[ext_resource type="PackedScene" uid="uid://tdkm13oulgjg" path="res://scenes/ui/info.tscn" id="8_h8wni"]
 [ext_resource type="Script" path="res://scenes/levels/scripts/screen_shake.gd" id="9_tmix2"]
-[ext_resource type="AudioStream" uid="uid://75364sy8g0gx" path="res://scenes/Sounds/Soundtrack/Host-Hunter-Gameplay-loop.ogg" id="13_3aed4"]
+[ext_resource type="AudioStream" uid="uid://b4a4vlj78xjgu" path="res://scenes/sounds/soundtrack/Host-Hunter-Gameplay-loop.ogg" id="13_3aed4"]
 [ext_resource type="PackedScene" uid="uid://cx4wifhuc5akl" path="res://scenes/levels/stat_items.tscn" id="15_866qc"]
-[ext_resource type="AudioStream" uid="uid://6nj02l65fkph" path="res://scenes/Sounds/Soundtrack/Host-Hunter-Game-Over.ogg" id="16_e1emd"]
+[ext_resource type="AudioStream" uid="uid://d3irppql78w5t" path="res://scenes/sounds/soundtrack/Host-Hunter-Game-Over.ogg" id="16_e1emd"]
 [ext_resource type="PackedScene" uid="uid://385gy14wby1l" path="res://scenes/items/upgrade_item.tscn" id="18_2g2yu"]
 [ext_resource type="PackedScene" uid="uid://8wweehasp1op" path="res://scenes/ui/mutation_counter.tscn" id="19_3820g"]
 
@@ -43,6 +44,10 @@ position = Vector2(-11, -3643)
 [node name="Game boundary" parent="." instance=ExtResource("4_wvkbi")]
 
 [node name="Menus" type="CanvasLayer" parent="."]
+
+[node name="Info" parent="Menus" node_paths=PackedStringArray("hud") instance=ExtResource("8_h8wni")]
+visible = false
+hud = NodePath("../../HUD")
 
 [node name="GameOver" parent="Menus" instance=ExtResource("3_gbfek")]
 visible = false

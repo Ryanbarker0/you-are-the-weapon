@@ -27,7 +27,7 @@
 [ext_resource type="Script" path="res://components/stats_component.gd" id="16_stpxt"]
 [ext_resource type="Script" path="res://components/flash_component.gd" id="17_i18vk"]
 [ext_resource type="PackedScene" uid="uid://c5wyv2newkk3j" path="res://components/health_bar.tscn" id="18_4nmkq"]
-[ext_resource type="AudioStream" uid="uid://cxcnk77vpg3ks" path="res://scenes/Sounds/sfx/damage-dealt.wav" id="26_lvefx"]
+[ext_resource type="AudioStream" uid="uid://dmy1g71icxg6t" path="res://scenes/sounds/sfx/damage-dealt.wav" id="26_lvefx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0u2cs"]
 atlas = ExtResource("2_k5oxs")
