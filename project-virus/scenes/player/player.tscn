@@ -1,14 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://ce2x2iwrnea4c"]
+[gd_scene load_steps=15 format=3 uid="uid://ce2x2iwrnea4c"]
 
 [ext_resource type="Script" path="res://scenes/player/scripts/player.gd" id="1_nq7jy"]
-[ext_resource type="Texture2D" uid="uid://comd4srvu8lc" path="res://scenes/player/assets/player_particle.png" id="2_ndenp"]
+[ext_resource type="Texture2D" uid="uid://pp00xxafmrf" path="res://scenes/player/assets/player_particle.png" id="2_ndenp"]
 [ext_resource type="Script" path="res://components/hitbox_component.gd" id="3_44qx8"]
 [ext_resource type="Script" path="res://components/hurtbox_component.gd" id="4_55g0b"]
 [ext_resource type="Script" path="res://components/stats_component.gd" id="5_22ljq"]
 [ext_resource type="Script" path="res://components/hurt_component.gd" id="6_t5jnu"]
-[ext_resource type="AudioStream" uid="uid://b1hjkwfdeyomq" path="res://scenes/Sounds/sfx/player-damaged.wav" id="7_23dfh"]
+[ext_resource type="AudioStream" uid="uid://di6qa3q8ou7go" path="res://scenes/Sounds/sfx/player-damaged.wav" id="7_23dfh"]
 [ext_resource type="Script" path="res://components/destroy_component.gd" id="7_vn2i5"]
 [ext_resource type="Script" path="res://components/screen_shake_component.gd" id="8_cqhd3"]
+[ext_resource type="Script" path="res://scenes/player/scripts/invincible_component.gd" id="10_e2see"]
 
 [sub_resource type="Gradient" id="Gradient_p2coy"]
 offsets = PackedFloat32Array(0.0169014, 0.72043, 0.944606)
@@ -106,3 +107,12 @@ player = NodePath("..")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"SFX"
+
+[node name="InvincibleComponent" type="Node" parent="." node_paths=PackedStringArray("hurtbox_component", "timer")]
+script = ExtResource("10_e2see")
+hurtbox_component = NodePath("../HurtboxComponent")
+timer = NodePath("../InvincibilityTimer")
+
+[node name="InvincibilityTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true

@@ -1,6 +1,6 @@
 [gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://hg1q8h4sy3mg"]
 
-[ext_resource type="FontFile" uid="uid://vkq51wdwvf0w" path="res://scenes/ui/assets/fonts/Pixeled.ttf" id="1_pp1f7"]
+[ext_resource type="FontFile" uid="uid://cyw4rphwc8a7k" path="res://scenes/ui/assets/fonts/Pixeled.ttf" id="1_pp1f7"]
 
 [resource]
 resource_local_to_scene = true
