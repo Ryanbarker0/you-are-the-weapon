@@ -28,19 +28,10 @@ extends Node2D
 @onready var game_over_screen: Control = $Menus/GameOver
 @onready var upgrade_panel: Control = $Menus/UpgradePanel
 @onready var pause_screen: Control = $Menus/PauseScreen
-@onready var info: Control = $Menus/Info
 
 func _ready():
-	hud.hide()
-	info.show()
-	game_music.volume_db = -80
-	game_music.play()
-	var tween = get_tree().create_tween()
-	tween.tween_property(game_music, "volume_db", 0, 0.8)
-	await tween.finished
 	animation_player.play("fade_out")
-	animation_player.animation_finished.connect(on_fade_out_finished)
-	# fade_in_game_music()
+	fade_in_game_music()
 	# Initialize the game stats
 	game_stats.score = 0
 	game_stats.current_xp = 0
@@ -53,12 +44,11 @@ func _ready():
 		if child is DestroyComponent:
 			child.destroyed.connect(on_player_destroyed)
 
-
-# func fade_in_game_music():
-
-
-func on_fade_out_finished(_anim):
-	get_tree().paused = true
+func fade_in_game_music():
+	game_music.volume_db = -80
+	game_music.play()
+	var tween = get_tree().create_tween()
+	tween.tween_property(game_music, "volume_db", 0, 0.8)
 
 func on_current_xp_changed(xp: int):
 		# Create a tween for the animation
@@ -104,7 +94,7 @@ func on_player_destroyed(_actor: Node2D) -> void:
 	game_music.stop()
 	game_over_music.play()
 	# TODO: Could move this to the node itself to remove separation of concerns
-	game_over_screen.modulate = Color(1, 1, 1, 0)  # Start fully transparent
+	game_over_screen.modulate = Color(1, 1, 1, 0) # Start fully transparent
 
 	# Create a tween for the fade-in effect
 	var tween = get_tree().create_tween()

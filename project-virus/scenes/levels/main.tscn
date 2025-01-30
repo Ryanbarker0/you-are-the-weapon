@@ -14,11 +14,11 @@
 [ext_resource type="PackedScene" uid="uid://bd26g7ujilatd" path="res://scenes/ui/HealthBar.tscn" id="5_wu0to"]
 [ext_resource type="PackedScene" uid="uid://xa300pmubomh" path="res://scenes/levels/cosmetic_scenes/hotel.tscn" id="6_75crw"]
 [ext_resource type="PackedScene" uid="uid://c52k2o0ijaidp" path="res://scenes/levels/cosmetic_scenes/hardware_store.tscn" id="7_56xv6"]
-[ext_resource type="PackedScene" uid="uid://tdkm13oulgjg" path="res://scenes/ui/info.tscn" id="8_h8wni"]
+[ext_resource type="PackedScene" uid="uid://bew6rb6ixfule" path="res://scenes/enemy/enemy.tscn" id="9_a7uf0"]
 [ext_resource type="Script" path="res://scenes/levels/scripts/screen_shake.gd" id="9_tmix2"]
-[ext_resource type="AudioStream" uid="uid://b4a4vlj78xjgu" path="res://scenes/sounds/soundtrack/Host-Hunter-Gameplay-loop.ogg" id="13_3aed4"]
+[ext_resource type="AudioStream" uid="uid://blg1b3hc28x44" path="res://scenes/sounds/soundtrack/Host-Hunter-Gameplay-loop.ogg" id="13_3aed4"]
 [ext_resource type="PackedScene" uid="uid://cx4wifhuc5akl" path="res://scenes/levels/stat_items.tscn" id="15_866qc"]
-[ext_resource type="AudioStream" uid="uid://d3irppql78w5t" path="res://scenes/sounds/soundtrack/Host-Hunter-Game-Over.ogg" id="16_e1emd"]
+[ext_resource type="AudioStream" uid="uid://djyg8b1w6grrt" path="res://scenes/sounds/soundtrack/Host-Hunter-Game-Over.ogg" id="16_e1emd"]
 [ext_resource type="PackedScene" uid="uid://385gy14wby1l" path="res://scenes/items/upgrade_item.tscn" id="18_2g2yu"]
 [ext_resource type="PackedScene" uid="uid://8wweehasp1op" path="res://scenes/ui/mutation_counter.tscn" id="19_3820g"]
 
@@ -44,10 +44,6 @@ position = Vector2(-11, -3643)
 [node name="Game boundary" parent="." instance=ExtResource("4_wvkbi")]
 
 [node name="Menus" type="CanvasLayer" parent="."]
-
-[node name="Info" parent="Menus" node_paths=PackedStringArray("hud") instance=ExtResource("8_h8wni")]
-visible = false
-hud = NodePath("../../HUD")
 
 [node name="GameOver" parent="Menus" instance=ExtResource("3_gbfek")]
 visible = false
@@ -154,3 +150,6 @@ position = Vector2(-248, 88)
 
 [node name="UpgradeItem5" parent="." instance=ExtResource("18_2g2yu")]
 position = Vector2(214, -75)
+
+[node name="Enemy" parent="." instance=ExtResource("9_a7uf0")]
+position = Vector2(248, -207)
