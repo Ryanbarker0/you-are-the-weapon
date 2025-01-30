@@ -105,3 +105,4 @@ hurtbox_component = NodePath("../HurtboxComponent")
 player = NodePath("..")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
