@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dadxqjntqwyts" path="res://scenes/ui/volume_sliders.tscn" id="9_qk75c"]
 [ext_resource type="Material" uid="uid://cn0lhbmm7apve" path="res://scenes/ui/themes/title.tres" id="10_1m6f3"]
 [ext_resource type="Texture2D" uid="uid://b0dia2xnkeq8k" path="res://scenes/ui/assets/Host-Hunter-title.png" id="10_slfih"]
-[ext_resource type="AudioStream" uid="uid://cxe6n2wlye0qn" path="res://scenes/Sounds/Soundtrack/Host-Hunter-Title-loop.ogg" id="11_mwon8"]
+[ext_resource type="AudioStream" uid="uid://cxe6n2wlye0qn" path="res://scenes/sounds/soundtrack/Host-Hunter-Title-loop.ogg" id="11_mwon8"]
 
 [node name="MenuMain" type="Control"]
 layout_mode = 3
