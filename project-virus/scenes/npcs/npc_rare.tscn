@@ -1,18 +1,19 @@
-[gd_scene load_steps=154 format=3 uid="uid://dvdk8llmij3f4"]
+[gd_scene load_steps=152 format=3 uid="uid://dvdk8llmij3f4"]
 
 [ext_resource type="Script" path="res://scenes/npcs/scripts/npc.gd" id="1_2kat3"]
-[ext_resource type="Texture2D" uid="uid://dni0s1kdffp8e" path="res://scenes/npcs/assets/yellow_exclamation_mark.png" id="2_84ja1"]
-[ext_resource type="Texture2D" uid="uid://cp3naneqkdyfu" path="res://scenes/levels/assets/textures/floaty_32.png" id="3_0f0m8"]
-[ext_resource type="Texture2D" uid="uid://bqqfy5b77f2in" path="res://scenes/npcs/assets/character_1/idle.png" id="4_4tir4"]
-[ext_resource type="Texture2D" uid="uid://blxxg806onqra" path="res://scenes/npcs/assets/character_1/run.png" id="5_k2tx8"]
-[ext_resource type="Texture2D" uid="uid://bjc2jedvo240y" path="res://scenes/npcs/assets/character_2/idle.png" id="6_gmefl"]
-[ext_resource type="Texture2D" uid="uid://bbeun5g8r0s00" path="res://scenes/npcs/assets/character_2/run.png" id="7_vtwub"]
-[ext_resource type="Texture2D" uid="uid://dj7llqkvwhd4a" path="res://scenes/npcs/assets/character_3/idle.png" id="8_l38vf"]
-[ext_resource type="Texture2D" uid="uid://ddjsf6343vdkf" path="res://scenes/npcs/assets/character_3/run.png" id="9_7o1j4"]
-[ext_resource type="Texture2D" uid="uid://cj2miyskdhoqs" path="res://scenes/npcs/assets/character_4/idle.png" id="10_pwsjk"]
-[ext_resource type="Texture2D" uid="uid://ct14qj4byn602" path="res://scenes/npcs/assets/character_4/run.png" id="11_80xsx"]
-[ext_resource type="Texture2D" uid="uid://bxojaeadstp01" path="res://scenes/npcs/assets/character_5/idle.png" id="12_8e5e0"]
-[ext_resource type="Texture2D" uid="uid://j5y04k7moqgh" path="res://scenes/npcs/assets/character_5/run.png" id="13_l1ewb"]
+[ext_resource type="Texture2D" uid="uid://bv5c4f4s56380" path="res://scenes/npcs/assets/yellow_exclamation_mark.png" id="2_84ja1"]
+[ext_resource type="Texture2D" uid="uid://uxt6gf0wtedx" path="res://scenes/levels/assets/textures/floaty_32.png" id="3_0f0m8"]
+[ext_resource type="Material" uid="uid://lakupt82hjd1" path="res://scenes/particles/npc_rare_shine.tres" id="3_25x0l"]
+[ext_resource type="Texture2D" uid="uid://o01f7swc2oeg" path="res://scenes/npcs/assets/character_1/idle.png" id="4_4tir4"]
+[ext_resource type="Texture2D" uid="uid://c30jmggs5l1fa" path="res://scenes/npcs/assets/character_1/run.png" id="5_k2tx8"]
+[ext_resource type="Texture2D" uid="uid://bt3pg4386k0qq" path="res://scenes/npcs/assets/character_2/idle.png" id="6_gmefl"]
+[ext_resource type="Texture2D" uid="uid://dfvsumg12srve" path="res://scenes/npcs/assets/character_2/run.png" id="7_vtwub"]
+[ext_resource type="Texture2D" uid="uid://pls04se6o53l" path="res://scenes/npcs/assets/character_3/idle.png" id="8_l38vf"]
+[ext_resource type="Texture2D" uid="uid://xfi7y53p5323" path="res://scenes/npcs/assets/character_3/run.png" id="9_7o1j4"]
+[ext_resource type="Texture2D" uid="uid://ds6kfe13jalqr" path="res://scenes/npcs/assets/character_4/idle.png" id="10_pwsjk"]
+[ext_resource type="Texture2D" uid="uid://bbm1ydt8ldwck" path="res://scenes/npcs/assets/character_4/run.png" id="11_80xsx"]
+[ext_resource type="Texture2D" uid="uid://bw4fiboncgvhp" path="res://scenes/npcs/assets/character_5/idle.png" id="12_8e5e0"]
+[ext_resource type="Texture2D" uid="uid://30gs7jo4dsil" path="res://scenes/npcs/assets/character_5/run.png" id="13_l1ewb"]
 [ext_resource type="Texture2D" uid="uid://bthduxpmrycjy" path="res://scenes/npcs/assets/Premade_Character_48x48_12_edit.png" id="14_y0kvn"]
 [ext_resource type="Texture2D" uid="uid://sr02oujf4h8" path="res://scenes/npcs/assets/spore.png" id="15_p4ur5"]
 [ext_resource type="Script" path="res://components/hurtbox_component.gd" id="16_gth4j"]
@@ -24,7 +25,7 @@
 [ext_resource type="Script" path="res://components/score_component.gd" id="23_lrwml"]
 [ext_resource type="Resource" uid="uid://be0l7uoexqolr" path="res://scenes/levels/resources/game_stats.tres" id="24_wbp4b"]
 [ext_resource type="Script" path="res://components/hurt_component.gd" id="25_3rrrn"]
-[ext_resource type="AudioStream" uid="uid://4pjnetxmraon" path="res://scenes/sounds/sfx/damage-dealt.wav" id="26_535w2"]
+[ext_resource type="AudioStream" uid="uid://dmy1g71icxg6t" path="res://scenes/sounds/sfx/damage-dealt.wav" id="26_535w2"]
 [ext_resource type="Script" path="res://components/stats_component.gd" id="27_n3n61"]
 [ext_resource type="Script" path="res://components/flash_component.gd" id="28_446fp"]
 [ext_resource type="PackedScene" uid="uid://c5wyv2newkk3j" path="res://components/health_bar.tscn" id="29_4xah4"]
@@ -56,26 +57,6 @@ particles_animation = true
 particles_anim_h_frames = 7
 particles_anim_v_frames = 7
 particles_anim_loop = false
-
-[sub_resource type="Gradient" id="Gradient_kb4wb"]
-colors = PackedColorArray(0.964706, 0.803922, 0.14902, 1, 0.964706, 0.803922, 0.14902, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_3epo7"]
-gradient = SubResource("Gradient_kb4wb")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x7dhr"]
-particle_flag_disable_z = true
-emission_shape = 1
-emission_sphere_radius = 15.0
-angular_velocity_min = -10.0
-angular_velocity_max = 9.99998
-radial_velocity_min = -20.0
-radial_velocity_max = 20.0
-gravity = Vector3(0, -20, 0)
-color = Color(0.964706, 0.803922, 0.14902, 1)
-color_ramp = SubResource("GradientTexture1D_3epo7")
-anim_speed_min = 1.0
-anim_speed_max = 1.0
 
 [sub_resource type="Shader" id="Shader_gnplc"]
 code = "shader_type canvas_item;
@@ -1045,7 +1026,7 @@ frame_progress = 0.234006
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_al883")
 amount = 100
-process_material = SubResource("ParticleProcessMaterial_x7dhr")
+process_material = ExtResource("3_25x0l")
 texture = ExtResource("3_0f0m8")
 lifetime = 3.0
 local_coords = true
@@ -1174,7 +1155,7 @@ stats_component = NodePath("../StatsComponent")
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_al883")
 amount = 5
-process_material = SubResource("ParticleProcessMaterial_x7dhr")
+process_material = ExtResource("3_25x0l")
 texture = ExtResource("3_0f0m8")
 lifetime = 3.0
 local_coords = true

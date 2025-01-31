@@ -1,38 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dywd3waqmaf7i"]
+[gd_scene load_steps=6 format=3 uid="uid://dywd3waqmaf7i"]
 
 [ext_resource type="PackedScene" uid="uid://bu0mm7ib57nck" path="res://scenes/levels/projectile.tscn" id="1_sm2ja"]
-[ext_resource type="Texture2D" uid="uid://e0o2r8svdml6" path="res://scenes/items/weapons/noxious_spread/noxious_spread_sprite.png" id="2_kvd5u"]
-[ext_resource type="Texture2D" uid="uid://bs3fvppg12g51" path="res://scenes/items/weapons/noxious_spread/fire_02.png" id="3_hmreb"]
-
-[sub_resource type="Gradient" id="Gradient_q5r80"]
-offsets = PackedFloat32Array(0, 0.398734, 0.746835, 1)
-colors = PackedColorArray(0.117647, 0.227451, 0.160784, 1, 0.188235, 0.364706, 0.258824, 1, 0.537255, 0.635294, 0.341176, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_sf0i2"]
-gradient = SubResource("Gradient_q5r80")
-
-[sub_resource type="Curve" id="Curve_yjf38"]
-_data = [Vector2(0.00537635, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_bec8s"]
-curve = SubResource("Curve_yjf38")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jri4d"]
-particle_flag_disable_z = true
-emission_shape_scale = Vector3(5, 5, 5)
-emission_shape = 1
-emission_sphere_radius = 1.0
-angular_velocity_min = 175.0
-angular_velocity_max = 225.0
-radial_velocity_min = 4.99998
-radial_velocity_max = 9.99998
-gravity = Vector3(0, 0, 0)
-scale_min = 0.1
-scale_max = 0.2
-scale_curve = SubResource("CurveTexture_bec8s")
-color = Color(0.301961, 0.501961, 0.380392, 1)
-color_ramp = SubResource("GradientTexture1D_sf0i2")
+[ext_resource type="Texture2D" uid="uid://6gvqlmuvplsk" path="res://scenes/items/weapons/noxious_spread/noxious_spread_sprite.png" id="2_kvd5u"]
+[ext_resource type="Material" uid="uid://bsg6vvqpursw2" path="res://scenes/particles/noxious_scene.tres" id="2_x5wj2"]
+[ext_resource type="Texture2D" uid="uid://baijrmxm40j1u" path="res://scenes/items/weapons/noxious_spread/fire_02.png" id="3_hmreb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_klof1"]
 radius = 17.0294
@@ -43,7 +14,7 @@ damage_max = 55
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." index="0"]
 amount = 100
-process_material = SubResource("ParticleProcessMaterial_jri4d")
+process_material = ExtResource("2_x5wj2")
 texture = ExtResource("3_hmreb")
 lifetime = 0.4
 explosiveness = 0.2
